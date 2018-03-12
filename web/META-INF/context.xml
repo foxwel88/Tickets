@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  <Resource name="jdbc/onlinedb" auth="Container" type="javax.sql.DataSource"
+               username="root" password="88888888" driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/J2EE?characterEncoding=UTF8&amp;useSSL=false"/>
+</Context>

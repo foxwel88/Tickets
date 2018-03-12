@@ -1,0 +1,57 @@
+package edu.nju.tickets.dao.impl;
+
+import edu.nju.tickets.dao.DaoHelper;
+import edu.nju.tickets.dao.OrderDao;
+import edu.nju.tickets.model.OldOrder;
+import edu.nju.tickets.model.Order;
+import edu.nju.tickets.model.Ticket;
+import edu.nju.tickets.model.User;
+import edu.nju.tickets.model.util.ResultMessage;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public class OrderDaoImpl implements OrderDao {
+
+	@Autowired
+	private DaoHelper daoHelper;
+
+	@Override
+	public List<OldOrder> getOrderList(String userName) {
+		Session session = daoHelper.getSession();
+		Transaction tx = session.beginTransaction();
+		String hql = "from OldOrder o where o.userName =:username";
+		Query query = session.createQuery(hql);
+		query.setParameter("username", userName);
+		List<OldOrder> res = query.list();
+		if ((session != null) && session.isOpen()) session.close();
+		return res;
+	}
+
+	@Override
+	public int add(Order order) {
+		daoHelper.save(order);
+		return order.getId();
+	}
+
+
+	@Override
+	public Order getById(int orderId) {
+		Session session = daoHelper.getSession();
+		session.beginTransaction();
+		Order order = session.find(Order.class, orderId);
+		session.close();
+		return order;
+	}
+
+	@Override
+	public ResultMessage update(Order order) {
+		daoHelper.update(order);
+		return ResultMessage.SUCCESS;
+	}
+}

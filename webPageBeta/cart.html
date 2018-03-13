@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tickets - 待支付订单</title>
+        
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+
+    </head>
+<body>
+   
+    <div class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="user-menu">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
+                            <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
+                            <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="header-right">
+                        <ul class="list-unstyled list-inline">
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">currency :</span><span class="value">USD </span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">USD</a></li>
+                                    <li><a href="#">INR</a></li>
+                                    <li><a href="#">GBP</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown dropdown-small">
+                                <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">English</a></li>
+                                    <li><a href="#">French</a></li>
+                                    <li><a href="#">German</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End header area -->
+    
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="logo">
+                        <h1><a href="./"><img src="img/logo.png"></a></h1>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6">
+                    <div class="shopping-item">
+                        <a href="cart.html">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End site branding area -->
+    
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div> 
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop page</a></li>
+                        <li><a href="single-product.html">Single product</a></li>
+                        <li class="active"><a href="cart.html">Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="#">Category</a></li>
+                        <li><a href="#">Others</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>  
+            </div>
+        </div>
+    </div> <!-- End mainmenu area -->
+    
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Shopping Cart</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Page title area -->
+    
+    
+    
+
+    <div class="single-product-area">
+        <div class="container">
+            <div class="col-md-2">
+                <div class="single-sidebar">
+                    <ul>
+                        <li><a href="">待支付订单</a></li>
+                        <li><a href="">已完成订单</a></li>
+                        <li><a href="">历史订单</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-10">
+                <div class="product-breadcroumb">
+                        <a href="">首页</a>
+                        <a href="">订单</a>
+                        <a href="">待支付订单</a>
+                </div>
+
+                <form method="post" action="#">
+                    <table cellspacing="0" class="shop_table cart">
+                        <thead>
+                            <tr>
+                                <th>订单编号</th>
+                                <th>下单时间</th>
+                                <th>演出</th>
+                                <th>订单类型</th>
+                                <th>数量</th>
+                                <th>座位信息</th>
+                                <th>金额</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="cart_item">
+                                <td>
+                                    000000001
+                                </td>
+
+                                <td>
+                                    2018-03-13<br>16:01
+                                </td>
+                                
+                                <td>
+                                    <a href="cart.html">XXXXX演唱会<br>[2018-05-15]</a> 
+                                </td>
+
+                                <td>
+                                    选座订单 
+                                </td>
+
+                                <td>
+                                    4
+                                </td>
+
+                                <td>
+                                    北二区3排2座<br>
+                                    北二区3排3座<br>
+                                    北二区3排4座<br>
+                                    北二区3排5座<br>
+                                </td>
+
+                                <td>
+                                    ¥260.0
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="actions" colspan="7">
+                                    <div class="coupon" style="width:30%">
+                                        <label style="width:20%; float: left;" >优惠券:</label>
+                                        <select rel="calc_shipping_state" style="width:75%" class="country_to_state">
+                                            <option value="">请选择...</option>
+                                            <option value="AX">支付宝</option>
+                                            <option value="AF">网银</option>
+                                        </select>
+                                    </div>
+                                    <div class="coupon" style="width:60%; float:right">
+                                        <label style="width:20%; float:left; margin-right: 10px">请输入优惠码:</label>
+                                        <input type="text" style="width:45%; float:left" placeholder="" value="" id="coupon_code" class="input-text" name="coupon_code">
+                                        <input type="submit" style="width:30%; float:right" value="应用优惠码" name="apply_coupon" class="button">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+
+                <div class="cart_totals">
+                    <h2>结算</h2>
+
+                    <table cellspacing="0">
+                        <tbody>
+                            <tr class="cart-subtotal">
+                                <th>订单总额</th>
+                                <td colspan="3">¥260.00</td>
+                            </tr>
+
+                            <tr >
+                                <th>会员等级折扣</th>
+                                <td>95折</td>
+                                <th>优惠券优惠</td>
+                                <td>减20元</td>
+                            </tr>
+
+                            <tr class="order-total">
+                                <th>支付金额</th>
+                                <td colspan="3"><strong>¥220.00</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <form method="post" action="#" class="">
+
+                    <div class="cart_pay">
+
+                    <h2>在线支付</h2>
+
+                        <p class="form-row form-row-wide">
+                            <select rel="calc_shipping_state" style="width:100%" class="country_to_state" id="calc_shipping_country" name="calc_shipping_country">
+                                <option value="">请选择付款方式</option>
+                                <option value="AX">支付宝</option>
+                                <option value="AF">网银</option>
+                                
+                            </select>
+                        </p>
+
+                        <p class="form-row form-row-wide">
+                            <input type="text" style="width:100%" id="calc_shipping_state" name="calc_shipping_state" placeholder="TicketsPay账号" value="" class="input-text"> 
+                        </p>
+
+                        <p class="form-row form-row-wide">
+                            <input type="text" style="width:45%" id="calc_shipping_postcode" name="calc_shipping_postcode" placeholder="付款码" value="" class="input-text">
+                            <button class="button" style="float:right; width:45%" value="1" name="calc_shipping" type="submit">确认支付</button>
+                        </p>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer-top-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-about-us">
+                        <h2>u<span>Stora</span></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                        <div class="footer-social">
+                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu">
+                        <h2 class="footer-wid-title">User Navigation </h2>
+                        <ul>
+                            <li><a href="#">My account</a></li>
+                            <li><a href="#">Order history</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="#">Vendor contact</a></li>
+                            <li><a href="#">Front page</a></li>
+                        </ul>                        
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-menu">
+                        <h2 class="footer-wid-title">Categories</h2>
+                        <ul>
+                            <li><a href="#">Mobile Phone</a></li>
+                            <li><a href="#">Home accesseries</a></li>
+                            <li><a href="#">LED TV</a></li>
+                            <li><a href="#">Computer</a></li>
+                            <li><a href="#">Gadets</a></li>
+                        </ul>                        
+                    </div>
+                </div>
+                
+                <div class="col-md-3 col-sm-6">
+                    <div class="footer-newsletter">
+                        <h2 class="footer-wid-title">Newsletter</h2>
+                        <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                        <div class="newsletter-form">
+                            <form action="#">
+                                <input type="email" placeholder="Type your email">
+                                <input type="submit" value="Subscribe">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End footer top area -->
+    
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="copyright">
+                        <p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://www.777moban.com/">777模板</a></p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="footer-card-icon">
+                        <i class="fa fa-cc-discover"></i>
+                        <i class="fa fa-cc-mastercard"></i>
+                        <i class="fa fa-cc-paypal"></i>
+                        <i class="fa fa-cc-visa"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End footer bottom area -->
+   
+    <!-- Latest jQuery form server -->
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    
+    <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+    <!-- jQuery sticky menu -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    
+    <!-- jQuery easing -->
+    <script src="js/jquery.easing.1.3.min.js"></script>
+    
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@WebServlet("/Main")
 public class MainServlet extends HttpServlet {
 
     private static ApplicationContext appliationContext;

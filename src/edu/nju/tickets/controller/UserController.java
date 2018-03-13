@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * User Controller（登录、注册）
  */
 
-@Controller //@Controller用于标注控制层组件(如struts中的action)
+@Controller
 public class UserController {
 	private static final long serialVersionUID = 1L;
 
@@ -26,15 +26,11 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    protected String doRegist(@RequestParam("year") String yearS,
-    		@RequestParam("month") String monthS,
-    		@RequestParam("day") String dayS,
-    		@RequestParam("passwordOne") String ps1,
-    		@RequestParam("passwordTwo") String ps2,
-    		ModelMap model,
+    @RequestMapping(value = "/Main", method = RequestMethod.POST)
+    protected String doRegist(@RequestParam(value = "userName",required=false) String userName,
+    		@RequestParam(value = "passWord", required = false) String passWord,
     		HttpServletRequest request) {
 
-		return "RegUser";
+		return "login";
 	}
 }

@@ -16,6 +16,12 @@
 总人数
 登陆人数
 游客人数
+    <%
+        String userName = (String) request.getAttribute("userName");
+        String passWord = (String) request.getAttribute("passWord");
+    %>
+    <p>总人数<%=userName%></p>
+    <p>登陆人数<%=passWord%></p>
 </form>
 </body>
 </html>

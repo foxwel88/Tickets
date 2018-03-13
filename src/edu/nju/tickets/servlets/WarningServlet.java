@@ -12,7 +12,6 @@ import java.io.PrintWriter;
  * Created by apple on 2017/12/17.
  */
 
-@WebServlet("/Warning")
 public class WarningServlet extends HttpServlet{
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

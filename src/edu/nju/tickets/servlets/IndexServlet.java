@@ -6,7 +6,6 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 
-@WebServlet("/index")
 public class IndexServlet extends HttpServlet {
 
     @Override

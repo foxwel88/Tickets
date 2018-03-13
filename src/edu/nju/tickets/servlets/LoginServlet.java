@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 //默认用户名 root 密码 123456
 
-@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -46,22 +46,23 @@
 		</div>
 		<!-- login -->
 		<div class="modal fade" id="login" tabindex="-1" role="dialog">
-			<div class="modal-dialog">
+			<div class="modal-dialog" style="width: 350px">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<div class="modal-info">
 							<h5>Welcome</h5>
-							<img src="images/banner77.jpeg"  style="height: 350px; padding-left: 10px">
 							<div style="padding-top: 20px; height:  280px">
-								<img src="images/user.png"> :
-								<input type="text" id="username" class="input-lg" align="center" placeholder="用户名">
-								<hr width="10px">
-								<img src="images/lock.png" style="height: 18.99px; width: 15.99px"> :
-								<input type="password" id="passwd" class="input-lg" placeholder="密码">
-								<hr width="10px">
-								<button class="btn btn-8 btn-8b" id="loginBtn">Login</button>
+								<form method='POST' action='/Main'>
+									<img src="images/user.png"> :
+									<input type="text" id="userName" name="userName" class="input-lg" align="center" placeholder="用户名">
+									<hr width="10px">
+									<img src="images/lock.png" style="height: 18.99px; width: 15.99px"> :
+									<input type="password" id="passWord" name="passWord" class="input-lg" placeholder="密码">
+									<hr width="10px">
+									<input type="submit" class="btn btn-8 btn-8b" id="loginBtn"></input>
+								</form>
 							</div>
 
 						</div>

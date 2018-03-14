@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://www.jq22.com/register.aspx -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery插件库用户注册</title>
+<meta name="description" content="本站致力于收集jQuery插件和提供各种jQuery特效的详细使用方法,在线预览，jQuery插件下载及教程">
+<meta name="keywords" content="jQuery,jQuery特效,jQuery ui,jQuery插件,jQuery 教程,css3,网页特效,JS特效">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<link rel="Shortcut icon" href="http://www.jq22.com/favicon.ico">
+<!-- Bootstrap -->
+<link href="./register_files/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="./register_files/font-awesome.min.css" rel="stylesheet" media="screen">
+
+<!--[if lt IE 9]>
+ 	<script src="js/respond.min.js"></script> 
+	<script src="js/html5shiv.min.js"></script>    
+<![endif]-->
+<link href="./register_files/my.css" rel="stylesheet" media="screen">
+<link href="./register_files/dl.css" rel="stylesheet" media="screen">
+<script src="./register_files/jquery.min.js"></script>
+<script src="./register_files/bootstrap.min.js"></script>
+<script>var n = 1;</script>
+<script src="./register_files/m.js"></script>
+<style>
+    .completer-container{position:absolute;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0;margin:0;font-family:inherit;font-size:14px;line-height:normal;list-style:none;background-color:#fff;border:1px solid #ccc;border-bottom-color:#39f;z-index:10;}.completer-container li{padding:.5em .8em;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer;background-color:#fff;border-bottom:1px solid #eee;}.completer-container .completer-selected,.completer-container li:hover{margin-left:-1px;background-color:#eee;border-left:1px solid #39f;}
+</style>
+</head>
+<body data-spy="scroll" data-target=".navbar-example" style="">
+
+  <!--nav-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-logo" href="http://www.jq22.com/"><img src="./register_files/logo.png" height="100%" alt="jQuery插件,jQuery,jQuery特效.jQuery ui,jQuery 教程,css3,网页特效,JS特效"></a> </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://www.jq22.com/webide"><i class="fa fa-edit"></i> &nbsp;在线编辑器</a></li>
+        <li><a href="http://www.jq22.com/daima"><i class="fa fa-code"></i> &nbsp;在线代码</a></li>
+        <li><a href="http://www.jq22.com/textDifference"><i class="fa fa-balance-scale" aria-hidden="true"></i> &nbsp;文本比较</a></li>
+      	<li><a href="http://www.jq22.com/jquery-info122"><i class="fa fa-download"></i> &nbsp;jQuery下载</a></li>
+        <li><a href="http://www.jq22.com/jquery/jquery.html" target="_blank"><i class="fa fa-ship" aria-hidden="true"></i> &nbsp;前端库</a></li>
+        <li><a href="http://www.jq22.com/chm/jquery/index.html" target="_blank"><i class="fa fa-book"></i> &nbsp;在线手册</a></li>
+        <li class="dropdown"><a rel="nofollow" href="http://weibo.com/jq22" target="_blank"><i class="fa fa-weibo"></i> &nbsp;微博</a></li>
+        <li>
+             
+       <a href="http://www.jq22.com/register.aspx#" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-user"></i> &nbsp;注册/登录<span class="sr-only">(current)</span></a>
+    
+        </li>
+      </ul>
+    </div>
+    <!--/.nav-collapse --> 
+  </div>
+</nav>
+<!--end nav-->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog" style="background: white">
+      <div class="modal-content2 tcc">
+         <div class="modal-header2 top20">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  ×
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               
+            </h4>
+         </div>
+         <div class="modal-body tcck">     
+            <div class="input-group input-group-lg parentCls">
+              <span class="input-group-addon" id="email"><i class="fa fa-envelope-o"></i></span>                
+              <input type="text" class="form-control inputElem" placeholder="请输入登录邮箱" aria-describedby="email" id="ema" style="width: 466px;">             
+            </div>
+            <div class="input-group input-group-lg top20">
+              <span class="input-group-addon" id="pwd"><i class="fa fa-unlock-alt" style="width:18px"></i></span>
+              <input type="password" class="form-control" placeholder="请输入登录密码" aria-describedby="pwd" id="pw">
+              <span class="input-group-btn tccBut">
+                <button class="btn btn-success" type="button" onclick="emdl()">登 录</button>
+              </span>
+            </div>          
+         </div>
+               
+        <div class="modal-footer2">
+            <div class="f">
+            <a href="http://www.jq22.com/pwd.aspx">忘记密码?</a></div>
+            <div class="r"><a href="http://www.jq22.com/register.aspx">注册新用户</a></div>
+            <div class="dr"></div>
+         </div>
+
+      </div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+ 	
+
+
+<div class="login">
+	<div class="loingnr">
+		<div class="modal-body">
+                 
+            <div class="input-group input-group-lg" style="position:relative;">
+              <span class="input-group-addon" id="sizing-s1"><i class="fa fa-envelope-o youxiang" style="width:18px" data-trigger="manual" data-placement="left" title="对不起，不支持此邮箱！"></i></span>           
+                <input id="myemail" class="form-control " placeholder="请输入登录邮箱" aria-describedby="sizing-addon1" type="text" name="name" size="30" onblur="emailgs(this)" autocomplete="off">
+                
+                <span class="input-group-btn tccBut">                           
+                    <input type="button" id="bt" class="btn btn-success " style="width:130px; font-size:15px;line-height:28px" value="获取验证码">                   
+                </span>
+            </div>
+            <div class="alert alert-danger errts top10" id="empdts" role="alert" style="display:none"><i class="fa fa-info-circle"></i> <span id="erremailts"> 此邮箱已经被注册过</span></div>
+
+            <div class="input-group input-group-lg top20">
+              <span class="input-group-addon" id="sizing-s2"><i class="fa fa-user-secret" style="width:18px" data-trigger="manual" data-placement="left" title="用户名为英文或和数字组合"></i></span>
+              <input type="text" class="form-control" id="myhm" placeholder="用户名" aria-describedby="sizing-addon1" onblur="yhmok(this)">
+            </div>
+            <div class="alert alert-danger errts top10" id="yhts" role="alert" style="display:none"><i class="fa fa-info-circle"></i> <span id="erreyhmts"> 此用户名已经被使用过</span></div>
+
+            <div class="input-group input-group-lg top20">
+              <span class="input-group-addon" id="sizing-s5"><i class="fa fa-qrcode" style="width:18px"></i></span>
+              <input type="text" class="form-control" id="yzm" placeholder="请输入验证码" aria-describedby="sizing-addon1">
+            </div>
+            <div class="input-group input-group-lg top20">
+              <span class="input-group-addon" id="sizing-s3"><i class="fa fa-lock" style="width:18px"></i></span>
+              <input type="password" class="form-control" id="pwd1" placeholder="请输入登录密码" aria-describedby="sizing-addon1">
+            </div>
+            <div class="input-group input-group-lg top20">
+              <span class="input-group-addon" id="sizing-s4"><i class="fa fa-key" style="width:18px" data-trigger="manual" data-placement="left" title="确认密码输入错误！"></i></span>            
+              <input type="password" class="form-control" id="pwd2" placeholder="确认登录密码" aria-describedby="sizing-addon1" onblur="yzm()">
+              <span class="input-group-btn tccBut">
+                  <input type="button" class="btn btn-success" style="width:130px" onclick="tj()" value="注册">
+              </span>
+            </div>
+         </div>
+	</div>
+	
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+
+    var wait = 30;
+    var ea = 0;
+    var ea2 = 0;
+
+    //邮箱验证
+    var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+    function emailgs(txt) {
+        var yxgs = "@163.com,@qq.com,@126.com,@139.com,@gmail.com,@hotmail.com,@icloud.com,@sina.com.cn,@sina.com,@sina.cn,@yahoo.com,@foxmail.com,@vip.qq.com,@outlook.com,@aliyun.com,@msn.com,@sohu.com,@live.cn,@live.com,@yeah.net,@yahoo.com.tw,@yahoo.com,@huawei.com,@189.cn,@aol.com,@21cn.com,@tom.com";
+        var ezg = txt.value;
+        var ezgfh = ezg.lastIndexOf("\@");
+        ezg = ezg.substring(ezgfh, ezg.length);
+        var ey = 0;
+        if (yxgs.indexOf(ezg) > -1) {
+            ey = 1;
+        } else {
+            ey = 0;
+        }
+
+        if (!myreg.test(txt.value) || txt.value.length >= 30 || ey==0){
+            $("#myemail").addClass("err");
+            $("#myemail").attr('placeholder', '邮箱格错误');
+            $('.youxiang').tooltip('show');
+        }
+       else{
+            $('.youxiang').tooltip('hide');
+            $("#myemail").removeClass("err");
+            var emyz = $.ajax({
+                type: 'post',
+                url: 'emailpd.aspx',
+                data: { em: txt.value },
+                cache: false,
+                dataType: 'text',
+                success: function (data) {
+                    if (data == "y") {
+                        $("#empdts").css("display", "none");
+                        ea2 = 0;
+                    } else {
+                        $("#empdts").css("display", "block");
+                        ea2 = 1;
+                    }
+                },
+                error: function () { }
+            });
+        }
+    }
+    //验证用户名
+    function yhmok(txt) {
+
+        if (txt.value.length >= 30 || txt.value.length < 2 || /^[0-9a-zA-Z]{0,}$/g.test(txt.value) != true) {
+            $("#myhm").addClass("err");
+            $("#myhm").attr('placeholder', '用户名错误');
+            $('.fa-user-secret').tooltip('show');
+        }
+        else {
+            $('.fa-user-secret').tooltip('hide');
+            $("#myhm").removeClass("err");
+            var emyz = $.ajax({
+                type: 'post',
+                url: 'regyhm.aspx',
+                data: { yhm: txt.value },
+                cache: false,
+                dataType: 'text',
+                success: function (data) {
+                    if (data == "y") {
+                        $("#yhts").css("display", "none");
+                    } else {
+                        $("#yhts").css("display", "block");
+                    }
+                },
+                error: function () { }
+            });
+        }
+    }  
+    document.getElementById("bt").onclick = function () { time(this); }
+    function time(o) {
+        if (wait == 30) {
+            var myemail = $("#myemail").val();
+            if (!myreg.test(myemail) || myemail.length >= 30) {
+                $("#myemail").addClass("err");
+                $("#myemail").attr('placeholder', '邮箱格错误')
+                ea = 1;
+            } else {
+                ea = 0;
+                var yz = $.ajax({
+                    type: 'post',
+                    url: 'email.aspx',
+                    data: { em: myemail },
+                    cache: false,
+                    dataType: 'text',
+                    success: function (data) {
+                        if (data == "y") {
+
+                        } else {
+
+                        }
+                    },
+                    error: function () { }
+                });
+            }
+        }
+
+        if (wait == 0 && ea2==0)
+        {
+            o.removeAttribute("disabled");
+            o.value = "获取验证码";
+            wait = 30;
+        }
+        else if (ea == 0 && ea2==0)
+        {
+            o.setAttribute("disabled", true);
+            o.value = "已发送(重发" + wait + ")";
+            wait--;
+            setTimeout(function () {
+                time(o)
+            },
+            1000)
+        }          
+    }
+    //验证码
+    function yzmfs() {
+        var myemail = $("#myemail").val();
+        if (!myreg.test(myemail) || myemail.length >= 30) {
+            $("#myemail").addClass("err");
+            $("#myemail").attr('placeholder', '邮箱格错误')
+        } else {        
+            var yz = $.ajax({
+                type: 'post',
+                url: 'email.aspx',
+                data: { em: myemail },
+                cache: false,
+                dataType: 'text',
+                success: function (data) {
+                    
+                    if (data == "y") {
+                       
+                    } else {
+                        
+                    }
+                },
+                error: function () { }
+            });
+        }
+    }
+   
+    function yzm() {
+        var mpwd1 = $("#pwd1").val();
+        var mpwd2 = $("#pwd2").val();
+        if (mpwd1 != mpwd2) {
+            $("#pwd2").addClass("err");
+            $("#pwd2").attr('placeholder', '两次输入的密码不一直');
+            $('.fa-key').tooltip('show');
+        } else {
+            $("#pwd2").removeClass("err");
+            $('.fa-key').tooltip('hide');
+        }
+
+    }
+    function tj() {
+        var myemail = $("#myemail").val();
+        var myhm = $("#myhm").val();
+        var myzm = $("#yzm").val();
+
+        var mpwd1 = $("#pwd1").val();
+        var mpwd2 = $("#pwd2").val();
+                
+        if (!myreg.test(myemail) || myemail.length >= 30) {
+            $("#myemail").addClass("err");
+            $("#myemail").attr('placeholder', '邮箱格错误')
+        }
+        else if (myhm.length >= 30 || myhm.length < 2 || /^[0-9a-zA-Z]{0,}$/g.test(myhm) != true)
+        {
+            $("#myhm").addClass("err");
+            $("#myhm").attr('placeholder', '用户名错误')
+        }
+        else if (mpwd1 != mpwd2 || mpwd2.length < 5) {
+            $("#pwd2").addClass("err");
+            $("#pwd2").attr('placeholder', '密码错误')
+        }
+        else {
+            $.post("regok.aspx", { Action: "post", mem: myemail, myh: myhm, myz: myzm, mp1: mpwd1, mp2: mpwd2 }
+            , function (data) {
+                if (data == "y") {
+                    window.location.href = "regokwc.aspx";
+                }
+
+            }, "text");       
+        }
+    }
+    </script> 
+    <script>
+        !function (a) { "function" == typeof define && define.amd ? define(["jquery"], a) : a("object" == typeof exports ? require("jquery") : jQuery) }(function (a) { "use strict"; var b = a(window), c = a(document), d = function (b, c) { this.$element = a(b), this.defaults = a.extend({}, d.defaults, this.$element.data(), a.isPlainObject(c) ? c : {}), this.init() }, e = function (a) { return "string" == typeof a && "" !== a ? (a = f(a), new RegExp(a + "+[^" + a + "]*$", "i")) : null }, f = function (a) { return a.replace(/([\.\$\^\{\[\(\|\)\*\+\?\\])/g, "\\$1") }, g = function (b) { return "string" == typeof b && (b = b.replace(/[\{\}\[\]"']+/g, "").split(/\s*,+\s*/)), b = a.map(b, function (a) { return "string" != typeof a ? a.toString() : a }) }; d.prototype = { constructor: d, init: function () { var b = this.defaults, c = g(b.source); c.length > 0 && (this.data = c, this.regexp = e(b.separator), this.$completer = a(b.template), this.$completer.hide().appendTo("body"), this.place(), this.$element.attr("autocomplete", "off").on({ focus: a.proxy(this.enable, this), blur: a.proxy(this.disable, this) }), this.$element.is(":focus") && this.enable()) }, enable: function () { this.active || (this.active = !0, this.$element.on({ keydown: a.proxy(this.keydown, this), keyup: a.proxy(this.keyup, this) }), this.$completer.on({ mousedown: a.proxy(this.mousedown, this), mouseover: a.proxy(this.mouseover, this) })) }, disable: function () { this.active && (this.active = !1, this.$element.off({ keydown: this.keydown, keyup: this.keyup }), this.$completer.off({ mousedown: this.mousedown, mouseover: this.mouseover })) }, attach: function (b) { var c, d, e = this.defaults.separator, g = this.regexp, h = g ? b.match(g) : null, i = [], j = [], k = this; h && (h = h[0], b = b.replace(g, ""), c = new RegExp("^" + f(h), "i")), a.each(this.data, function (a, f) { f = e + f, d = k.template(b + f), c && c.test(f) ? i.push(d) : j.push(d) }), i = i.length ? i.sort() : j, "top" === this.defaults.position && (i = i.reverse()), this.fill(i.join("")) }, suggest: function (b) { var c = new RegExp(f(b), "i"), d = this, e = []; a.each(this.data, function (a, b) { c.test(b) && e.push(b) }), e.sort(function (a, c) { return a.indexOf(b) - c.indexOf(b) }), a.each(e, function (a, b) { e[a] = d.template(b) }), this.fill(e.join("")) }, template: function (a) { var b = this.defaults.itemTag; return "<" + b + ">" + a + "</" + b + ">" }, fill: function (a) { var b; this.$completer.empty(), a ? (b = "top" === this.defaults.position ? ":last" : ":first", this.$completer.html(a), this.$completer.children(b).addClass(this.defaults.selectedClass), this.show()) : this.hide() }, complete: function () { var a = this.defaults, b = a.filter(this.$element.val()).toString(); return "" === b ? void this.hide() : void (a.suggest ? this.suggest(b) : this.attach(b)) }, keydown: function (a) { 13 === a.keyCode && (a.stopPropagation(), a.preventDefault()) }, keyup: function (a) { var b = a.keyCode; 13 === b || 38 === b || 40 === b ? this.toggle(b) : this.complete() }, mouseover: function (b) { var c = this.defaults, d = c.selectedClass, e = a(b.target); e.is(c.itemTag) && e.addClass(d).siblings().removeClass(d) }, mousedown: function (b) { b.stopPropagation(), b.preventDefault(), this.setValue(a(b.target).text()) }, setValue: function (a) { this.$element.val(a), this.defaults.complete(), this.hide() }, toggle: function (a) { var b = this.defaults.selectedClass, c = this.$completer.find("." + b); switch (a) { case 40: c.removeClass(b), c = c.next(); break; case 38: c.removeClass(b), c = c.prev(); break; case 13: this.setValue(c.text()) } 0 === c.length && (c = this.$completer.children(40 === a ? ":first" : ":last")), c.addClass(b) }, place: function () { var a = this.$element, c = a.offset(), d = c.left, e = c.top, f = a.outerHeight(), g = a.outerWidth(), h = { minWidth: g, zIndex: this.defaults.zIndex }; switch (this.defaults.position) { case "right": h.left = d + g, h.top = e; break; case "left": h.right = b.innerWidth() - d, h.top = e; break; case "top": h.left = d, h.bottom = b.innerHeight() - e; break; default: h.left = d, h.top = e + f } this.$completer.css(h) }, show: function () { this.$completer.show(), b.on("resize", a.proxy(this.place, this)), c.on("mousedown", a.proxy(this.hide, this)) }, hide: function () { this.$completer.hide(), b.off("resize", this.place), c.off("mousedown", this.hide) }, destroy: function () { this.hide(), this.disable(), this.$element.off({ focus: this.enable, blur: this.disable }) } }, d.defaults = { itemTag: "li", position: "bottom", source: [], selectedClass: "completer-selected", separator: "", suggest: !1, template: '<ul class="completer-container"></ul>', zIndex: 10, complete: a.noop, filter: function (a) { return a } }, d.setDefaults = function (b) { a.extend(d.defaults, b) }, a.fn.completer = function (b) { var c, e = [].slice.call(arguments, 1); return this.each(function () { var f, g = a(this), h = g.data("completer"); h || g.data("completer", h = new d(this, b)), "string" == typeof b && a.isFunction(f = h[b]) && (c = f.apply(h, e)) }), "undefined" != typeof c ? c : this }, a.fn.completer.Constructor = d, a.fn.completer.setDefaults = d.setDefaults, a(function () { a('[data-toggle="completer"],[completer]').completer() }) });
+        $("#myemail").completer({
+            separator: "@",
+            source: ["163.com", "qq.com", "126.com", "139.com", "gmail.com", "hotmail.com", "icloud.com"]
+        });
+  </script><ul class="completer-container" style="display: none; min-width: 257px; z-index: 10; left: 535px; top: 419px;"></ul>
+
+<div id="Vidown_extension_alhnopeoagjmjfgcbnokcnagkecgdcdh" style="display: none;"></div><div id="vidown_float_panel_div" style="display: none;"><a id="vidown_float_panel_download" title="用【维棠】下载视频">维棠下载</a><span id="vidown_float_panel_sep">|</span><input type="button" value=" " id="vidown_float_panel_close" title="关闭"></div></body></html>

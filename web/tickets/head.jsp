@@ -7,6 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../css/font-awesome.min.css" rel="stylesheet" media="screen">
+<link href="../css/login.css" rel="stylesheet" media="screen">
+<link href="../css/dl.css" rel="stylesheet" media="screen">
+<link href="../css/sweet-alert.css" rel="stylesheet" type="text/css" media="all" />
+
+
 <div class="header-area">
     <div class="container">
         <div class="row">
@@ -17,7 +24,7 @@
                         <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
                         <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
                         <li><a href="user_info_temp.html"><i class="fa fa-user"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i>登陆</a></li>
                     </ul>
                 </div>
             </div>
@@ -101,3 +108,43 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="background: white">
+        <div class="modal-content2 tcc">
+            <div class="modal-header2" style="margin-top:20px">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+
+                </h4>
+            </div>
+            <div class="modal-body tcck">
+                <div class="input-group input-group-lg parentCls">
+                    <span class="input-group-addon" id="email"><i class="fa fa-envelope-o"></i></span>
+                    <input type="text" class="form-control inputElem" placeholder="请输入登录邮箱"  id="userName" style="width: 466px;">
+                </div>
+                <div class="input-group input-group-lg " style="margin-top:20px">
+                    <span class="input-group-addon" id="pwd"><i class="fa fa-unlock-alt" style="width:18px"></i></span>
+                    <input type="password" class="form-control" placeholder="请输入登录密码" id="passWord" style="height:50px">
+                    <span class="input-group-btn tccBut">
+                        <button class="btn btn-success" type="button" id="loginBtn">登 录</button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="modal-footer2">
+                <div style="float:left">
+                    <a href="http://www.jq22.com/pwd.aspx">忘记密码?</a></div>
+                <div style="float:right"><a href="http://www.jq22.com/register.aspx">注册新用户</a></div>
+                <div style="clear:right"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/login.js"></script>
+<script src="../js/sweet-alert.js"></script>

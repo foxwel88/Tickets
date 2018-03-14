@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-
+<%@ page import="edu.nju.tickets.model.User" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html lang="en">
@@ -19,6 +20,13 @@
   </head>
 <body>
 
+<jsp:useBean id="user" class="edu.nju.tickets.model.User" scope="page"></jsp:useBean>
+<%
+    User emptyUser = new User("", "", "", "");
+    User user1 = (User) request.getAttribute("user");
+    if (user1 == null) user1 = emptyUser;
+    pageContext.setAttribute("user", user1);
+%>
 
     <%@include file="head.jsp" %>
 
@@ -53,17 +61,17 @@
                                         <tbody>
                                             <tr>
                                                 <th>用户名</th>
-                                                <td colspan="3">foxwel</td>
+                                                <td colspan="3"><jsp:getProperty name="user" property="userName" /></td>
                                             </tr>
 
                                             <tr >
                                                 <th>邮箱</th>
-                                                <td colspan="3">cttony1997@126.com</td>
+                                                <td colspan="3"><jsp:getProperty name="user" property="emailAddress" /></td>
                                             </tr>
 
                                             <tr>
                                                 <th>联系电话</th>
-                                                <td colspan="3">18888888888</td>
+                                                <td colspan="3"><jsp:getProperty name="user" property="phone" /></td>
                                             </tr>
                                         </tbody>
 
@@ -80,12 +88,12 @@
                                         <tbody>
                                         <tr>
                                             <th>会员积分</th>
-                                            <td colspan="3">830</td>
+                                            <td colspan="3"><jsp:getProperty name="user" property="integral" /></td>
                                         </tr>
 
                                         <tr >
                                             <th>会员等级</th>
-                                            <td>2级会员</td>
+                                            <td><jsp:getProperty name="user" property="level" />级会员</td>
                                             <th>升级所需积分</td>
                                             <td>380</td>
                                         </tr>
@@ -104,7 +112,7 @@
 
                                 <h3>优惠券信息</h3>
 
-                                <div id= style="position: relative;">
+                                <div style="position: relative;">
                                     <table class="shop_table">
                                         <tbody>
 

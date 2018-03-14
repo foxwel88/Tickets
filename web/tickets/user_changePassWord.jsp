@@ -58,7 +58,7 @@
                                     <label class="" for="new_password2">重复新密码</label>
                                     <input type="password" value="" placeholder="" id="new_password2" name="new_password2" class="input-text ">
                                 </p>
-                                <input type="submit" data-value="Place order" value="确认修改" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+                                <input type="submit" data-value="Place order" value="确认修改" id="modifyPassWordBtn" class="button alt">
 
                             </div>
                         </div>
@@ -81,6 +81,80 @@
       $(document).ready(function(){
           $("#menu_user").addClass("active");
       });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#modifyPassWordBtn").click(function() {
+                let userName = "<%=session.getAttribute("userName")%>";
+                let oldPassWord = $("#old_password").val();
+                let newPassWord1 = $("#new_password1").val();
+                let newPassWord2 = $("#new_password2").val();
+                console.log(userName);
+                console.log(oldPassWord);
+                console.log(newPassWord1);
+
+                if (newPassWord1 !== newPassWord2) {
+                    swal({
+                        title: "两次输入不同",
+                        type: "error",
+                        confirmButtonText: "返回"
+                    })
+                } else {
+                    login(userName, oldPassWord, newPassWord1, function (message) {
+                        console.log(message);
+                        if (message == "SUCCESS") {
+                            swal({
+                                    title: "修改成功!",
+                                    type: "success",
+                                    confirmButtonText: "返回Tickets",
+                                    closeOnConfirm: false
+                                },
+                                function (isConfirm) {
+                                    if (isConfirm) {
+                                        window.location.href = '/userInfo';
+                                    }
+                                })
+                        }
+                        if (message == "NO_USER") {
+                            swal({
+                                title: "不存在此用户",
+                                type: "error",
+                                confirmButtonText: "返回"
+                            })
+                        }
+                        if (message == "WRONG_PASSWORD") {
+                            swal({
+                                title: "密码错误",
+                                type: "error",
+                                confirmButtonText: "返回"
+                            })
+                        }
+                    });
+                }
+            });
+        });
+
+        function login(userName, oldPassWord, newPassWord, callback) {
+            $.ajax({
+                type: 'POST',
+                url: '/modifyPassWord',
+                data: {
+                    userName: userName,
+                    oldPassWord: oldPassWord,
+                    newPassWord: newPassWord
+                },
+                success: function (result) {
+                    if (callback) {
+                        callback(result);
+                    }
+                },
+                error: function (XMLHttpRequest, testStatus, errorThrown) {
+                    console.log(XMLHttpRequest.staus);
+                    console.log(testStatus);
+                }
+            });
+        }
     </script>
 </body>
 </html>

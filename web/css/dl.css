@@ -1,0 +1,15 @@
+
+.login { height: 905px; background-image: url(../img/dlbg_02.png); background-position: center 0%; background-repeat: no-repeat; }
+.loingnr { width: 502px; height: auto; margin-left: auto; margin-right: auto; padding-top: 284px; padding-right: 35px; }
+.loingnr span { font-size: 14px; }
+
+
+.login p { padding-top: 80px; text-align: center; }
+.check { border: 1px solid #CCCCCC; width: 16px; height: 16px; vertical-align: middle }
+.modal h4{ font-size: 18px; padding-bottom: 10px; padding-top: 10px; }
+
+.on_changes {width:255px; position:absolute; top:49px;left:51px; list-style:none; background:#FFF; border:1px solid #d3d3d3; display:none; padding:10px;z-index:5}
+.on_changes li{margin:5px;padding:4px;}
+.on_changes li.active{ background:#CEE7FF;}
+
+

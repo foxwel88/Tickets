@@ -6,6 +6,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.messaging.MessagingException;
 import org.springframework.stereotype.Service;
 
+import javax.mail.SendFailedException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
@@ -51,10 +52,9 @@ public class MailServiceImpl implements MailService{
      * @throws UnsupportedEncodingException 异常
      */
     @Override
-    public void sendEmail(String to, String subject, String context) throws MessagingException, UnsupportedEncodingException, javax.mail.MessagingException {
+    public void sendEmail(String to, String subject, String context) throws javax.mail.SendFailedException, MessagingException, UnsupportedEncodingException, javax.mail.MessagingException  {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
-        // 设置utf-8或GBK编码，否则邮件会有乱码
-        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "GB2312");
         messageHelper.setFrom(EMAILFORM, "Tickets");
         messageHelper.setTo(to);
         messageHelper.setSubject(subject);

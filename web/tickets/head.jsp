@@ -122,12 +122,12 @@
             </div>
             <div class="modal-body tcck">
                 <div class="input-group input-group-lg parentCls">
-                    <span class="input-group-addon" id="email"><i class="fa fa-envelope-o"></i></span>
-                    <input type="text" class="form-control inputElem" placeholder="请输入登录邮箱"  id="userName" style="width: 466px;">
+                    <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                    <input type="text" class="form-control inputElem" placeholder="请输入登录邮箱"  id="login_userName" style="width: 466px;">
                 </div>
                 <div class="input-group input-group-lg " style="margin-top:20px">
-                    <span class="input-group-addon" id="pwd"><i class="fa fa-unlock-alt" style="width:18px"></i></span>
-                    <input type="password" class="form-control" placeholder="请输入登录密码" id="passWord" style="height:50px">
+                    <span class="input-group-addon"><i class="fa fa-unlock-alt" style="width:18px"></i></span>
+                    <input type="password" class="form-control" placeholder="请输入登录密码" id="login_passWord" style="height:50px">
                     <span class="input-group-btn tccBut">
                         <button class="btn btn-success" type="button" id="loginBtn">登 录</button>
                     </span>

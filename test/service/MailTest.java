@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
 
-@ContextConfiguration("/WEB-INF/applicationContext.xml")
+@ContextConfiguration("/applicationContext.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 
 public class MailTest {

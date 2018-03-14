@@ -26,23 +26,7 @@ public class UserController {
 
 	
 	
-	
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getRegister(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            String userName = (String)session.getAttribute("userName");
-            if (userName != null) {
-                User user = userService.getUser(userName);
-                request.setAttribute("user", user);
-                return "user_info";
-            } else {
-                return "user_null";
-            }
-        } else {
-            return "user_null";
-        }
-    }
+
 
     @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
     public String getUserInfo(HttpServletRequest request) {
@@ -117,14 +101,15 @@ public class UserController {
         ResultMessage resultMessage = userService.modifyPassWord(userName, oldPassWord, newPassWord);
         return resultMessage.toString();
     }
+    @ResponseBody
+    @RequestMapping(value = "/modifyEmail", method = RequestMethod.POST)
+    protected String modifyPassWord(@RequestParam(value = "userName",required=false) String userName,
+                                    @RequestParam(value = "passWord", required = false) String passWord,
+                                    @RequestParam(value = "emailAddress", required = false) String emailAddress,
+                                    @RequestParam(value = "checkNumber", required = false) String checkNumber) {
+        ResultMessage resultMessage = userService.modifyEmail(userName, passWord, emailAddress, checkNumber);
+        return resultMessage.toString();
+    }
 
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    protected String doRegist(@RequestParam(value = "userName",required=false) String userName,
-    		@RequestParam(value = "passWord", required = false) String passWord,
-    		HttpServletRequest request) {
-
-		return "login";
-	}
 
 }

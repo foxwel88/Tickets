@@ -45,21 +45,21 @@
                             <div class="woocommerce-billing-fields">
 
                                 <p id="old_password_field" class="form-row form-row-first validate-required">
-                                    <label class="" for="old_password">请输入密码</label>
-                                    <input type="password" value="" placeholder="" id="old_password" name="old_password" class="input-text ">
+                                    <label class="" for="passWord">请输入密码</label>
+                                    <input type="password" id="passWord" class="input-text ">
                                 </p>
 
                                 <p id="new_password1_field" class="form-row form-row-first validate-required">
-                                    <label class="" for="new_password1">请输入新邮箱</label>
-                                    <input style="width: 70%" type="text" value="" placeholder="" id="new_password1" name="new_password1" class="input-text ">
-                                    <input style="width: 28%" type="submit" data-value="Place order" value="发送验证码" name="woocommerce_checkout_place_order" class="button alt">
+                                    <label class="" for="emailAddress">请输入新邮箱</label>
+                                    <input style="width: 70%" type="text" id="emailAddress" class="input-text ">
+                                    <input style="width: 28%" type="submit" id="emailBtn" data-value="Place order" value="发送验证码"  class="button alt">
                                 </p>
 
                                 <p id="new_password2_field" class="form-row form-row-first validate-required">
-                                    <label class="" for="new_password2">验证码</label>
-                                    <input type="text" value="" placeholder="" id="new_password2" name="new_password2" class="input-text ">
+                                    <label class="" for="checkNumber">验证码</label>
+                                    <input type="text" id="checkNumber" class="input-text ">
                                 </p>
-                                <input type="submit" data-value="Place order" value="确认修改" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+                                <input type="submit" data-value="Place order" value="确认修改" id="modifyEmailBtn"  class="button alt">
 
                             </div>
                         </div>
@@ -78,10 +78,126 @@
     <script src="../js/jquery.sticky.js"></script>
     <script src="../js/jquery.easing.1.3.min.js"></script>
     <script src="../js/main.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#menu_user").addClass("active");
+<script>
+    $(document).ready(function(){
+        $("#menu_user").addClass("active");
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#emailBtn").click(function() {
+            let emailAddress = $("#emailAddress").val();
+            console.log(emailAddress);
+
+
+            sendEmail(emailAddress, function (message) {
+                console.log(message);
+                if (message == "SUCCESS") {
+                    $("#emailBtn").val("重新发送");
+                }
+                if (message == "FAIL_SENDING_EMAIL") {
+                    swal({
+                        title: "邮件发送失败",
+                        type: "error",
+                        confirmButtonText: "返回"
+                    })
+                }
+            });
+
         });
-    </script>
+    });
+
+    function sendEmail(emailAddress, callback) {
+        $.ajax({
+            type: 'POST',
+            url: '/sendEmail',
+            data: {
+                emailAddress: emailAddress,
+            },
+            success: function (result) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (XMLHttpRequest, testStatus, errorThrown) {
+                console.log(XMLHttpRequest.staus);
+                console.log(testStatus);
+            }
+        });
+    }
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#modifyEmailBtn").click(function() {
+            let userName = "<%=session.getAttribute("userName")%>";
+            let passWord = $("#passWord").val();
+            let emailAddress = $("#emailAddress").val();
+            let checkNumber = $("#checkNumber").val();
+
+            console.log(userName);
+            console.log(passWord);
+            console.log(emailAddress);
+            console.log(checkNumber);
+
+
+            modifyEmail(userName, passWord, emailAddress, checkNumber, function (message) {
+                console.log(message);
+                if (message == "SUCCESS") {
+                    swal({
+                            title: "修改成功!",
+                            type: "success",
+                            confirmButtonText: "返回Tickets",
+                            closeOnConfirm: false
+                        },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                window.location.href = '/userInfo';
+                            }
+                        })
+                }
+                if (message == "NO_USER") {
+                    swal({
+                        title: "不存在此用户",
+                        type: "error",
+                        confirmButtonText: "返回"
+                    })
+                }
+                if (message == "WRONG_PASSWORD") {
+                    swal({
+                        title: "密码错误",
+                        type: "error",
+                        confirmButtonText: "返回"
+                    })
+                }
+            });
+
+        });
+    });
+
+    function modifyEmail(userName, passWord, emailAddress, checkNumber, callback) {
+        $.ajax({
+            type: 'POST',
+            url: '/modifyEmail',
+            data: {
+                userName: userName,
+                passWord: passWord,
+                emailAddress: emailAddress,
+                checkNumber: checkNumber
+            },
+            success: function (result) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (XMLHttpRequest, testStatus, errorThrown) {
+                console.log(XMLHttpRequest.staus);
+                console.log(testStatus);
+            }
+        });
+    }
+</script>
 </body>
 </html>

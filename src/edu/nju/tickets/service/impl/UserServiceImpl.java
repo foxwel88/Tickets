@@ -70,8 +70,7 @@ public class UserServiceImpl implements UserService {
         String emailCheckNumber = EmailUtil.getEmailCheckNumber(emailAddress);
         try {
             mailService.sendEmail(emailAddress, "Tickets系统注册验证邮件", "您的 Tickets 账户验证码为：" + emailCheckNumber);
-        } catch (UnsupportedEncodingException | MessagingException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             return ResultMessage.FAIL_SENDING_EMAIL;
         }
         return ResultMessage.SUCCESS;

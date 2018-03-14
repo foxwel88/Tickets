@@ -1,5 +1,6 @@
 package edu.nju.tickets.controller;
 
+import edu.nju.tickets.model.User;
 import edu.nju.tickets.model.util.ResultMessage;
 import edu.nju.tickets.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by foxwel on 2018/3/14.
@@ -23,15 +25,43 @@ public class IndexController {
     @Autowired
     UserService userService;
 
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String getRegister(HttpServletRequest request) {
+        return "sign_up";
+    }
+
     @ResponseBody
     @RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-    protected String doRegist(@RequestParam(value = "userName",required=false) String userName,
+    protected String loginCheck(@RequestParam(value = "userName",required=false) String userName,
                               @RequestParam(value = "passWord", required = false) String passWord,
                               HttpServletRequest request, HttpServletResponse response) {
         ResultMessage resultMessage = userService.login(userName, passWord);
         if (resultMessage == ResultMessage.SUCCESS) {
             request.getSession().setAttribute("userName", userName);
         }
+        return resultMessage.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/signUp", method = RequestMethod.POST)
+    protected String signUp(@RequestParam(value = "userName",required=false) String userName,
+                                @RequestParam(value = "passWord", required = false) String passWord,
+                            @RequestParam(value = "emailAddress", required = false) String emailAddress,
+                            @RequestParam(value = "phone", required = false) String phone,
+                            @RequestParam(value = "checkNumber", required = false) String checkNumber,
+                                HttpServletRequest request, HttpServletResponse response) {
+        ResultMessage resultMessage = userService.signUp(userName, emailAddress, checkNumber, phone, passWord);
+        if (resultMessage == ResultMessage.SUCCESS) {
+            request.getSession().setAttribute("userName", userName);
+        }
+        return resultMessage.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
+    protected String sendEmail(@RequestParam(value = "emailAddress",required=false) String emailAddress) {
+        ResultMessage resultMessage = userService.sendEmail(emailAddress);
         return resultMessage.toString();
     }
 }

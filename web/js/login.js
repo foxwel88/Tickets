@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#loginBtn").click(function() {
-        let userName = $("#userName").val();
-        let passWord = $("#passWord").val();
+        let userName = $("#login_userName").val();
+        let passWord = $("#login_passWord").val();
         login(userName, passWord,
             function (message) {
                 console.log(message);

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tickets - 待支付订单</title>
+        <title>Tickets - 已完成订单</title>
         
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -134,9 +134,8 @@
                 <div class="product-breadcroumb">
                         <a href="">首页</a>
                         <a href="">订单</a>
-                        <a href="">待支付订单</a>
+                        <a href="">已完成订单</a>
                 </div>
-
                 <form method="post" action="#">
                     <table cellspacing="0" class="shop_table cart">
                         <thead>
@@ -148,6 +147,7 @@
                                 <th>数量</th>
                                 <th>座位信息</th>
                                 <th>金额</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -182,78 +182,71 @@
                                 <td>
                                     ¥260.0
                                 </td>
+
+                                <td>
+                                    <input type="submit" style="" value="取消" class="button">
+                                </td>
                             </tr>
+
+                            
                             <tr>
-                                <td class="actions" colspan="7">
+                                <td class="actions" colspan="8">
                                     <div class="coupon" style="width:30%">
-                                        <label style="width:20%; float: left;" >优惠券:</label>
-                                        <select rel="calc_shipping_state" style="width:75%" class="country_to_state">
+                                        <label style="width:50%; float: left;" >请选择退款方式:</label>
+                                        <select rel="calc_shipping_state" style="width:50%" class="country_to_state">
                                             <option value="">请选择...</option>
                                             <option value="AX">支付宝</option>
                                             <option value="AF">网银</option>
                                         </select>
                                     </div>
-                                    <div class="coupon" style="width:60%; float:right">
-                                        <label style="width:20%; float:left; margin-right: 10px">请输入优惠码:</label>
-                                        <input type="text" style="width:45%; float:left" placeholder="" value="" id="coupon_code" class="input-text" name="coupon_code">
-                                        <input type="submit" style="width:30%; float:right" value="应用优惠码" name="apply_coupon" class="button">
+                                    <div class="coupon" style="width:65%; float:right">
+                                        <label style="width:20%; float:left; margin-right: 10px">请输入退款账户</label>
+                                        <input type="text" style="width:35%; float:left" placeholder="" value="" id="coupon_code" class="input-text" name="coupon_code">
+                                        <input type="submit" style="width:40%; float:right" value="确认取消订单并退款¥250" name="apply_coupon" class="button">
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
-                </form>
 
-                <div class="cart_totals">
-                    <h2>结算</h2>
 
-                    <table cellspacing="0">
-                        <tbody>
-                            <tr class="cart-subtotal">
-                                <th>订单总额</th>
-                                <td colspan="3">¥260.00</td>
-                            </tr>
+                            <tr class="cart_item">
+                                <td>
+                                    000000001
+                                </td>
 
-                            <tr >
-                                <th>会员等级折扣</th>
-                                <td>95折</td>
-                                <th>优惠券优惠</td>
-                                <td>减20元</td>
-                            </tr>
-
-                            <tr class="order-total">
-                                <th>支付金额</th>
-                                <td colspan="3"><strong>¥220.00</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <form method="post" action="#" class="">
-
-                    <div class="cart_pay">
-
-                    <h2>在线支付</h2>
-
-                        <p class="form-row form-row-wide">
-                            <select rel="calc_shipping_state" style="width:100%" class="country_to_state" id="calc_shipping_country" name="calc_shipping_country">
-                                <option value="">请选择付款方式</option>
-                                <option value="AX">支付宝</option>
-                                <option value="AF">网银</option>
+                                <td>
+                                    2018-03-13<br>16:01
+                                </td>
                                 
-                            </select>
-                        </p>
+                                <td>
+                                    <a href="cart.html">XXXXX演唱会<br>[2018-05-15]</a> 
+                                </td>
 
-                        <p class="form-row form-row-wide">
-                            <input type="text" style="width:100%" id="calc_shipping_state" name="calc_shipping_state" placeholder="TicketsPay账号" value="" class="input-text"> 
-                        </p>
+                                <td>
+                                    选座订单 
+                                </td>
 
-                        <p class="form-row form-row-wide">
-                            <input type="text" style="width:45%" id="calc_shipping_postcode" name="calc_shipping_postcode" placeholder="付款码" value="" class="input-text">
-                            <button class="button" style="float:right; width:45%" value="1" name="calc_shipping" type="submit">确认支付</button>
-                        </p>
+                                <td>
+                                    4
+                                </td>
 
-                    </div>
+                                <td>
+                                    北二区3排2座<br>
+                                    北二区3排3座<br>
+                                    北二区3排4座<br>
+                                    北二区3排5座<br>
+                                </td>
+
+                                <td>
+                                    ¥260.0
+                                </td>
+
+                                <td>
+                                    <input type="submit" style="" value="取消" class="button">
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </form>
             </div>
         </div>

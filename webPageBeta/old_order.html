@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Tickets - 待支付订单</title>
+        <title>Tickets - 历史订单</title>
         
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -134,7 +134,7 @@
                 <div class="product-breadcroumb">
                         <a href="">首页</a>
                         <a href="">订单</a>
-                        <a href="">待支付订单</a>
+                        <a href="">历史订单</a>
                 </div>
 
                 <form method="post" action="#">
@@ -183,78 +183,10 @@
                                     ¥260.0
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="actions" colspan="7">
-                                    <div class="coupon" style="width:30%">
-                                        <label style="width:20%; float: left;" >优惠券:</label>
-                                        <select rel="calc_shipping_state" style="width:75%" class="country_to_state">
-                                            <option value="">请选择...</option>
-                                            <option value="AX">支付宝</option>
-                                            <option value="AF">网银</option>
-                                        </select>
-                                    </div>
-                                    <div class="coupon" style="width:60%; float:right">
-                                        <label style="width:20%; float:left; margin-right: 10px">请输入优惠码:</label>
-                                        <input type="text" style="width:45%; float:left" placeholder="" value="" id="coupon_code" class="input-text" name="coupon_code">
-                                        <input type="submit" style="width:30%; float:right" value="应用优惠码" name="apply_coupon" class="button">
-                                    </div>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </form>
 
-                <div class="cart_totals">
-                    <h2>结算</h2>
-
-                    <table cellspacing="0">
-                        <tbody>
-                            <tr class="cart-subtotal">
-                                <th>订单总额</th>
-                                <td colspan="3">¥260.00</td>
-                            </tr>
-
-                            <tr >
-                                <th>会员等级折扣</th>
-                                <td>95折</td>
-                                <th>优惠券优惠</td>
-                                <td>减20元</td>
-                            </tr>
-
-                            <tr class="order-total">
-                                <th>支付金额</th>
-                                <td colspan="3"><strong>¥220.00</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <form method="post" action="#" class="">
-
-                    <div class="cart_pay">
-
-                    <h2>在线支付</h2>
-
-                        <p class="form-row form-row-wide">
-                            <select rel="calc_shipping_state" style="width:100%" class="country_to_state" id="calc_shipping_country" name="calc_shipping_country">
-                                <option value="">请选择付款方式</option>
-                                <option value="AX">支付宝</option>
-                                <option value="AF">网银</option>
-                                
-                            </select>
-                        </p>
-
-                        <p class="form-row form-row-wide">
-                            <input type="text" style="width:100%" id="calc_shipping_state" name="calc_shipping_state" placeholder="TicketsPay账号" value="" class="input-text"> 
-                        </p>
-
-                        <p class="form-row form-row-wide">
-                            <input type="text" style="width:45%" id="calc_shipping_postcode" name="calc_shipping_postcode" placeholder="付款码" value="" class="input-text">
-                            <button class="button" style="float:right; width:45%" value="1" name="calc_shipping" type="submit">确认支付</button>
-                        </p>
-
-                    </div>
-                </form>
             </div>
         </div>
     </div>

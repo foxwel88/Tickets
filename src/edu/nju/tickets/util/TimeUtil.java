@@ -11,6 +11,10 @@ public class TimeUtil {
 
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+    private static SimpleDateFormat simpleDateFormat1= new SimpleDateFormat("yyyy-MM-dd");
+
+    private static SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("HH:mm:ss");
+
     public static String getTimeString() {
         return simpleDateFormat.format(new Date());
     }
@@ -20,5 +24,17 @@ public class TimeUtil {
         calendar.setTime(date);
         calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - 14);
         return calendar.getTime();
+    }
+
+    public static String getDayString(Date date) {
+        return simpleDateFormat1.format(date);
+    }
+
+    public static String getTimeString(Date date) {
+        return simpleDateFormat2.format(date);
+    }
+
+    public static String getDateString(Date date) {
+        return simpleDateFormat.format(date);
     }
 }

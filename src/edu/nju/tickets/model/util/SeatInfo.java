@@ -15,7 +15,7 @@ public class SeatInfo implements Serializable {
 
     private int totalSeatNum;
 
-    class District implements Serializable{
+    public class District implements Serializable{
         private static final long serialVersionUID = 1L;
         String name;
         int seatNum;
@@ -26,6 +26,29 @@ public class SeatInfo implements Serializable {
             this.seatNum = 0;
         }
 
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getSeatNum() {
+            return seatNum;
+        }
+
+        public void setSeatNum(int seatNum) {
+            this.seatNum = seatNum;
+        }
+
+        public List<Integer> getInfoList() {
+            return infoList;
+        }
+
+        public void setInfoList(List<Integer> infoList) {
+            this.infoList = infoList;
+        }
     }
 
     public int getTotalSeatNum() {
@@ -104,6 +127,19 @@ public class SeatInfo implements Serializable {
         seatId = seatId + sitId;
 
         return seatId;
+    }
+
+
+    public String getDistrictName(int districtId) {
+        return districtList.get(districtId).getName();
+    }
+
+    public List<District> getDistrictList() {
+        return districtList;
+    }
+
+    public void setDistrictList(List<District> districtList) {
+        this.districtList = districtList;
     }
 
     public static void main(String[] args) {

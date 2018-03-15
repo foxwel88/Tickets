@@ -1,3 +1,10 @@
+<%@ page import="edu.nju.tickets.model.Order" %>
+<%@ page import="java.util.List" %>
+<%@ page import="edu.nju.tickets.util.TimeUtil" %>
+<%@ page import="edu.nju.tickets.OrderVO" %>
+<%@ page import="edu.nju.tickets.model.User" %>
+<%@ page import="java.util.logging.Level" %>
+<%@ page import="edu.nju.tickets.util.LevelUtil" %>
 <!DOCTYPE html>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -18,6 +25,22 @@
     </head>
 <body>
 
+<%
+    List<OrderVO> orderVOList = (List<OrderVO>)request.getAttribute("orderList");
+
+
+    User user = (User)request.getAttribute("user");
+    double count = LevelUtil.getCount(user.getLevel());
+    String countStr = "";
+
+    if ((count - 1) < 0.000001) {
+        countStr = "无折扣";
+    } else {
+        countStr = ((int)(count * 100)) + "折";
+    }
+
+
+%>
     <%@include file="head.jsp" %>
 
     <div class="single-product-area">
@@ -39,64 +62,89 @@
                         <a href="/orderUnPaied">待支付订单</a>
                 </div>
 
-                <form method="post" action="#">
+                <%
+                    if (orderVOList.size() <= 0) {
+                %>
+
+                        <table cellspacing="0" class="shop_table cart">
+                            <thead>
+                            <tr>
+                                <th>当前无待支付订单</th>
+                            </tr>
+                            </thead>
+                        </table>
+                <%
+                    } else {
+                %>
+
                     <table cellspacing="0" class="shop_table cart">
                         <thead>
-                            <tr>
-                                <th>订单编号</th>
-                                <th>下单时间</th>
-                                <th>演出</th>
-                                <th>订单类型</th>
-                                <th>数量</th>
-                                <th>座位信息</th>
-                                <th>金额</th>
-                                <th>操作</th>
-                            </tr>
+                        <tr>
+                            <th>订单编号</th>
+                            <th>下单时间</th>
+                            <th>演出</th>
+                            <th>订单类型</th>
+                            <th>数量</th>
+                            <th>座位信息</th>
+                            <th>金额</th>
+                            <th>操作</th>
+                        </tr>
                         </thead>
                         <tbody>
+                        <%
+                            double price = 0.0;
+                            int orderId = orderVOList.get(0).getId();
+                            for (int i = 0; i < 1; ++i) {
+                                OrderVO orderVO = orderVOList.get(i);
+                                price = price + orderVO.getPrice();
+                        %>
                             <tr class="cart_item">
                                 <td>
-                                    000000001
+                                    <%=orderVO.getId()%>
                                 </td>
 
                                 <td>
-                                    2018-03-13<br>16:01
+                                    <%=orderVO.getDay()%>
+                                    <br>
+                                    <%=orderVO.getTime()%>
                                 </td>
                                 
                                 <td>
-                                    <a href="cart.html">XXXXX演唱会<br>[2018-05-15]</a> 
+                                    <a href="/showSingle?showId=<%=orderVO.getShowId()%>"><%=orderVO.getShowName()%><br>[<%=orderVO.getShowDay()%>]</a>
                                 </td>
 
                                 <td>
-                                    选座订单 
+                                    <%=orderVO.getType()%>
                                 </td>
 
                                 <td>
-                                    4
+                                    <%=orderVO.getNum()%>
                                 </td>
 
                                 <td>
-                                    北二区3排2座<br>
-                                    北二区3排3座<br>
-                                    北二区3排4座<br>
-                                    北二区3排5座<br>
+                                    <%=orderVO.getSeat()%>
                                 </td>
 
                                 <td>
-                                    ¥260.0
+                                    ¥ <%=orderVO.getPrice()%>
                                 </td>
 
                                 <td>
                                     <input type="submit" style="" value="取消" class="button">
                                 </td>
                             </tr>
+                        <%
+                            }
+
+                            double payPrice = price * count;
+                        %>
                             <tr>
                                 <td class="actions" colspan="8">
                                     <div class="coupon" style="width:30%">
                                         <label style="width:20%; float: left;" >优惠券:</label>
                                         <select rel="calc_shipping_state" style="width:75%" class="country_to_state">
                                             <option value="">请选择...</option>
-                                            <option value="AX">支付宝</option>
+                                            <option value="AX">TicketsPay</option>
                                             <option value="AF">网银</option>
                                         </select>
                                     </div>
@@ -109,59 +157,134 @@
                             </tr>
                         </tbody>
                     </table>
-                </form>
 
-                <div class="cart_totals">
-                    <h2>结算</h2>
+                    <div class="cart_totals">
+                        <h2>结算</h2>
 
-                    <table cellspacing="0">
-                        <tbody>
-                            <tr class="cart-subtotal">
-                                <th>订单总额</th>
-                                <td colspan="3">¥260.00</td>
-                            </tr>
+                        <table cellspacing="0">
+                            <tbody>
+                                <tr class="cart-subtotal">
+                                    <th>订单总额</th>
+                                    <td colspan="3">¥<%=price%></td>
+                                </tr>
 
-                            <tr >
-                                <th>会员等级折扣</th>
-                                <td>95折</td>
-                                <th>优惠券优惠</td>
-                                <td>减20元</td>
-                            </tr>
+                                <tr >
+                                    <th>会员等级折扣</th>
+                                    <td><%=countStr%></td>
+                                    <th>优惠券优惠</td>
+                                    <td>无</td>
+                                </tr>
 
-                            <tr class="order-total">
-                                <th>支付金额</th>
-                                <td colspan="3"><strong>¥220.00</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <form method="post" action="#" class="">
+                                <tr class="order-total">
+                                    <th>支付金额</th>
+                                    <td colspan="3"><strong>¥<%=payPrice%></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div class="cart_pay">
 
-                    <h2>在线支付</h2>
+                        <h2>在线支付</h2>
 
                         <p class="form-row form-row-wide">
                             <select rel="calc_shipping_state" style="width:100%" class="country_to_state" id="calc_shipping_country" name="calc_shipping_country">
                                 <option value="">请选择付款方式</option>
-                                <option value="AX">支付宝</option>
+                                <option value="AX">TicketsPay</option>
                                 <option value="AF">网银</option>
                                 
                             </select>
                         </p>
 
                         <p class="form-row form-row-wide">
-                            <input type="text" style="width:100%" id="calc_shipping_state" name="calc_shipping_state" placeholder="TicketsPay账号" value="" class="input-text"> 
+                            <input type="text" style="width:100%" id="payAccount" placeholder="TicketsPay账号" class="input-text">
                         </p>
 
                         <p class="form-row form-row-wide">
-                            <input type="text" style="width:45%" id="calc_shipping_postcode" name="calc_shipping_postcode" placeholder="付款码" value="" class="input-text">
-                            <button class="button" style="float:right; width:45%" value="1" name="calc_shipping" type="submit">确认支付</button>
+                            <input type="password" style="width:45%" id="payAccountPassWord" placeholder="付款码" class="input-text">
+                            <button class="button" style="float:right; width:45%" id="payBtn" type="submit">确认支付</button>
                         </p>
+                        <script>
+                            $(document).ready(function () {
+                                $("#payBtn").click(function() {
+                                    let userName = "<%=user.getUserName()%>";
+                                    let orderId = <%=orderId%>;
+                                    let payAccount = $("#payAccount").val();
+                                    let payAccountPassWord = $("#payAccountPassWord").val();
 
+                                    console.log(userName);
+                                    console.log(orderId);
+                                    console.log(payAccount);
+                                    console.log(payAccountPassWord);
+
+
+                                    payOrder(userName, orderId, payAccount, payAccountPassWord, function (message) {
+                                        console.log(message);
+                                        if (message == "SUCCESS") {
+                                            swal({
+                                                    title: "支付成功!",
+                                                    type: "success",
+                                                    confirmButtonText: "返回Tickets",
+                                                    closeOnConfirm: false
+                                                },
+                                                function (isConfirm) {
+                                                    if (isConfirm) {
+                                                        window.location.href = '/orderFinished';
+                                                    }
+                                                })
+                                        }
+                                        if (message == "NO_PAY_ACCOUNT") {
+                                            swal({
+                                                title: "不存在此 TicketsPay 账户",
+                                                type: "error",
+                                                confirmButtonText: "返回"
+                                            })
+                                        }
+                                        if (message == "WRONG_PAY_PASSWORD") {
+                                            swal({
+                                                title: "支付密码错误",
+                                                type: "error",
+                                                confirmButtonText: "返回"
+                                            })
+                                        }
+                                        if (message == "NO_ENOUGH_MONEY") {
+                                            swal({
+                                                title: "余额不足",
+                                                type: "error",
+                                                confirmButtonText: "返回"
+                                            })
+                                        }
+                                    });
+
+                                });
+                            });
+
+                            function payOrder(userName, orderId, payAccount, payAccountPassWord, callback) {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/payOrder',
+                                    data: {
+                                        userName: userName,
+                                        orderId: orderId,
+                                        payAccount: payAccount,
+                                        payAccountPassWord: payAccountPassWord
+                                    },
+                                    success: function (result) {
+                                        if (callback) {
+                                            callback(result);
+                                        }
+                                    },
+                                    error: function (XMLHttpRequest, testStatus, errorThrown) {
+                                        console.log(XMLHttpRequest.staus);
+                                        console.log(testStatus);
+                                    }
+                                });
+                            }
+                        </script>
                     </div>
-                </form>
+                <%
+                    }
+                %>
             </div>
         </div>
     </div>
@@ -169,16 +292,18 @@
 
     <%@include file="tail.jsp" %>
 
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/jquery.sticky.js"></script>
-    <script src="../js/jquery.easing.1.3.min.js"></script>
-    <script src="../js/main.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#menu_order").addClass("active");
-        });
-    </script>
-  </body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/jquery.sticky.js"></script>
+<script src="../js/jquery.easing.1.3.min.js"></script>
+<script src="../js/main.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#menu_order").addClass("active");
+    });
+</script>
+
+
+</body>
 </html>

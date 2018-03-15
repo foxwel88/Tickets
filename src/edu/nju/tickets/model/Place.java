@@ -25,6 +25,7 @@ public class Place implements Serializable {
 
     private String address;
 
+    @Column(name = "`describe`")
     private String describe;
 
     private SeatInfo seatInfo;

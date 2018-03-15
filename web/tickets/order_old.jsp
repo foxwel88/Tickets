@@ -1,3 +1,5 @@
+<%@ page import="edu.nju.tickets.OrderVO" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -18,6 +20,11 @@
 
 </head>
 <body>
+
+<%
+    List<OrderVO> orderVOList = (List<OrderVO>)request.getAttribute("orderList");
+%>
+
     <%@include file="head.jsp" %>
     
 
@@ -40,7 +47,21 @@
                         <a href="/orderOld">历史订单</a>
                 </div>
 
-                <form method="post" action="#">
+                <%
+                    if (orderVOList.size() <= 0) {
+                %>
+
+                <table cellspacing="0" class="shop_table cart">
+                    <thead>
+                    <tr>
+                        <th>当前无已完成订单</th>
+                    </tr>
+                    </thead>
+                </table>
+                <%
+                    } else {
+                %>
+
                     <table cellspacing="0" class="shop_table cart">
                         <thead>
                             <tr>
@@ -54,41 +75,49 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <%
+                            for (int i = 0; i < orderVOList.size(); ++i) {
+                                OrderVO orderVO = orderVOList.get(i);
+                        %>
                             <tr class="cart_item">
                                 <td>
-                                    000000001
+                                    <%=orderVO.getId()%>
                                 </td>
 
                                 <td>
-                                    2018-03-13<br>16:01
-                                </td>
-                                
-                                <td>
-                                    <a href="cart.html">XXXXX演唱会<br>[2018-05-15]</a> 
+                                    <%=orderVO.getDay()%>
+                                    <br>
+                                    <%=orderVO.getTime()%>
                                 </td>
 
                                 <td>
-                                    选座订单 
+                                    <a href="/showSingle?showId=<%=orderVO.getShowId()%>"><%=orderVO.getShowName()%><br>[<%=orderVO.getShowDay()%>]</a>
                                 </td>
 
                                 <td>
-                                    4
+                                    <%=orderVO.getType()%>
                                 </td>
 
                                 <td>
-                                    北二区3排2座<br>
-                                    北二区3排3座<br>
-                                    北二区3排4座<br>
-                                    北二区3排5座<br>
+                                    <%=orderVO.getNum()%>
                                 </td>
 
                                 <td>
-                                    ¥260.0
+                                    <%=orderVO.getSeat()%>
+                                </td>
+
+                                <td>
+                                    ¥ <%=orderVO.getPrice()%>
                                 </td>
                             </tr>
+                        <%
+                            }
+                        %>
                         </tbody>
                     </table>
-                </form>
+                <%
+                    }
+                %>
 
             </div>
         </div>

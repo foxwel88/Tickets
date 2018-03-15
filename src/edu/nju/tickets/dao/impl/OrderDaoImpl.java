@@ -54,4 +54,24 @@ public class OrderDaoImpl implements OrderDao {
 		daoHelper.update(order);
 		return ResultMessage.SUCCESS;
 	}
+
+	@Override
+	public List<Order> getOrderListByUserNameAndState(String userName, String state) {
+		System.out.println(userName + "   " + state);
+		Session session = daoHelper.getSession();
+		session.beginTransaction();
+
+		String hql = "from Order o where o.userName =:username and o.state =:state";
+
+		Query query = session.createQuery(hql);
+		query.setParameter("username", userName);
+		query.setParameter("state", state);
+
+		List<Order> res = query.list();
+		System.out.println(res.size());
+		session.close();
+		return res;
+	}
+
+
 }

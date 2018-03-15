@@ -12,14 +12,31 @@ public class SeatState implements Serializable {
 
     private List<String> list;
 
-    public SeatState(int seatNum) {
+    private List<Double> priceList;
+
+    public SeatState(int seatNum, List<Double> districtPriceList) {
         list = new ArrayList<>();
+        priceList = new ArrayList<>();
+
         for (int i = 0; i < seatNum + 1; ++i) {
             list.add("false");
         }
+        this.priceList.addAll(districtPriceList);
     }
 
     public String getSeatSate(int seatId) {
         return list.get(seatId);
+    }
+
+    public void setSeatSate(int seatId, String state) {
+        list.set(seatId, state);
+    }
+
+    public List<Double> getPriceList() {
+        return priceList;
+    }
+
+    public void setPriceList(List<Double> priceList) {
+        this.priceList = priceList;
     }
 }

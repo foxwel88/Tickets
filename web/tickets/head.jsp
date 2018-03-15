@@ -92,9 +92,13 @@
                     <li id="menu_order"><a href="/orderUnPaied">&nbsp;我的订单&nbsp;</a></li>
                     <li id="menu_user"><a href="/userInfo">&nbsp;个人中心&nbsp;</a></li>
                 </ul>
+                <a style="float:right;  margin: 10px 10px 10px 10px"><input type="submit" value="搜索"></a>
+                <a style="float:right; margin: 10px 10px 10px 10px"><input type="text" placeholder="您感兴趣的演出"></a>
             </div>
         </div>
+
     </div>
+
 </div> <!-- End mainmenu area -->
 
 <div class="product-big-title-area">

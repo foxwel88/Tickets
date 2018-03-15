@@ -1,3 +1,5 @@
+<%@ page import="edu.nju.tickets.OrderVO" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,7 +19,9 @@
 
     </head>
 <body>
-
+<%
+    List<OrderVO> orderVOList = (List<OrderVO>)request.getAttribute("orderList");
+%>
     <%@include file="head.jsp" %>
 
     <div class="single-product-area">
@@ -38,7 +42,22 @@
                         <a href="/orderUnPaied">订单</a>
                         <a href="/orderFinished">已完成订单</a>
                 </div>
-                <form method="post" action="#">
+
+                <%
+                    if (orderVOList.size() <= 0) {
+                %>
+
+                    <table cellspacing="0" class="shop_table cart">
+                        <thead>
+                        <tr>
+                            <th>当前无已完成订单</th>
+                        </tr>
+                        </thead>
+                    </table>
+                <%
+                    } else {
+                %>
+
                     <table cellspacing="0" class="shop_table cart">
                         <thead>
                             <tr>
@@ -53,44 +72,45 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <%
+                            for (int i = 0; i < orderVOList.size(); ++i) {
+                                OrderVO orderVO = orderVOList.get(i);
+                        %>
                             <tr class="cart_item">
                                 <td>
-                                    000000001
+                                    <%=orderVO.getId()%>
                                 </td>
 
                                 <td>
-                                    2018-03-13<br>16:01
-                                </td>
-                                
-                                <td>
-                                    <a href="cart.html">XXXXX演唱会<br>[2018-05-15]</a> 
+                                    <%=orderVO.getDay()%>
+                                    <br>
+                                    <%=orderVO.getTime()%>
                                 </td>
 
                                 <td>
-                                    选座订单 
+                                    <a href="/showSingle?showId=<%=orderVO.getShowId()%>"><%=orderVO.getShowName()%><br>[<%=orderVO.getShowDay()%>]</a>
                                 </td>
 
                                 <td>
-                                    4
+                                    <%=orderVO.getType()%>
                                 </td>
 
                                 <td>
-                                    北二区3排2座<br>
-                                    北二区3排3座<br>
-                                    北二区3排4座<br>
-                                    北二区3排5座<br>
+                                    <%=orderVO.getNum()%>
                                 </td>
 
                                 <td>
-                                    ¥260.0
+                                    <%=orderVO.getSeat()%>
+                                </td>
+
+                                <td>
+                                    ¥ <%=orderVO.getPrice()%>
                                 </td>
 
                                 <td>
                                     <input type="submit" style="" value="取消" class="button">
                                 </td>
                             </tr>
-
-                            
                             <tr>
                                 <td class="actions" colspan="8">
                                     <div class="coupon" style="width:30%">
@@ -104,52 +124,18 @@
                                     <div class="coupon" style="width:65%; float:right">
                                         <label style="width:20%; float:left; margin-right: 10px">请输入退款账户</label>
                                         <input type="text" style="width:35%; float:left" placeholder="" value="" id="coupon_code" class="input-text" name="coupon_code">
-                                        <input type="submit" style="width:40%; float:right" value="确认取消订单并退款¥250" name="apply_coupon" class="button">
+                                        <input type="submit" style="width:40%; float:right" value="确认取消订单并退款¥<%=orderVO.getPrice()%>" name="apply_coupon" class="button">
                                     </div>
                                 </td>
                             </tr>
-
-
-                            <tr class="cart_item">
-                                <td>
-                                    000000001
-                                </td>
-
-                                <td>
-                                    2018-03-13<br>16:01
-                                </td>
-                                
-                                <td>
-                                    <a href="cart.html">XXXXX演唱会<br>[2018-05-15]</a> 
-                                </td>
-
-                                <td>
-                                    选座订单 
-                                </td>
-
-                                <td>
-                                    4
-                                </td>
-
-                                <td>
-                                    北二区3排2座<br>
-                                    北二区3排3座<br>
-                                    北二区3排4座<br>
-                                    北二区3排5座<br>
-                                </td>
-
-                                <td>
-                                    ¥260.0
-                                </td>
-
-                                <td>
-                                    <input type="submit" style="" value="取消" class="button">
-                                </td>
-                            </tr>
-
+                        <%
+                            }
+                        %>
                         </tbody>
                     </table>
-                </form>
+                <%
+                    }
+                %>
             </div>
         </div>
     </div>

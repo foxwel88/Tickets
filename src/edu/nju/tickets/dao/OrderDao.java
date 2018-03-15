@@ -16,4 +16,6 @@ public interface OrderDao {
     Order getById(int orderId);
 
     ResultMessage update(Order order);
+
+    List<Order> getOrderListByUserNameAndState(String userName, String state);
 }

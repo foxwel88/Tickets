@@ -41,13 +41,13 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public ResultMessage addShow(String name, String describ, int placeId, Date time) {
+    public ResultMessage addShow(String name, String describ, int placeId, Date time, List<Double> districtPriceList) {
         /**
          * create a blank seatState
          */
         Place place = placeDao.getById(placeId);
         SeatInfo seatInfo = place.getSeatInfo();
-        SeatState seatState = new SeatState(seatInfo.getTotalSeatNum());
+        SeatState seatState = new SeatState(seatInfo.getTotalSeatNum(), districtPriceList);
         Show show = new Show(name, describ, placeId, time, seatState);
         return showDao.add(show);
     }

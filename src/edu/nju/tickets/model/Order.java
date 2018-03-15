@@ -31,10 +31,14 @@ public class Order {
 
     private String state;
 
+    private int districtId;
+
+    private double payPrice;
+
     public Order() {
     }
 
-    public Order(String userName, int showId, String type, int ticketNum, Date time, Date checkTime, double price, String state) {
+    public Order(String userName, int showId, String type, int ticketNum, Date time, Date checkTime, double price, String state, int districtId) {
         this.userName = userName;
         this.showId = showId;
         this.type = type;
@@ -42,7 +46,9 @@ public class Order {
         this.time = time;
         this.checkTime = checkTime;
         this.price = price;
+        this.payPrice = price;
         this.state = state;
+        this.districtId = districtId;
     }
 
     public int getId() {
@@ -116,4 +122,21 @@ public class Order {
     public void setState(String state) {
         this.state = state;
     }
+
+    public int getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(int districtId) {
+        this.districtId = districtId;
+    }
+
+    public double getPayPrice() {
+        return payPrice;
+    }
+
+    public void setPayPrice(double payPrice) {
+        this.payPrice = payPrice;
+    }
+
 }

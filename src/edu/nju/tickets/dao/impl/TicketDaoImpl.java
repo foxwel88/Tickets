@@ -36,4 +36,19 @@ public class TicketDaoImpl implements TicketDao {
 		return ticket;
 	}
 
+	@Override
+	public List<Ticket> getByOrderId(int orderId) {
+		Session session = daoHelper.getSession();
+		session.beginTransaction();
+
+		String hql = "from Ticket t where t.orderId =:orderId";
+
+		Query query = session.createQuery(hql);
+		query.setParameter("orderId", orderId);
+
+		List<Ticket> res = query.list();
+		session.close();
+		return res;
+	}
+
 }

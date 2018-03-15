@@ -101,6 +101,7 @@ public class UserController {
         ResultMessage resultMessage = userService.modifyPassWord(userName, oldPassWord, newPassWord);
         return resultMessage.toString();
     }
+
     @ResponseBody
     @RequestMapping(value = "/modifyEmail", method = RequestMethod.POST)
     protected String modifyPassWord(@RequestParam(value = "userName",required=false) String userName,

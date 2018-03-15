@@ -18,7 +18,7 @@ public interface PlaceService {
 
     int modify(Place place);
 
-    ResultMessage addShow(String name, String describ, int placeId, Date time);
+    ResultMessage addShow(String name, String describ, int placeId, Date time, List<Double> districtPriceList);
 
     Place getPlace(int placeId);
 

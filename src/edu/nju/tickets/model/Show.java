@@ -22,7 +22,9 @@ public class Show implements Serializable {
 
     private String name;
 
-    private String describ;
+
+    @Column(name = "`describe`")
+    private String describe;
 
     private int placeId;
 
@@ -34,9 +36,9 @@ public class Show implements Serializable {
     public Show() {
     }
 
-    public Show(String name, String discrib, int placeId, Date time, SeatState seatState) {
+    public Show(String name, String discribe, int placeId, Date time, SeatState seatState) {
         this.name = name;
-        this.describ = discrib;
+        this.describe = discribe;
         this.placeId = placeId;
         this.time = time;
         this.seatState = seatState;
@@ -58,12 +60,12 @@ public class Show implements Serializable {
         this.name = name;
     }
 
-    public String getDescrib() {
-        return describ;
+    public String getDescribe() {
+        return describe;
     }
 
-    public void setDescrib(String discrib) {
-        this.describ = discrib;
+    public void setDescribe(String discribe) {
+        this.describe = discribe;
     }
 
     public int getPlaceId() {

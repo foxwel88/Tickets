@@ -10,4 +10,6 @@ public interface TicketDao {
     ResultMessage add(Ticket ticket);
 
     Ticket getById(int ticketId);
+
+    List<Ticket> getByOrderId(int orderId);
 }

@@ -40,13 +40,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResultMessage login(String userNameOrEmail, String passWord) {
 
-
-        System.out.println(userNameOrEmail + " " + passWord);
         if ((userNameOrEmail == null) || (passWord == null)) {
             return ResultMessage.NO_USER;
         }
-
-        System.out.println(userNameOrEmail + " " + passWord);
 
         User user = userDao.getByUserName(userNameOrEmail);
 

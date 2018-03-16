@@ -18,16 +18,9 @@ public interface PlaceDao {
      */
     int add(Place place);
 
-    int addPrePlace(PrePlace prePlace);
-
     ResultMessage update(Place place);
 
     Place getById(int placeId);
 
-    PrePlace getPrePlaceById(int prePlaceId);
-
     List<Place> getUnCheckedPlace();
-
-    List<Place> getModifiedPlace();
-
 }

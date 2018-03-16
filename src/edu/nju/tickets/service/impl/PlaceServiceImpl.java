@@ -1,9 +1,11 @@
 package edu.nju.tickets.service.impl;
 
 import edu.nju.tickets.dao.PlaceDao;
+import edu.nju.tickets.dao.PrePlaceDao;
 import edu.nju.tickets.dao.ShowDao;
 import edu.nju.tickets.model.Place;
 import edu.nju.tickets.model.PrePlace;
+import edu.nju.tickets.model.User;
 import edu.nju.tickets.model.util.ResultMessage;
 import edu.nju.tickets.model.util.SeatInfo;
 import edu.nju.tickets.model.Show;
@@ -25,6 +27,9 @@ public class PlaceServiceImpl implements PlaceService {
     private PlaceDao placeDao;
 
     @Autowired
+    private PrePlaceDao prePlaceDao;
+
+    @Autowired
     private ShowDao showDao;
 
     @Override
@@ -35,9 +40,44 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
+    public ResultMessage logIn(String userName, String passWord) {
+        if ((userName == null) || (passWord == null)) {
+            return ResultMessage.NO_USER;
+        }
+
+        int id = Integer.valueOf(userName);
+        Place place = placeDao.getById(id);
+
+        if (place == null) {
+            return ResultMessage.NO_USER;
+        }
+
+        if (!place.getPassWord().equals(passWord)) {
+            return ResultMessage.WRONG_PASSWORD;
+        } else {
+            return ResultMessage.SUCCESS;
+        }
+    }
+
+    @Override
     public int modify(Place place) {
-        PrePlace prePlace = new PrePlace(place);
-        return placeDao.addPrePlace(prePlace);
+        PrePlace prePlace = prePlaceDao.getByPlaceId(place.getId());
+        if (prePlace == null) {
+            prePlace = new PrePlace(place);
+            return prePlaceDao.add(prePlace);
+        } else {
+            prePlace.modify(place);
+            prePlaceDao.update(prePlace);
+            return prePlace.getId();
+        }
+    }
+
+    @Override
+    public int modifySeatInfo(int placeId, String nameString, String infoString) {
+        Place place = getPlace(placeId);
+        SeatInfo seatInfo = new SeatInfo(nameString, infoString);
+        place.setSeatInfo(seatInfo);
+        return modify(place);
     }
 
     @Override
@@ -69,8 +109,8 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public List<Place> getModifiedPlace() {
-        return placeDao.getModifiedPlace();
+    public List<PrePlace> getModifiedPlace() {
+        return prePlaceDao.getModifiedPrePlace();
     }
 
     @Override
@@ -82,8 +122,10 @@ public class PlaceServiceImpl implements PlaceService {
 
     @Override
     public ResultMessage checkPlaceModifyRequestByPrePlaceId(int prePlaceId) {
-        PrePlace prePlace = placeDao.getPrePlaceById(prePlaceId);
+        PrePlace prePlace = prePlaceDao.getById(prePlaceId);
         Place place = new Place(prePlace);
-        return placeDao.update(place);
+        placeDao.update(place);
+        prePlaceDao.delete(prePlace);
+        return ResultMessage.SUCCESS;
     }
 }

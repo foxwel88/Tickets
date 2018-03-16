@@ -1028,6 +1028,18 @@ div.cart-collaterals ul.products li.product .price ins {
     margin-left: 30px;
     width: 60%;
 }
+
+.col-3 {
+    float: left;
+    margin-left: 30px;
+    width: 60%;
+}
+
+.col-4 {
+    float: left;
+    margin-left: 30px;
+    width: 35%;
+}
 #customer_details label {
     display: block;
     margin: 0 0 5px;

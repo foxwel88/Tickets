@@ -4,10 +4,12 @@ import edu.nju.tickets.dao.DaoHelper;
 import edu.nju.tickets.dao.PlaceDao;
 import edu.nju.tickets.model.Place;
 import edu.nju.tickets.model.PrePlace;
+import edu.nju.tickets.model.Ticket;
 import edu.nju.tickets.model.util.ResultMessage;
 import edu.nju.tickets.model.Show;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -30,12 +32,6 @@ public class PlaceDaoImpl implements PlaceDao {
     }
 
     @Override
-    public int addPrePlace(PrePlace prePlace) {
-        daoHelper.save(prePlace);
-        return prePlace.getId();
-    }
-
-    @Override
     public ResultMessage update(Place place) {
         daoHelper.update(place);
         return ResultMessage.SUCCESS;
@@ -50,20 +46,8 @@ public class PlaceDaoImpl implements PlaceDao {
     }
 
     @Override
-    public PrePlace getPrePlaceById(int prePlaceId) {
-        Session session = daoHelper.getSession();
-        Transaction tx = session.beginTransaction();
-        PrePlace prePlace = session.get(PrePlace.class, prePlaceId);
-        return prePlace;
-    }
-
-    @Override
     public List<Place> getUnCheckedPlace() {
         return null;
     }
 
-    @Override
-    public List<Place> getModifiedPlace() {
-        return null;
-    }
 }

@@ -6,6 +6,7 @@ import edu.nju.tickets.model.Place;
 import edu.nju.tickets.model.Show;
 import edu.nju.tickets.model.util.SeatInfo;
 import edu.nju.tickets.model.util.SeatState;
+import edu.nju.tickets.service.PlaceService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,15 @@ public class PlaceTest {
     private PlaceDao placeDao;
 
     @Autowired
+    private PlaceService placeService;
+
+    @Autowired
     private ShowDao showDao;
+
+    @Test
+    public void test() {
+        placeService.checkPlaceModifyRequestByPrePlaceId(1);
+    }
 
     @Test
     public void placeDaoTest1() {

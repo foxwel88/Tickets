@@ -1,5 +1,9 @@
 package edu.nju.tickets.model.util;
 
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +28,17 @@ public class SeatInfo implements Serializable {
             this.name = name;
             infoList = new ArrayList<>();
             this.seatNum = 0;
+        }
+
+        public String getInfoString() {
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < infoList.size(); ++i) {
+                if (i != 0) {
+                    result.append(",");
+                }
+                result.append(String.valueOf(infoList.get(i)));
+            }
+            return result.toString();
         }
 
         public String getName() {
@@ -57,6 +72,33 @@ public class SeatInfo implements Serializable {
 
     public void setTotalSeatNum(int totalSeatNum) {
         this.totalSeatNum = totalSeatNum;
+    }
+
+    public SeatInfo(String nameString, String infoString) {
+        districtList = new ArrayList<>();
+        totalSeatNum = 0;
+
+        String[] nameStringList = nameString.split("@");
+        String[] infoStringList = infoString.split("@");
+
+        for (int i = 0; i < nameStringList.length; ++i) {
+            String name = nameStringList[i];
+            String info = infoStringList[i];
+            String[] tempList = info.split(",");
+
+            District district = new District(name);
+            int seatNum = 0;
+
+            for (String s: tempList) {
+                int num = Integer.valueOf(s);
+                seatNum = seatNum + num;
+                district.infoList.add(num);
+            }
+            district.seatNum = seatNum;
+
+            districtList.add(district);
+            totalSeatNum = totalSeatNum + seatNum;
+        }
     }
 
     public SeatInfo(List<String> districtNameList, List<List<Integer>> districtInfoList) {
@@ -140,64 +182,6 @@ public class SeatInfo implements Serializable {
 
     public void setDistrictList(List<District> districtList) {
         this.districtList = districtList;
-    }
-
-    public static void main(String[] args) {
-        List<String> nameList = new ArrayList<>();
-        nameList.add("北一区");
-        nameList.add("北二区");
-        nameList.add("南一区");
-        nameList.add("南二区");
-        List<Integer> list1 = new ArrayList<>();
-        list1.add(10);
-        list1.add(10);
-        list1.add(12);
-        list1.add(12);
-        list1.add(14);
-        list1.add(14); //72
-        List<Integer> list2 = new ArrayList<>();
-        list2.add(10);
-        list2.add(10);
-        list2.add(10);
-        list2.add(10);
-        list2.add(10);
-        list2.add(12); // 62
-        List<Integer> list3 = new ArrayList<>();
-        list3.add(5);
-        list3.add(6);
-        list3.add(7);
-        list3.add(8);
-        list3.add(9);
-        list3.add(10); //45
-        List<Integer> list4 = new ArrayList<>();
-        list4.add(10);
-        list4.add(10);
-        list4.add(12);
-        list4.add(12);
-        list4.add(14);
-        list4.add(14); //72
-
-        List<List<Integer>> list = new ArrayList<>();
-        list.add(list1);
-        list.add(list2);
-        list.add(list3);
-        list.add(list4);
-
-        SeatInfo seatInfo = new SeatInfo(nameList, list);
-
-        for (int i = 0; i < seatInfo.districtList.size(); ++i) {
-            System.out.println(seatInfo.districtList.get(i).name + " " + seatInfo.districtList.get(i).seatNum);
-        }
-
-        System.out.println(seatInfo.getSeatName(40));
-
-        System.out.println(seatInfo.getSeatId(0, 3, 8));
-
-
-
-        System.out.println(seatInfo.getSeatName(72));
-
-        System.out.println(seatInfo.getSeatId(1, 0, 0));
     }
 
 }

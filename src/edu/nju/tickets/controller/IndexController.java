@@ -2,6 +2,7 @@ package edu.nju.tickets.controller;
 
 import edu.nju.tickets.model.User;
 import edu.nju.tickets.model.util.ResultMessage;
+import edu.nju.tickets.service.PlaceService;
 import edu.nju.tickets.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class IndexController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    PlaceService placeService;
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -54,6 +58,18 @@ public class IndexController {
         ResultMessage resultMessage = userService.signUp(userName, emailAddress, checkNumber, phone, passWord);
         if (resultMessage == ResultMessage.SUCCESS) {
             request.getSession().setAttribute("userName", userName);
+        }
+        return resultMessage.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/placeLogInCheck", method = RequestMethod.POST)
+    protected String placeLoginCheck(@RequestParam(value = "userName",required=false) String userName,
+                                @RequestParam(value = "passWord", required = false) String passWord,
+                                HttpServletRequest request) {
+        ResultMessage resultMessage = placeService.logIn(userName, passWord);
+        if (resultMessage == ResultMessage.SUCCESS) {
+            request.getSession().setAttribute("placeId", Integer.valueOf(userName));
         }
         return resultMessage.toString();
     }

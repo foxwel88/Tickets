@@ -27,6 +27,7 @@ public class PrePlace implements Serializable {
 
     private String address;
 
+    @Column(name = "`describe`")
     private String describe;
 
     private SeatInfo seatInfo;
@@ -55,6 +56,14 @@ public class PrePlace implements Serializable {
         this.describe = describe;
         this.seatInfo = seatInfo;
         this.state = state;
+    }
+
+
+    public void modify(Place place) {
+        this.name = place.getName();
+        this.address = place.getAddress();
+        this.describe = place.getDescribe();
+        this.seatInfo = place.getSeatInfo();
     }
 
     public int getId() {
@@ -120,4 +129,5 @@ public class PrePlace implements Serializable {
     public void setState(String state) {
         this.state = state;
     }
+
 }

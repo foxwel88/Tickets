@@ -1,6 +1,7 @@
 package edu.nju.tickets.service;
 
 import edu.nju.tickets.model.Place;
+import edu.nju.tickets.model.PrePlace;
 import edu.nju.tickets.model.util.ResultMessage;
 import edu.nju.tickets.model.util.SeatInfo;
 import edu.nju.tickets.model.Show;
@@ -16,7 +17,11 @@ public interface PlaceService {
 
     int signUp(String passWord, String name, String address, String describ, SeatInfo seatInfo);
 
+    ResultMessage logIn(String userName, String passWord);
+
     int modify(Place place);
+
+    int modifySeatInfo(int placeId, String nameString, String infoString);
 
     ResultMessage addShow(String name, String describ, int placeId, Date time, List<Double> districtPriceList);
 
@@ -27,7 +32,7 @@ public interface PlaceService {
 
     List<Place> getUnCheckedPlace();
 
-    List<Place> getModifiedPlace();
+    List<PrePlace> getModifiedPlace();
 
     ResultMessage checkPlaceSignUpRequest(int placeId);
 

@@ -36,7 +36,7 @@ public class Place implements Serializable {
     }
 
     public Place(PrePlace prePlace) {
-        this.id = prePlace.getId();
+        this.id = prePlace.getPlaceId();
         this.passWord = prePlace.getPassWord();
         this.name = prePlace.getName();
         this.address = prePlace.getAddress();

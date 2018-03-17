@@ -47,7 +47,15 @@ public class PlaceDaoImpl implements PlaceDao {
 
     @Override
     public List<Place> getUnCheckedPlace() {
-        return null;
+        Session session = daoHelper.getSession();
+        session.beginTransaction();
+
+        String hql = "from Place p where p.state='false'";
+        Query query = session.createQuery(hql);
+
+        List<Place> res = query.list();
+        session.close();
+        return res;
     }
 
     @Override

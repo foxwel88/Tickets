@@ -2,31 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="548151f3-782f-4b1e-a67e-8c406eb4eb66" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/controller/ManagerController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/tickets/head_place.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/tickets/manager_check.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/tickets/place_createShow.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/tickets/place_show.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/tickets/place_head.jsp" afterPath="$PROJECT_DIR$/web/tickets/head_manager.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/tickets/head_null.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/tickets/manager_checkSignUp.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/tickets/place_signUp.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/controller/IndexController.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/controller/IndexController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/controller/PlaceController.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/controller/PlaceController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/dao/PlaceDao.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/dao/PlaceDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/dao/ShowDao.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/dao/ShowDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/controller/ManagerController.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/controller/ManagerController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/PlaceDaoImpl.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/PlaceDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/PrePlaceDaoImpl.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/PrePlaceDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/ShowDaoImpl.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/ShowDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/model/util/SeatState.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/model/util/SeatState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/service/PlaceService.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/service/PlaceService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/service/impl/PlaceServiceImpl.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/service/impl/PlaceServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/nju/tickets/util/TimeUtil.java" afterPath="$PROJECT_DIR$/src/edu/nju/tickets/util/TimeUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/service/PlaceTest.java" afterPath="$PROJECT_DIR$/test/service/PlaceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/login.js" afterPath="$PROJECT_DIR$/web/js/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/style.css" afterPath="$PROJECT_DIR$/web/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/tickets/head.jsp" afterPath="$PROJECT_DIR$/web/tickets/head.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/tickets/place_changeInfo.jsp" afterPath="$PROJECT_DIR$/web/tickets/place_changeInfo.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/tickets/place_changeSeatInfo.jsp" afterPath="$PROJECT_DIR$/web/tickets/place_changeSeatInfo.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/tickets/place_info.jsp" afterPath="$PROJECT_DIR$/web/tickets/place_info.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/tickets/manager_check.jsp" afterPath="$PROJECT_DIR$/web/tickets/manager_check.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/tickets/sign_up.jsp" afterPath="$PROJECT_DIR$/web/tickets/sign_up.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -90,30 +74,110 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ManagerController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/controller/ManagerController.java">
+      <file leaf-file-name="IndexController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/controller/IndexController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="71" column="77" lean-forward="false" selection-start-line="71" selection-start-column="77" selection-end-line="71" selection-end-column="77" />
+            <state relative-caret-position="117">
+              <caret line="60" column="26" lean-forward="false" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="26" />
+              <folding>
+                <element signature="e#1993#1994#0" expanded="true" />
+                <element signature="e#2025#2026#0" expanded="true" />
+                <element signature="e#2135#2136#0" expanded="true" />
+                <element signature="e#2172#2173#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sign_up.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/tickets/sign_up.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1322">
+              <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manager_check.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/tickets/manager_check.jsp">
+      <file leaf-file-name="place_changeSeatInfo.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/tickets/place_changeSeatInfo.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="175" column="78" lean-forward="false" selection-start-line="175" selection-start-column="67" selection-end-line="175" selection-end-column="78" />
+            <state relative-caret-position="580">
+              <caret line="98" column="46" lean-forward="true" selection-start-line="85" selection-start-column="40" selection-end-line="98" selection-end-column="46" />
               <folding>
-                <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#td#6;n#tr#0;n#tbody#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#script#7;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <marker date="1521280394714" expanded="true" signature="8407:8505" ph="..." />
+                <marker date="1521280394714" expanded="true" signature="8407:9729" ph="..." />
+                <marker date="1521280394714" expanded="true" signature="8521:9154" ph="..." />
+                <marker date="1521280394714" expanded="true" signature="8598:8753" ph="..." />
+                <marker date="1521280394714" expanded="true" signature="8598:9099" ph="..." />
+                <marker date="1521280394714" expanded="true" signature="8829:9041" ph="..." />
+                <marker date="1521280394714" expanded="true" signature="8966:8978" ph="..." />
+                <marker date="1521280394714" expanded="true" signature="9324:9678" ph="..." />
+                <marker date="1521280394714" expanded="true" signature="9401:9623" ph="..." />
+                <marker date="1521280394714" expanded="true" signature="9500:9510" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="place_changeInfo.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/tickets/place_changeInfo.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="56" lean-forward="true" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="place_signUp.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/tickets/place_signUp.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="890">
+              <caret line="96" column="78" lean-forward="false" selection-start-line="96" selection-start-column="78" selection-end-line="96" selection-end-column="78" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#a#0;n#h4#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1521283007852" expanded="true" signature="3992:5314" ph="..." />
+                <marker date="1521283007852" expanded="true" signature="4106:4739" ph="..." />
+                <marker date="1521283007852" expanded="true" signature="4183:4684" ph="..." />
+                <marker date="1521283007852" expanded="true" signature="4414:4626" ph="..." />
+                <marker date="1521283007852" expanded="true" signature="4551:4563" ph="..." />
+                <marker date="1521283007852" expanded="true" signature="4909:5263" ph="..." />
+                <marker date="1521283007852" expanded="true" signature="4986:5208" ph="..." />
+                <marker date="1521283007852" expanded="true" signature="5085:5095" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="head_null.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/tickets/head_null.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="49" column="33" lean-forward="true" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -176,11 +240,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/edu/nju/tickets/util/LevelUtil.java" />
-        <option value="$PROJECT_DIR$/src/edu/nju/tickets/controller/ShowController.java" />
-        <option value="$PROJECT_DIR$/web/tickets/show_single.jsp" />
-        <option value="$PROJECT_DIR$/src/edu/nju/tickets/dao/OrderDao.java" />
-        <option value="$PROJECT_DIR$/src/edu/nju/tickets/model/Order.java" />
         <option value="$PROJECT_DIR$/src/edu/nju/tickets/dao/TicketDao.java" />
         <option value="$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/TicketDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/edu/nju/tickets/service/OrderService.java" />
@@ -217,16 +276,21 @@
         <option value="$PROJECT_DIR$/web/tickets/head_place.jsp" />
         <option value="$PROJECT_DIR$/web/tickets/head.jsp" />
         <option value="$PROJECT_DIR$/web/tickets/head_manager.jsp" />
-        <option value="$PROJECT_DIR$/src/edu/nju/tickets/controller/IndexController.java" />
         <option value="$PROJECT_DIR$/web/js/login.js" />
         <option value="$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/PrePlaceDaoImpl.java" />
-        <option value="$PROJECT_DIR$/web/tickets/manager_check.jsp" />
-        <option value="$PROJECT_DIR$/src/edu/nju/tickets/controller/ManagerController.java" />
         <option value="$PROJECT_DIR$/src/edu/nju/tickets/service/PlaceService.java" />
         <option value="$PROJECT_DIR$/src/edu/nju/tickets/service/impl/PlaceServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/edu/nju/tickets/dao/PlaceDao.java" />
-        <option value="$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/PlaceDaoImpl.java" />
         <option value="$PROJECT_DIR$/web/tickets/place_changeSeatInfo.jsp" />
+        <option value="$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/PlaceDaoImpl.java" />
+        <option value="$PROJECT_DIR$/web/tickets/manager_check.jsp" />
+        <option value="$PROJECT_DIR$/web/tickets/manager_checkSignUp.jsp" />
+        <option value="$PROJECT_DIR$/src/edu/nju/tickets/controller/ManagerController.java" />
+        <option value="$PROJECT_DIR$/web/tickets/sign_up.jsp" />
+        <option value="$PROJECT_DIR$/web/tickets/head_null.jsp" />
+        <option value="$PROJECT_DIR$/src/edu/nju/tickets/controller/IndexController.java" />
+        <option value="$PROJECT_DIR$/web/tickets/manager_sign_up.jsp" />
+        <option value="$PROJECT_DIR$/web/tickets/place_signUp.jsp" />
       </list>
     </option>
   </component>
@@ -1339,7 +1403,7 @@
       <workItem from="1520497858510" duration="33693000" />
       <workItem from="1520861358162" duration="3784000" />
       <workItem from="1520995983095" duration="54675000" />
-      <workItem from="1521194074872" duration="16641000" />
+      <workItem from="1521194074872" duration="19266000" />
     </task>
     <servers />
   </component>
@@ -1376,7 +1440,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139023000" />
+    <option name="totallyTimeSpent" value="141648000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1435,7 +1499,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <option name="time" value="21" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1444,38 +1508,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/tickets/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1265">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/tickets/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1529">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/servlets/IndexServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/servlets/LoginServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/servlets/MainServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="751">
@@ -1655,14 +1687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/tickets/place_changeInfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/service/PayTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1778,38 +1802,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/controller/IndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="47" column="13" lean-forward="false" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/dao/PrePlaceDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="20" column="19" lean-forward="false" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/PrePlaceDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="69" column="42" lean-forward="false" selection-start-line="69" selection-start-column="42" selection-end-line="69" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/tickets/head_manager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="72" column="67" lean-forward="false" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="67" />
-          <folding>
-            <element signature="n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1826,23 +1823,6 @@
         <state relative-caret-position="617">
           <caret line="54" column="1" lean-forward="true" selection-start-line="1" selection-start-column="18" selection-end-line="54" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/tickets/manager_check.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="175" column="78" lean-forward="false" selection-start-line="175" selection-start-column="67" selection-end-line="175" selection-end-column="78" />
-          <folding>
-            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#td#6;n#tr#0;n#tbody#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1873,19 +1853,119 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/controller/PlaceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/PrePlaceDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="59" column="64" lean-forward="true" selection-start-line="49" selection-start-column="8" selection-end-line="59" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/dao/impl/PlaceDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="54" column="30" lean-forward="false" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+        <state relative-caret-position="409">
+          <caret line="55" column="29" lean-forward="false" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/tickets/head_manager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="72" column="67" lean-forward="false" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/tickets/manager_check.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#6;n#tr#0;n#tbody#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/tickets/manager_checkSignUp.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2835">
+          <caret line="189" column="70" lean-forward="false" selection-start-line="189" selection-start-column="70" selection-end-line="189" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/controller/ManagerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="80" column="5" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/tickets/head_null.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="49" column="33" lean-forward="true" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#div#0;n#div#3;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#div#0;n#div#4;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/tickets/place_changeInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="56" lean-forward="true" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/tickets/place_changeSeatInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="129" column="10" lean-forward="true" selection-start-line="129" selection-start-column="10" selection-end-line="129" selection-end-column="10" />
+        <state relative-caret-position="580">
+          <caret line="98" column="46" lean-forward="true" selection-start-line="85" selection-start-column="40" selection-end-line="98" selection-end-column="46" />
           <folding>
+            <element signature="n#script#7;n#body#0;n#html#0;n#!!top" expanded="false" />
             <marker date="1521280394714" expanded="true" signature="8407:8505" ph="..." />
             <marker date="1521280394714" expanded="true" signature="8407:9729" ph="..." />
             <marker date="1521280394714" expanded="true" signature="8521:9154" ph="..." />
@@ -1900,19 +1980,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/controller/PlaceController.java">
+    <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/controller/IndexController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+        <state relative-caret-position="117">
+          <caret line="60" column="26" lean-forward="false" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="26" />
+          <folding>
+            <element signature="e#1993#1994#0" expanded="true" />
+            <element signature="e#2025#2026#0" expanded="true" />
+            <element signature="e#2135#2136#0" expanded="true" />
+            <element signature="e#2172#2173#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/tickets/sign_up.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1322">
+          <caret line="105" column="0" lean-forward="true" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/nju/tickets/controller/ManagerController.java">
+    <entry file="file://$PROJECT_DIR$/web/tickets/place_signUp.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="71" column="77" lean-forward="false" selection-start-line="71" selection-start-column="77" selection-end-line="71" selection-end-column="77" />
-          <folding />
+        <state relative-caret-position="890">
+          <caret line="96" column="78" lean-forward="false" selection-start-line="96" selection-start-column="78" selection-end-line="96" selection-end-column="78" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#a#0;n#h4#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1521283007852" expanded="true" signature="3992:5314" ph="..." />
+            <marker date="1521283007852" expanded="true" signature="4106:4739" ph="..." />
+            <marker date="1521283007852" expanded="true" signature="4183:4684" ph="..." />
+            <marker date="1521283007852" expanded="true" signature="4414:4626" ph="..." />
+            <marker date="1521283007852" expanded="true" signature="4551:4563" ph="..." />
+            <marker date="1521283007852" expanded="true" signature="4909:5263" ph="..." />
+            <marker date="1521283007852" expanded="true" signature="4986:5208" ph="..." />
+            <marker date="1521283007852" expanded="true" signature="5085:5095" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

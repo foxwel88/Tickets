@@ -39,6 +39,20 @@ public class ManagerController {
         return "manager_check";
     }
 
+
+    @RequestMapping(value = "/managerCheckSignUp", method = RequestMethod.GET)
+    public String managerCheckSignUp(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("userName") == null) || (!session.getAttribute("userName").equals("root"))) {
+            return "user_null";
+        }
+
+        List<Place> placeList = placeService.getUnCheckedPlace();
+        request.setAttribute("placeList", placeList);
+
+        return "manager_checkSignUp";
+    }
+
     @RequestMapping(value = "/managerCalc", method = RequestMethod.GET)
     public String managerCalc(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
@@ -70,6 +84,20 @@ public class ManagerController {
     @RequestMapping(value = "/unCheckModify", method = RequestMethod.POST)
     protected String unCheckModify(@RequestParam(value = "prePlaceId",required=false) int prePlaceId) {
         ResultMessage resultMessage = placeService.unCheckPlaceModifyRequestByPrePlaceId(prePlaceId);
+        return resultMessage.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/checkSignUp", method = RequestMethod.POST)
+    protected String checkSignUp(@RequestParam(value = "placeId",required=false) int placeId) {
+        ResultMessage resultMessage = placeService.checkPlaceSignUpRequest(placeId);
+        return resultMessage.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/unCheckSignUp", method = RequestMethod.POST)
+    protected String unCheckSignUp(@RequestParam(value = "placeId",required=false) int placeId) {
+        ResultMessage resultMessage = placeService.unCheckPlaceSignUpRequest(placeId);
         return resultMessage.toString();
     }
 }

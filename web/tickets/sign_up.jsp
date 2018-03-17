@@ -24,6 +24,7 @@
 <body>
 
 
+<%@include file="head_null.jsp" %>
 <div style="width: 35%; margin:60px auto;" >
     <div class="modal-body">
         <div class="input-group input-group-lg">
@@ -218,7 +219,7 @@
     function signUp(userName, passWord, emailAddress, checkNumber, phone, callback) {
         $.ajax({
             type: 'POST',
-            url: '/signUp',
+            url: '/signUpPost',
             data: {
                 userName: userName,
                 passWord: passWord,

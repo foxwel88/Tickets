@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Tickets - 经理</title>
+    <title>Tickets - 经理</title>
     
 
     <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -28,7 +28,7 @@
     <%@include file="head_manager.jsp" %>
 
     <%
-        List<PrePlace> prePlaceList = (List<PrePlace>)request.getAttribute("prePlaceList");
+        List<Place> placeList = (List<Place>)request.getAttribute("placeList");
     %>
     <div class="single-product-area">
         <div class="container">
@@ -36,23 +36,23 @@
                 <div class="single-sidebar">
                     <ul>
                         <li><a href="/managerCheck">场馆修改审核</a></li>
-                        <li><a href="/managerCheckSignUp">场馆申请审核</a></li>
+                        <li><a href="/managerCheckSignUp">场馆注册审核</a></li>
                     </ul>
                 </div>
             </div>
                 
             <div class="col-md-10">
                 <div class="product-breadcroumb">
-                    <a href="">Tickets经理</a>
-                    <a href="">场馆修改审核</a>
+                    <a href="/managerCheck">Tickets经理</a>
+                    <a href="/managerCheckSignUp">场馆注册审核</a>
                 </div>
                 <%
-                    if (prePlaceList.size() <= 0) {
+                    if (placeList.size() <= 0) {
                 %>
                         <table cellspacing="0" class="shop_table cart">
                             <thead>
                             <tr>
-                                <th>当前无待审核的场馆修改申请</th>
+                                <th>当前无待审核的场馆注册申请</th>
                             </tr>
                             </thead>
                         </table>
@@ -62,44 +62,39 @@
                         <table cellspacing="0" class="shop_table cart">
                             <thead>
                                 <tr>
-                                    <th style="width: 8%">申请编号</th>
-                                    <th style="width: 8%">场馆编号</th>
+                                    <th style="width: 10%">场馆编号</th>
                                     <th style="width: 12%">场馆名称</th>
-                                    <th style="width: 12%">场馆地址</th>
+                                    <th style="width: 15%">场馆地址</th>
                                     <th style="width: 25%">场馆描述</th>
-                                    <th style="width: 25%">座位情况</th>
+                                    <th style="width: 28%">座位情况</th>
                                     <th style="width: 10%">操作</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <%
-                                    for (int i = 0; i < prePlaceList.size(); ++i) {
-                                        PrePlace prePlace = prePlaceList.get(i);
+                                    for (int i = 0; i < placeList.size(); ++i) {
+                                        Place place = placeList.get(i);
                                 %>
                                         <tr class="cart_item">
                                             <td>
-                                                <%=prePlace.getId()%>
+                                                <%=place.getId()%>
                                             </td>
 
                                             <td>
-                                                <%=prePlace.getPlaceId()%>
+                                                <%=place.getName()%>
                                             </td>
 
                                             <td>
-                                                <%=prePlace.getName()%>
+                                                <%=place.getAddress()%>
                                             </td>
 
                                             <td>
-                                                <%=prePlace.getAddress()%>
-                                            </td>
-
-                                            <td>
-                                                <%=prePlace.getDescribe()%>
+                                                <%=place.getDescribe()%>
                                             </td>
 
                                             <td>
                                                 <%
-                                                    SeatInfo seatInfo = prePlace.getSeatInfo();
+                                                    SeatInfo seatInfo = place.getSeatInfo();
                                                     for (int j = 0; j < seatInfo.getDistrictList().size(); ++j) {
                                                         if (j != 0) out.print("<br>");
                                                         out.print(seatInfo.getDistrictName(j) + ":" + seatInfo.getDistrictList().get(j).getInfoString());
@@ -109,15 +104,15 @@
                                             </td>
 
                                             <td>
-                                                <input type="submit" id="checkModifyBtn<%=prePlace.getId()%>" style="margin-bottom: 10px" value="确认" class="button">
-                                                <input type="submit" id="unCheckModifyBtn<%=prePlace.getId()%>" value="拒绝" class="button">
+                                                <input type="submit" id="checkSingUpBtn<%=place.getId()%>" style="margin-bottom: 10px" value="确认" class="button">
+                                                <input type="submit" id="unCheckSignUpBtn<%=place.getId()%>" value="拒绝" class="button">
                                                 <script>
                                                     $(document).ready(function (){
-                                                        $("#checkModifyBtn<%=prePlace.getId()%>") .click(function() {
-                                                            let prePlaceId = <%=prePlace.getId()%>
-                                                            console.log(prePlaceId);
+                                                        $("#checkSingUpBtn<%=place.getId()%>") .click(function() {
+                                                            let placeId = <%=place.getId()%>
+                                                            console.log(placeId);
 
-                                                            checkModify(prePlaceId, function(message) {
+                                                            checkSignUp(placeId, function(message) {
                                                                 if(message){
                                                                     swal({
                                                                             title: "确认成功!",
@@ -141,11 +136,11 @@
 
                                                         });
 
-                                                        $("#unCheckModifyBtn<%=prePlace.getId()%>") .click(function() {
-                                                            let prePlaceId = <%=prePlace.getId()%>
-                                                            console.log(prePlaceId);
+                                                        $("#unCheckSignUpBtn<%=place.getId()%>") .click(function() {
+                                                            let placeId = <%=place.getId()%>
+                                                            console.log(placeId);
 
-                                                            unCheckModify(prePlaceId, function(message) {
+                                                            unCheckSignUp(placeId, function(message) {
                                                                 if(message){
                                                                     swal({
                                                                             title: "拒绝成功!",
@@ -170,12 +165,12 @@
                                                         });
                                                     });
 
-                                                    function checkModify(prePlaceId, callback) {
+                                                    function checkSignUp(placeId, callback) {
                                                         $.ajax({
                                                             type: 'POST',
-                                                            url: '/checkModify',
+                                                            url: '/checkSignUp',
                                                             data: {
-                                                                prePlaceId: prePlaceId,
+                                                                placeId: placeId,
                                                             },
                                                             success: function (result) {
                                                                 if (callback) {
@@ -189,12 +184,12 @@
                                                         });
                                                     }
 
-                                                    function unCheckModify(prePlaceId, callback) {
+                                                    function unCheckSignUp(placeId, callback) {
                                                         $.ajax({
                                                             type: 'POST',
-                                                            url: '/unCheckModify',
+                                                            url: '/unCheckSignUp',
                                                             data: {
-                                                                prePlaceId: prePlaceId,
+                                                                placeId: placeId,
                                                             },
                                                             success: function (result) {
                                                                 if (callback) {

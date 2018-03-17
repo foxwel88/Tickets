@@ -2,6 +2,7 @@ package edu.nju.tickets.controller;
 
 import edu.nju.tickets.model.User;
 import edu.nju.tickets.model.util.ResultMessage;
+import edu.nju.tickets.model.util.SeatInfo;
 import edu.nju.tickets.service.PlaceService;
 import edu.nju.tickets.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +51,19 @@ public class IndexController {
         return resultMessage.toString();
     }
 
+    @RequestMapping(value = "/signUp", method = RequestMethod.GET)
+    protected String signUp() {
+        return "sign_up";
+    }
+
+    @RequestMapping(value = "/placeSignUp", method = RequestMethod.GET)
+    protected String placeSignUp() {
+        return "place_signUp";
+    }
+
     @ResponseBody
-    @RequestMapping(value = "/signUp", method = RequestMethod.POST)
-    protected String signUp(@RequestParam(value = "userName",required=false) String userName,
+    @RequestMapping(value = "/signUpPost", method = RequestMethod.POST)
+    protected String signUpPost(@RequestParam(value = "userName",required=false) String userName,
                                 @RequestParam(value = "passWord", required = false) String passWord,
                             @RequestParam(value = "emailAddress", required = false) String emailAddress,
                             @RequestParam(value = "phone", required = false) String phone,
@@ -63,6 +74,30 @@ public class IndexController {
             request.getSession().setAttribute("userName", userName);
         }
         return resultMessage.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/placeSignUpPost", method = RequestMethod.POST)
+    protected String placeSignUpPost(@RequestParam(value = "passWord",required=false) String passWord,
+                                @RequestParam(value = "placeName", required = false) String placeName,
+                                @RequestParam(value = "placeAddress", required = false) String placeAddress,
+                                @RequestParam(value = "placeDescribe", required = false) String placeDescribe,
+                                @RequestParam(value = "nameString", required = false) String nameString,
+                                     @RequestParam(value = "infoString", required = false) String infoString,
+                                HttpServletRequest request, HttpServletResponse response) {
+
+        SeatInfo seatInfo = new SeatInfo(nameString, infoString);
+        int placeId = placeService.signUp(passWord, placeName, placeAddress, placeDescribe, seatInfo);
+
+        if (placeId != -1) {
+            request.getSession().setAttribute("placeId", placeId);
+        } else {
+            return "FAIL";
+        }
+
+        String placeStr = String.valueOf(placeId);
+        while (placeStr.length() < 7) placeStr = "0" + placeStr;
+        return placeStr;
     }
 
     @ResponseBody

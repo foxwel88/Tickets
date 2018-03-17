@@ -20,9 +20,7 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                        <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
+                        <li><a href="/logOutUser"><i class="fa fa-user"></i>登出</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#placeModal"><i class="fa fa-user"></i>管理人员</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i>登陆</a></li>
                     </ul>

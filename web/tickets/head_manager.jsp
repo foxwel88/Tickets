@@ -20,9 +20,7 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                        <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                        <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
+                        <li><a href="/logOutManger"><i class="fa fa-user"></i>登出</a></li>
                     </ul>
                 </div>
             </div>
@@ -32,7 +30,6 @@
                     <ul class="list-unstyled list-inline">
                         <li class="dropdown dropdown-small">
                             <a><span class="key">欢迎你，管理员</span></a>
-
                         </li>
                     </ul>
                 </div>

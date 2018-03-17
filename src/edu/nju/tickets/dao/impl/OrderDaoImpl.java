@@ -2,10 +2,7 @@ package edu.nju.tickets.dao.impl;
 
 import edu.nju.tickets.dao.DaoHelper;
 import edu.nju.tickets.dao.OrderDao;
-import edu.nju.tickets.model.OldOrder;
-import edu.nju.tickets.model.Order;
-import edu.nju.tickets.model.Ticket;
-import edu.nju.tickets.model.User;
+import edu.nju.tickets.model.*;
 import edu.nju.tickets.model.util.ResultMessage;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,6 +10,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -78,6 +76,7 @@ public class OrderDaoImpl implements OrderDao {
 		daoHelper.delete(order);
 		return ResultMessage.SUCCESS;
 	}
+
 
 
 }

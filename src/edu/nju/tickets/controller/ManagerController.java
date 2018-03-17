@@ -29,7 +29,7 @@ public class ManagerController {
     @RequestMapping(value = "/managerCheck", method = RequestMethod.GET)
     public String managerCheck(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if ((session == null) || (session.getAttribute("userName") == null) || (!session.getAttribute("userName").equals("root"))) {
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
             return "user_null";
         }
 
@@ -43,7 +43,7 @@ public class ManagerController {
     @RequestMapping(value = "/managerCheckSignUp", method = RequestMethod.GET)
     public String managerCheckSignUp(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if ((session == null) || (session.getAttribute("userName") == null) || (!session.getAttribute("userName").equals("root"))) {
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
             return "user_null";
         }
 
@@ -56,7 +56,7 @@ public class ManagerController {
     @RequestMapping(value = "/managerCalc", method = RequestMethod.GET)
     public String managerCalc(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if ((session == null) || (session.getAttribute("userName") == null) || (!session.getAttribute("userName").equals("root"))) {
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
             return "user_null";
         }
 
@@ -66,7 +66,7 @@ public class ManagerController {
     @RequestMapping(value = "/managerInfo", method = RequestMethod.GET)
     public String managerInfo(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if ((session == null) || (session.getAttribute("userName") == null) || (!session.getAttribute("userName").equals("root"))) {
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
             return "user_null";
         }
 

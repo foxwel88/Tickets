@@ -15,4 +15,6 @@ public class ManagerServiceImpl implements ManagerService{
     @Autowired
     PlaceService placeService;
 
+
+
 }

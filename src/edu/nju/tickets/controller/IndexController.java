@@ -32,8 +32,8 @@ public class IndexController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getRegister(HttpServletRequest request) {
-        return "show_single";
+    public String getIndex(HttpServletRequest request) {
+        return "user_info";
     }
 
     @ResponseBody
@@ -43,10 +43,11 @@ public class IndexController {
                               HttpServletRequest request, HttpServletResponse response) {
         ResultMessage resultMessage = userService.login(userName, passWord);
         if (resultMessage == ResultMessage.SUCCESS) {
-            request.getSession().setAttribute("userName", userName);
+            request.getSession().setAttribute("manager", "root");
             if (userName.equals("root")) {
                 return "root";
             }
+            request.getSession().setAttribute("userName", userName);
         }
         return resultMessage.toString();
     }
@@ -117,5 +118,36 @@ public class IndexController {
     protected String sendEmail(@RequestParam(value = "emailAddress",required=false) String emailAddress) {
         ResultMessage resultMessage = userService.sendEmail(emailAddress);
         return resultMessage.toString();
+    }
+
+
+    @RequestMapping(value = "/logOutManger", method = RequestMethod.GET)
+    public String logOutManger(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("manager") == null)) {
+            return getIndex(request);
+        }
+        session.removeAttribute("manager");
+        return getIndex(request);
+    }
+
+    @RequestMapping(value = "/logOutUser", method = RequestMethod.GET)
+    public String logOutUser(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("userName") == null)) {
+            return getIndex(request);
+        }
+        session.removeAttribute("userName");
+        return getIndex(request);
+    }
+
+    @RequestMapping(value = "/logOutPlace", method = RequestMethod.GET)
+    public String logOutPlace(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("placeId") == null)) {
+            return getIndex(request);
+        }
+        session.removeAttribute("placeId");
+        return getIndex(request);
     }
 }

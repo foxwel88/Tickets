@@ -54,13 +54,11 @@
                             <div class="col-sm-4">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img src="img/product-2.jpg" alt="">
+                                        <img src="../showpic/<%=show.getId()%>.jpg" alt="">
                                     </div>
                                     
                                     <div class="product-gallery">
-                                        <img src="img/product-thumb-1.jpg" alt="">
-                                        <img src="img/product-thumb-2.jpg" alt="">
-                                        <img src="img/product-thumb-3.jpg" alt="">
+
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +79,7 @@
                                     </div>
                                     <div class="woocommerce-info">
                                         本演出支持在线选座，不如试试？
-                                        <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">选座下单</a>
+                                        <a class="showlogin"  href="/showSelectSeat?showId=<%=show.getId()%>&districtId=0">选座下单</a>
                                     </div>
                                     <div role="tabpanel">
                                         <ul class="product-tab" role="tablist">
@@ -99,7 +97,7 @@
                                             <div role="tabpanel" class="tab-pane fade" id="simpleOrder">
                                                 <div class="woocommerce-info">
                                                     本演出支持在线选座，不如试试？
-                                                    <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">选座下单</a>
+                                                    <a class="showlogin"  href="/showSelectSeat?showId=<%=show.getId()%>&districtId=0" >选座下单</a>
                                                 </div>
 
                                                 <div class="woocommerce-billing-fields">

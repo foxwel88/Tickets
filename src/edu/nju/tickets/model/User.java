@@ -1,5 +1,6 @@
 package edu.nju.tickets.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -31,6 +32,9 @@ public class User implements Serializable {
 
     private String state;
 
+    @Column(name = "`address`")
+    private String address;
+
     public User() {
     }
 
@@ -43,6 +47,7 @@ public class User implements Serializable {
         this.integral = 0;
         this.level = 1;
         this.state = "true";
+        this.address = "";
     }
 
     public String getUserName() {
@@ -107,5 +112,13 @@ public class User implements Serializable {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

@@ -52,4 +52,26 @@ public class ShowDaoImpl implements ShowDao {
         session.close();
         return res;
     }
+
+
+    @Override
+    public List<Show> getList() {
+        Session session = daoHelper.getSession();
+        session.beginTransaction();
+
+        String hql = "from Show s";
+
+        Query query = session.createQuery(hql);
+
+        List<Show> res = query.list();
+        session.close();
+        return res;
+    }
+
+    @Override
+    public ResultMessage update(Show show) {
+        daoHelper.update(show);
+        return ResultMessage.SUCCESS;
+    }
+
 }

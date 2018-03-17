@@ -80,7 +80,9 @@ public class PlaceController {
 
         Show show = null;
         if (showId == null) {
-            show = showList.get(0);
+            if (showList.size() > 0) {
+                show = showList.get(0);
+            }
         } else {
             show = placeService.getShow(Integer.valueOf(showId));
         }

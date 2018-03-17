@@ -130,7 +130,7 @@
                                 </td>
 
                                 <td>
-                                    <input type="submit" style="" value="取消" class="button">
+                                    <input type="submit" style="" id="cancelOrderBtn" value="取消" class="button">
                                 </td>
                             </tr>
                         <%
@@ -206,6 +206,7 @@
                         </p>
                         <script>
                             $(document).ready(function () {
+
                                 $("#payBtn").click(function() {
                                     let userName = "<%=user.getUserName()%>";
                                     let orderId = <%=orderId%>;
@@ -257,7 +258,55 @@
                                     });
 
                                 });
+
+                                $("#cancelOrderBtn").click(function() {
+                                    let orderId = <%=orderId%>;
+
+                                    console.log(orderId);
+
+                                    cancelUnPaiedOrder(orderId, function (message) {
+                                        console.log(message);
+                                        if (message == "SUCCESS") {
+                                            swal({
+                                                    title: "取消成功!",
+                                                    type: "success",
+                                                    confirmButtonText: "返回Tickets",
+                                                    closeOnConfirm: false
+                                                },
+                                                function (isConfirm) {
+                                                    if (isConfirm) {
+                                                        window.location.href = '/orderUnPaied';
+                                                    }
+                                                })
+                                        }else {
+                                            swal({
+                                                title: "取消失败",
+                                                type: "error",
+                                                confirmButtonText: "返回"
+                                            })
+                                        }
+                                    });
+                                });
                             });
+
+                            function cancelUnPaiedOrder(orderId, callback) {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/cancelUnPaiedOrder',
+                                    data: {
+                                        orderId: orderId
+                                    },
+                                    success: function (result) {
+                                        if (callback) {
+                                            callback(result);
+                                        }
+                                    },
+                                    error: function (XMLHttpRequest, testStatus, errorThrown) {
+                                        console.log(XMLHttpRequest.staus);
+                                        console.log(testStatus);
+                                    }
+                                });
+                            }
 
                             function payOrder(userName, orderId, payAccount, payAccountPassWord, callback) {
                                 $.ajax({

@@ -37,6 +37,8 @@ public class SeatState implements Serializable {
         return list.get(seatId);
     }
 
+
+
     public void setSeatSate(int seatId, String state) {
         if (!state.equals(list.get(seatId))) {
             if (state.equals("true")) {

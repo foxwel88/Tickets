@@ -18,4 +18,6 @@ public interface OrderDao {
     ResultMessage update(Order order);
 
     List<Order> getOrderListByUserNameAndState(String userName, String state);
+
+    ResultMessage delete(Order order);
 }

@@ -73,6 +73,11 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
+    public ResultMessage modify(Show show) {
+        return showDao.update(show);
+    }
+
+    @Override
     public int modifySeatInfo(int placeId, String nameString, String infoString) {
         Place place = getPlace(placeId);
         SeatInfo seatInfo = new SeatInfo(nameString, infoString);
@@ -167,5 +172,10 @@ public class PlaceServiceImpl implements PlaceService {
         PrePlace prePlace = prePlaceDao.getById(prePlaceId);
         prePlaceDao.delete(prePlace);
         return ResultMessage.SUCCESS;
+    }
+
+    @Override
+    public List<Show> getShowList() {
+        return showDao.getList();
     }
 }

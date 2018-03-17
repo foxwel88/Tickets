@@ -50,11 +50,16 @@ public class OrderServiceImpl implements OrderService {
 		Order order = new Order(userName, showId, "select", ticketNum, new Date(), new Date(), totalPrice, "unPaied", 0);
 		int orderId = orderDao.add(order);
 
+		Show show = placeService.getShow(showId);
+		Place place = placeService.getPlace(show.getPlaceId());
+
 		for (int seatId: seatIdList) {
-			Ticket ticket = new Ticket(showId, orderId, seatId, "seatname", price);
+			show.getSeatState().setSeatSate(seatId, "true");
+			Ticket ticket = new Ticket(showId, orderId, seatId, place.getSeatInfo().getSeatName(seatId), price);
 			ticketDao.add(ticket);
 		}
 
+		placeService.modify(show);
 		userService.addMoney(userName, totalPrice);
 
 		return ResultMessage.SUCCESS;
@@ -164,7 +169,15 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	public ResultMessage cancelOrder(int orderId, String payAccountId) {
+		Order order = orderDao.getById(orderId);
+		payService.returnMoney(payAccountId, order.getPrice());
+		return orderDao.delete(order);
+	}
+
+	@Override
 	public ResultMessage cancelOrder(int orderId) {
-		return null;
+		Order order = orderDao.getById(orderId);
+		return orderDao.delete(order);
 	}
 }

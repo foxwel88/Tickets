@@ -88,7 +88,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li id="menu_index"><a href="/index">&nbsp;Tickets&nbsp;主页&nbsp;</a></li>
-                    <li id="menu_show"><a href="/show">&nbsp;演出广场&nbsp;</a></li>
+                    <li id="menu_show"><a href="/showSquare">&nbsp;演出广场&nbsp;</a></li>
                     <li id="menu_order"><a href="/orderUnPaied">&nbsp;我的订单&nbsp;</a></li>
                     <li id="menu_user"><a href="/userInfo">&nbsp;个人中心&nbsp;</a></li>
                 </ul>

@@ -73,5 +73,11 @@ public class OrderDaoImpl implements OrderDao {
 		return res;
 	}
 
+	@Override
+	public ResultMessage delete(Order order) {
+		daoHelper.delete(order);
+		return ResultMessage.SUCCESS;
+	}
+
 
 }

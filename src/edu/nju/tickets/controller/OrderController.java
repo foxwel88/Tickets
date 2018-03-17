@@ -87,5 +87,19 @@ public class OrderController {
         return resultMessage.toString();
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/cancelUnPaiedOrder", method = RequestMethod.POST)
+    protected String cancelUnPaiedOrder(@RequestParam(value = "orderId", required = false) int orderId) {
+        ResultMessage resultMessage = orderService.cancelOrder(orderId);
+        return resultMessage.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/cancelPaiedOrder", method = RequestMethod.POST)
+    protected String cancelPaiedOrder(@RequestParam(value = "orderId", required = false) int orderId,
+                                      @RequestParam(value = "payAccountId", required = false) String payAccountId) {
+        ResultMessage resultMessage = orderService.cancelOrder(orderId, payAccountId);
+        return resultMessage.toString();
+    }
 
 }

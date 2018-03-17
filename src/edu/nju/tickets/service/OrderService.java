@@ -41,4 +41,5 @@ public interface OrderService {
 	public List<OldOrder> getOrderList(String userName);
 
 
+    ResultMessage cancelOrder(int orderId, String payAccountId);
 }

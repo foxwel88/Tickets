@@ -123,9 +123,66 @@
                                     </div>
                                     <div class="coupon" style="width:65%; float:right">
                                         <label style="width:20%; float:left; margin-right: 10px">请输入退款账户</label>
-                                        <input type="text" style="width:35%; float:left" placeholder="" value="" id="coupon_code" class="input-text" name="coupon_code">
-                                        <input type="submit" style="width:40%; float:right" value="确认取消订单并退款¥<%=orderVO.getPrice()%>" name="apply_coupon" class="button">
+                                        <input type="text" style="width:35%; float:left" placeholder="" value="" id="payAccountName<%=i%>" class="input-text">
+                                        <input type="submit" style="width:40%; float:right" id="cancelPaiedOrder<%=i%>" value="确认取消订单并退款¥<%=orderVO.getPrice()%>" name="apply_coupon" class="button">
                                     </div>
+                                    <script>
+                                        $(document).ready(function () {
+
+                                            $("#cancelPaiedOrder<%=i%>").click(function() {
+
+                                                let orderId = <%=orderVO.getId()%>;
+                                                let payAcountName = $("#payAccountName<%=i%>").val();
+
+                                                console.log(orderId);
+                                                console.log(payAcountName);
+
+                                                cancelPaiedOrder(orderId, payAcountName, function (message) {
+                                                    console.log(message);
+                                                    if (message == "SUCCESS") {
+                                                        swal({
+                                                                title: "取消成功!",
+                                                                type: "success",
+                                                                confirmButtonText: "返回Tickets",
+                                                                closeOnConfirm: false
+                                                            },
+                                                            function (isConfirm) {
+                                                                if (isConfirm) {
+                                                                    window.location.href = '/orderFinished';
+                                                                }
+                                                            })
+                                                    }else {
+                                                        swal({
+                                                            title: "取消失败",
+                                                            type: "error",
+                                                            confirmButtonText: "返回"
+                                                        })
+                                                    }
+                                                });
+                                            });
+                                        });
+
+                                        function cancelPaiedOrder(orderId, payAcountName, callback) {
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: '/cancelPaiedOrder',
+                                                data: {
+                                                    orderId: orderId,
+                                                    payAccountId: payAcountName
+                                                },
+                                                success: function (result) {
+                                                    if (callback) {
+                                                        callback(result);
+                                                    }
+                                                },
+                                                error: function (XMLHttpRequest, testStatus, errorThrown) {
+                                                    console.log(XMLHttpRequest.staus);
+                                                    console.log(testStatus);
+                                                }
+                                            });
+                                        }
+
+                                    </script>
                                 </td>
                             </tr>
                         <%

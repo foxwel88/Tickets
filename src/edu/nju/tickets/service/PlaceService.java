@@ -21,6 +21,8 @@ public interface PlaceService {
 
     int modify(Place place);
 
+    ResultMessage modify(Show show);
+
     int modifySeatInfo(int placeId, String nameString, String infoString);
 
     int modifyInfo(int placeId, String placeName, String placeAddress, String placeDescribe);
@@ -45,4 +47,6 @@ public interface PlaceService {
     ResultMessage checkPlaceModifyRequestByPrePlaceId(int prePlaceId);
 
     ResultMessage unCheckPlaceModifyRequestByPrePlaceId(int prePlaceId);
+
+    List<Show> getShowList();
 }

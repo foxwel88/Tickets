@@ -112,5 +112,17 @@ public class UserController {
         return resultMessage.toString();
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/modifyUserInfo", method = RequestMethod.POST)
+    protected String modifyUserInfo(@RequestParam(value = "userName",required=false) String userName,
+                                    @RequestParam(value = "phoneNumber", required = false) String phoneNumber,
+                                    @RequestParam(value = "userAddress", required = false) String userAddress) {
+        User user = userService.getUser(userName);
+        user.setPhone(phoneNumber);
+        user.setAddress(userAddress);
+        ResultMessage resultMessage = userService.modify(user);
+        return resultMessage.toString();
+    }
+
 
 }

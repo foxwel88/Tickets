@@ -73,6 +73,11 @@
                                                 <th>联系电话</th>
                                                 <td colspan="3"><jsp:getProperty name="user" property="phone" /></td>
                                             </tr>
+                                            <tr>
+                                                <th>邮寄地址</th>
+                                                <td colspan="3"><jsp:getProperty name="user" property="address" /></td>
+                                            </tr>
+
                                         </tbody>
 
                                     </table>

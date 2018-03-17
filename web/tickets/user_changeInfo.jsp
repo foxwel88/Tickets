@@ -1,3 +1,4 @@
+<%@ page import="edu.nju.tickets.model.User" %>
 <!DOCTYPE html>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -19,7 +20,9 @@
 
     <%@include file="head.jsp" %>
     
-    
+    <%
+        User user = (User)request.getAttribute("user");
+    %>
     <div class="single-product-area">
         <div class="container">
             <div class="col-md-2">
@@ -45,16 +48,16 @@
                             <div class="woocommerce-billing-fields">
 
                                 <p id="old_password_field" class="form-row form-row-first validate-required">
-                                    <label class="" for="old_password">手机号码</label>
-                                    <input type="text" value="" placeholder="" id="old_password" name="old_password" class="input-text ">
+                                    <label class="" for="phoneNumber">手机号码</label>
+                                    <input type="text" value="<%=user.getPhone()%>" id="phoneNumber" class="input-text ">
                                 </p>
 
                                 <p id="new_password1_field" class="form-row form-row-first validate-required">
-                                    <label class="" for="new_password1">邮寄地址</label>
-                                    <input type="text" value="" placeholder="" id="new_password1" name="new_password1" class="input-text ">
+                                    <label class="" for="userAddress">邮寄地址</label>
+                                    <input type="text" value="<%=user.getAddress()%>" id="userAddress" class="input-text ">
                                 </p>
 
-                                <input type="submit" data-value="Place order" value="确认修改" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+                                <input type="submit" value="确认修改" id="modifyUserInfoBtn"  class="button alt">
 
                             </div>
                         </div>
@@ -77,5 +80,63 @@
           $("#menu_user").addClass("active");
       });
     </script>
+
+<script>
+    $(document).ready(function () {
+        $("#modifyUserInfoBtn").click(function() {
+            let userName = "<%=session.getAttribute("userName")%>";
+            let phoneNumber = $("#phoneNumber").val();
+            let userAddress = $("#userAddress").val();
+            console.log(userName);
+            console.log(phoneNumber);
+            console.log(userAddress);
+
+            modifyUserInfo(userName, phoneNumber, userAddress, function (message) {
+                console.log(message);
+                if (message == "SUCCESS") {
+                    swal({
+                            title: "修改成功!",
+                            type: "success",
+                            confirmButtonText: "返回Tickets",
+                            closeOnConfirm: false
+                        },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                window.location.href = '/userInfo';
+                            }
+                        })
+                } else  {
+                    swal({
+                        title: "修改失败",
+                        type: "error",
+                        confirmButtonText: "返回"
+                    })
+                }
+            });
+
+        });
+    });
+
+    function modifyUserInfo(userName, phoneNumber, userAddress, callback) {
+        $.ajax({
+            type: 'POST',
+            url: '/modifyUserInfo',
+            data: {
+                userName: userName,
+                phoneNumber: phoneNumber,
+                userAddress: userAddress
+            },
+            success: function (result) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (XMLHttpRequest, testStatus, errorThrown) {
+                console.log(XMLHttpRequest.staus);
+                console.log(testStatus);
+            }
+        });
+    }
+</script>
 </body>
 </html>

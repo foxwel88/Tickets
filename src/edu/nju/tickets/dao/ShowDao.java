@@ -16,4 +16,8 @@ public interface ShowDao {
     Show getById(int id);
 
     List<Show> getByPlaceId(int placeId);
+
+    List<Show> getList();
+
+    ResultMessage update(Show show);
 }

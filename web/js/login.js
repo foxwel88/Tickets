@@ -18,6 +18,20 @@ $(document).ready(function () {
                         }
                     })
                 }
+
+                if(message == "root"){
+                    swal({
+                            title: "欢迎Tickets经理!",
+                            type: "success",
+                            confirmButtonText: "进入Tickets",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm){
+                            if(isConfirm){
+                                window.location.href = '/managerCheck';
+                            }
+                        })
+                }
                 if (message == "NO_USER") {
                     swal({
                         title: "不存在此用户",

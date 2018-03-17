@@ -33,11 +33,12 @@ public class PlaceTest {
 
     @Test
     public void test() {
-        placeService.checkPlaceModifyRequestByPrePlaceId(1);
+        placeService.checkPlaceModifyRequestByPrePlaceId(2);
     }
 
     @Test
     public void placeDaoTest1() {
+        /*
         List<String> nameList = new ArrayList<>();
         nameList.add("北一区");
         nameList.add("北二区");
@@ -82,14 +83,12 @@ public class PlaceTest {
 
         Place place = new Place("123456", "奥林匹克体育场", "南京市建邺区奥体中心","南京市建邺区奥体中心的奥林匹克体育场", seatInfo, "true");
 
-        int placeId = placeDao.add(place);
+        int placeId = placeDao.add(place);*/
+
+        Place place = placeDao.getById(3);
 
         List<Double> priceList = new ArrayList<>();
-        priceList.add(80.0);
-        priceList.add(100.0);
-        priceList.add(120.0);
-        priceList.add(200.0);
-        Show show = new Show("有趣的演唱会", "南京市建邺区奥体中心很有趣很有趣南京市建邺区奥体中心的奥林匹克体育场", placeId, new Date(), new SeatState(place.getSeatInfo().getTotalSeatNum(), priceList));
+        Show show = new Show("XXX全国演唱会", "XXX全国演唱会XXX全国演唱会XXX全国演唱会XXX全国演唱会XXX全国演唱会", 3, new Date(), new SeatState(place.getSeatInfo().getTotalSeatNum(), "200,220,300,400,550"));
         showDao.add(show);
 
 

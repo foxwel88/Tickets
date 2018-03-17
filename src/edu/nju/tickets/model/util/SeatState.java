@@ -14,14 +14,23 @@ public class SeatState implements Serializable {
 
     private List<Double> priceList;
 
-    public SeatState(int seatNum, List<Double> districtPriceList) {
+    private int seatNum;
+
+    private int sellNum;
+
+    public SeatState(int seatNum, String priceString) {
+        this.seatNum = seatNum;
+        this.sellNum = 0;
         list = new ArrayList<>();
         priceList = new ArrayList<>();
 
         for (int i = 0; i < seatNum + 1; ++i) {
             list.add("false");
         }
-        this.priceList.addAll(districtPriceList);
+        String[] priceStringList = priceString.split(",");
+        for (String s: priceStringList) {
+            priceList.add(Double.valueOf(s));
+        }
     }
 
     public String getSeatSate(int seatId) {
@@ -29,7 +38,19 @@ public class SeatState implements Serializable {
     }
 
     public void setSeatSate(int seatId, String state) {
+        if (!state.equals(list.get(seatId))) {
+            if (state.equals("true")) {
+                sellNum++;
+            } else {
+                sellNum--;
+            }
+        }
         list.set(seatId, state);
+    }
+
+
+    public double getPrice(int districtId) {
+        return priceList.get(districtId);
     }
 
     public List<Double> getPriceList() {
@@ -38,5 +59,17 @@ public class SeatState implements Serializable {
 
     public void setPriceList(List<Double> priceList) {
         this.priceList = priceList;
+    }
+
+    public int getSeatNum() {
+        return seatNum;
+    }
+
+    public void setSeatNum(int seatNum) {
+        this.seatNum = seatNum;
+    }
+
+    public int getSellNum() {
+        return sellNum;
     }
 }

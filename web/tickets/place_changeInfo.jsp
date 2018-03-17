@@ -25,7 +25,7 @@
     String placeIdStr = String.valueOf(place.getId());
     while (placeIdStr.length() < 7) placeIdStr = "0" + placeIdStr;
 %>
-    <%@include file="place_head.jsp" %>
+    <%@include file="head_place.jsp" %>
 
     <div class="single-product-area">
         <div class="container">
@@ -75,16 +75,78 @@
 
     <%@include file="tail.jsp" %>
 
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/jquery.sticky.js"></script>
-    <script src="../js/jquery.easing.1.3.min.js"></script>
-    <script src="../js/main.js"></script>
-    <script>
-      $(document).ready(function(){
-          $("#menu_placeManage").addClass("active");
-      });
-    </script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
+<script src="../js/jquery.sticky.js"></script>
+<script src="../js/jquery.easing.1.3.min.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  $(document).ready(function(){
+      $("#menu_placeManage").addClass("active");
+  });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $("#changePlaceInfoBtn").click(function () {
+            let placeId = <%=place.getId()%>;
+            let placeName = $("#placeName").val();
+            let placeAddress = $("#placeAddress").val();
+            let placeDescribe = $("#placeDescribe").val();
+
+            console.log(placeId);
+            console.log(placeName);
+            console.log(placeAddress);
+            console.log(placeDescribe);
+
+
+            changePlaceInfo(placeId, placeName, placeAddress, placeDescribe, function (message) {
+                console.log(message);
+                if (message !== -1) {
+                    swal({
+                            title: "修改申请编号为" + message,
+                            type: "success",
+                            confirmButtonText: "返回Tickets",
+                            closeOnConfirm: false
+                        },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                window.location.href = '/placeInfo';
+                            }
+                        })
+                } else {
+                    swal({
+                        title: "修改失败",
+                        type: "error",
+                        confirmButtonText: "返回"
+                    })
+                }
+            });
+        });
+    });
+
+    function changePlaceInfo(placeId, placeName, placeAddress, placeDescribe, callback) {
+        $.ajax({
+            type: 'POST',
+            url: '/changePlaceInfo',
+            data: {
+                placeId: placeId,
+                placeName: placeName,
+                placeAddress: placeAddress,
+                placeDescribe: placeDescribe
+            },
+            success: function (result) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (XMLHttpRequest, testStatus, errorThrown) {
+                console.log(XMLHttpRequest.staus);
+                console.log(testStatus);
+            }
+        });
+    }
+</script>
 </body>
 </html>

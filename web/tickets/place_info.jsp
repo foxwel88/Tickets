@@ -26,7 +26,7 @@
     String placeIdStr = String.valueOf(place.getId());
     while (placeIdStr.length() < 7) placeIdStr = "0" + placeIdStr;
 %>
-    <%@include file="place_head.jsp" %>
+    <%@include file="head_place.jsp" %>
 
     <div class="single-product-area">
         <div class="container">

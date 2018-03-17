@@ -62,7 +62,16 @@ public class PrePlaceDaoImpl implements PrePlaceDao {
 
     @Override
     public List<PrePlace> getModifiedPrePlace() {
-        return null;
+        Session session = daoHelper.getSession();
+        session.beginTransaction();
+
+        String hql = "from PrePlace p";
+
+        Query query = session.createQuery(hql);
+
+        List<PrePlace> res = query.list();
+        session.close();
+        return res;
     }
 
     @Override

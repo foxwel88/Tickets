@@ -1,5 +1,6 @@
 package edu.nju.tickets.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -14,6 +15,8 @@ public class TimeUtil {
     private static SimpleDateFormat simpleDateFormat1= new SimpleDateFormat("yyyy-MM-dd");
 
     private static SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("HH:mm:ss");
+
+    private static SimpleDateFormat simpleDateFormat3 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public static String getTimeString() {
         return simpleDateFormat.format(new Date());
@@ -36,5 +39,13 @@ public class TimeUtil {
 
     public static String getDateString(Date date) {
         return simpleDateFormat.format(date);
+    }
+
+    public static Date parseString(String showTime) {
+        try {
+            return simpleDateFormat3.parse(showTime);
+        } catch (ParseException e) {
+            return new Date();
+        }
     }
 }

@@ -50,4 +50,10 @@ public class PlaceDaoImpl implements PlaceDao {
         return null;
     }
 
+    @Override
+    public ResultMessage delete(Place place) {
+        daoHelper.delete(place);
+        return ResultMessage.SUCCESS;
+    }
+
 }

@@ -23,11 +23,15 @@ public interface PlaceService {
 
     int modifySeatInfo(int placeId, String nameString, String infoString);
 
-    ResultMessage addShow(String name, String describ, int placeId, Date time, List<Double> districtPriceList);
+    int modifyInfo(int placeId, String placeName, String placeAddress, String placeDescribe);
+
+    int addShow(String name, String describ, int placeId, Date time, String districtPriceString);
 
     Place getPlace(int placeId);
 
     Show getShow(int showId);
+
+    List<Show> getShowListByPlaceId(int placeId);
 
 
     List<Place> getUnCheckedPlace();
@@ -36,5 +40,9 @@ public interface PlaceService {
 
     ResultMessage checkPlaceSignUpRequest(int placeId);
 
+    ResultMessage unCheckPlaceSignUpRequest(int placeId);
+
     ResultMessage checkPlaceModifyRequestByPrePlaceId(int prePlaceId);
+
+    ResultMessage unCheckPlaceModifyRequestByPrePlaceId(int prePlaceId);
 }

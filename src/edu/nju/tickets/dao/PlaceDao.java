@@ -23,4 +23,6 @@ public interface PlaceDao {
     Place getById(int placeId);
 
     List<Place> getUnCheckedPlace();
+
+    ResultMessage delete(Place place);
 }

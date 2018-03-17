@@ -29,8 +29,16 @@
     String placeIdStr = String.valueOf(place.getId());
     while (placeIdStr.length() < 7) placeIdStr = "0" + placeIdStr;
     SeatInfo seatInfo = place.getSeatInfo();
+
+    int districtNum = 1;
+
+    if ((seatInfo == null) || (seatInfo.getDistrictList() == null) || (seatInfo.getDistrictList().size() == 0)) {
+        districtNum = 1;
+    } else {
+        districtNum = seatInfo.getDistrictList().size();
+    }
 %>
-    <%@include file="place_head.jsp" %>
+    <%@include file="head_place.jsp" %>
 
     <div class="single-product-area">
         <div class="container">
@@ -136,7 +144,7 @@
     </script>
 <script>
     $(document).ready(function() {
-        var length = <%=seatInfo.getDistrictList().size()%>;
+        var length = <%=districtNum%>;
         length = length - 1;
         console.log(length);
         $("#addDistrictBtn").click(function () {
@@ -146,13 +154,13 @@
                                                 <div class="panel-heading" role="tab" id="heading` + length + `">
                                                     <h4 class="panel-title">
                                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse` + length + `" aria-expanded="false" aria-controls="collapse` + length +`">
-                                                            <input id="seatName`+ length + `" type="text" value="请输入区域名称" style="height: 30px"/>
+                                                            <input id="seatName`+ length + `" type="text" placeholder="请输入区域名称" style="height: 30px"/>
                                                         </a>
                                                     </h4>
                                                 </div>
                                                 <div id="collapse` + length + `" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading` + length + `">
                                                     <div class="panel-body">
-                                                        <input id="seatInfo`+ length + `" style="width: 80%" type="text" value="请输入座位编排，例如：10,11,12,13,14"/>
+                                                        <input id="seatInfo`+ length + `" style="width: 80%" type="text" placeholder="请输入座位编排，例如：10,11,12,13,14"/>
                                                     </div>
                                                 </div>
                                             </div>`);

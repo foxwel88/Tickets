@@ -43,6 +43,9 @@ public class IndexController {
         ResultMessage resultMessage = userService.login(userName, passWord);
         if (resultMessage == ResultMessage.SUCCESS) {
             request.getSession().setAttribute("userName", userName);
+            if (userName.equals("root")) {
+                return "root";
+            }
         }
         return resultMessage.toString();
     }

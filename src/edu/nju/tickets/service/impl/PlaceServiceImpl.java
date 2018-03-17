@@ -77,19 +77,41 @@ public class PlaceServiceImpl implements PlaceService {
         Place place = getPlace(placeId);
         SeatInfo seatInfo = new SeatInfo(nameString, infoString);
         place.setSeatInfo(seatInfo);
+
+        PrePlace prePlace = prePlaceDao.getByPlaceId(place.getId());
+        if (prePlace != null) {
+            place.setName(prePlace.getName());
+            place.setDescribe(prePlace.getDescribe());
+            place.setAddress(prePlace.getAddress());
+        }
         return modify(place);
     }
 
     @Override
-    public ResultMessage addShow(String name, String describ, int placeId, Date time, List<Double> districtPriceList) {
+    public int modifyInfo(int placeId, String placeName, String placeAddress, String placeDescribe) {
+        Place place = getPlace(placeId);
+        place.setName(placeName);
+        place.setDescribe(placeDescribe);
+        place.setAddress(placeAddress);
+
+        PrePlace prePlace = prePlaceDao.getByPlaceId(place.getId());
+        if (prePlace != null) {
+            place.setSeatInfo(prePlace.getSeatInfo());
+        }
+        return modify(place);
+    }
+
+    @Override
+    public int addShow(String name, String describe, int placeId, Date time, String districtPriceString) {
         /**
          * create a blank seatState
          */
         Place place = placeDao.getById(placeId);
         SeatInfo seatInfo = place.getSeatInfo();
-        SeatState seatState = new SeatState(seatInfo.getTotalSeatNum(), districtPriceList);
-        Show show = new Show(name, describ, placeId, time, seatState);
-        return showDao.add(show);
+        SeatState seatState = new SeatState(seatInfo.getTotalSeatNum(), districtPriceString);
+        Show show = new Show(name, describe, placeId, time, seatState);
+        showDao.add(show);
+        return show.getId();
     }
 
     @Override
@@ -100,6 +122,11 @@ public class PlaceServiceImpl implements PlaceService {
     @Override
     public Show getShow(int showId) {
         return showDao.getById(showId);
+    }
+
+    @Override
+    public List<Show> getShowListByPlaceId(int placeId) {
+        return showDao.getByPlaceId(placeId);
     }
 
 
@@ -121,10 +148,23 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
+    public ResultMessage unCheckPlaceSignUpRequest(int placeId) {
+        Place place = getPlace(placeId);
+        return placeDao.delete(place);
+    }
+
+    @Override
     public ResultMessage checkPlaceModifyRequestByPrePlaceId(int prePlaceId) {
         PrePlace prePlace = prePlaceDao.getById(prePlaceId);
         Place place = new Place(prePlace);
         placeDao.update(place);
+        prePlaceDao.delete(prePlace);
+        return ResultMessage.SUCCESS;
+    }
+
+    @Override
+    public ResultMessage unCheckPlaceModifyRequestByPrePlaceId(int prePlaceId) {
+        PrePlace prePlace = prePlaceDao.getById(prePlaceId);
         prePlaceDao.delete(prePlace);
         return ResultMessage.SUCCESS;
     }

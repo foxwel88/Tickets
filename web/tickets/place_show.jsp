@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tickets - 个人中心</title>
+      <title>Tickets - 场馆管理</title>
     
 
     <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -159,7 +159,7 @@
                             <h3>现场售票</h3>
 
                             <p class="form-row form-row-wide">
-                                <input type="text" style="width:100%" id="payAccount" placeholder="Tickets账号" class="input-text">
+                                <input type="text" style="width:100%" id="userPayAccount" placeholder="Tickets账号" class="input-text">
                             </p>
 
                             <p class="form-row form-row-wide">
@@ -192,13 +192,14 @@
                                             <script>
                                                 $(document).ready(function () {
                                                     $("#placeCreateNotOrderBtn<%=i%>").click(function() {
+                                                        let userName = $("#userPayAccount").val();
                                                         let showId = <%=show.getId()%>;
                                                         let ticketNum = $("#ticketNum<%=i%>").val();
                                                         let districtId = <%=i%>;
 
                                                         console.log(showId);console.log(ticketNum);console.log(districtId);
 
-                                                        createNotOrder(showId, ticketNum, districtId, function (message) {
+                                                        createNotOrder(userName, showId, ticketNum, districtId, function (message) {
                                                             console.log(message);
                                                             if (message == "SUCCESS") {
                                                                 swal({
@@ -224,11 +225,12 @@
                                                     });
                                                 });
 
-                                                function createNotOrder(showId, ticketNum, districtId, callback) {
+                                                function createNotOrder(userName, showId, ticketNum, districtId, callback) {
                                                     $.ajax({
                                                         type: 'POST',
-                                                        url: '/createNotOrder',
+                                                        url: '/createNotOrderByUserName',
                                                         data: {
+                                                            userName: userName,
                                                             showId: showId,
                                                             ticketNum: ticketNum,
                                                             districtId: districtId,

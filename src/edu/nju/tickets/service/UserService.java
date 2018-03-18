@@ -40,4 +40,6 @@ public interface UserService {
 	ResultMessage addIntegral(String userName, int Integral);
 
 	ResultMessage useIntegral(String userName, int Integral);
+
+	ResultMessage cancel(String userName, String passWord);
 }

@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-
+<%@ page import="edu.nju.tickets.model.User" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="edu.nju.tickets.model.Coupon" %>
+<%@ page import="edu.nju.tickets.util.LevelUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,8 +19,12 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/responsive.css">
 
-</head>
+  </head>
 <body>
+
+<%
+    User user = (User)request.getAttribute("user");
+%>
 
     <%@include file="head.jsp" %>
 
@@ -37,31 +45,29 @@
             <div class="col-md-10">
                 <div class="product-breadcroumb">
                     <a href="">首页</a>
-                    <a href="">个人中心</a>
-                    <a href="">修改邮箱</a>
+                    <a href="/userInfo">个人中心</a>
+                    <a href="/userGetCoupon">获取优惠券</a>
                 </div>
                 <div class="product-content-right">
                     <div id="customer_details" class="col2-set">
-                        <div class="col-1">
+                        <div class="col-main">
                             <div class="woocommerce-billing-fields">
-
-                                <p id="old_password_field" class="form-row form-row-first validate-required">
-                                    <label class="" for="passWord">请输入密码</label>
-                                    <input type="password" id="passWord" class="input-text ">
-                                </p>
-
-                                <p id="new_password1_field" class="form-row form-row-first validate-required">
-                                    <label class="" for="emailAddress">请输入新邮箱</label>
-                                    <input style="width: 70%" type="text" id="emailAddress" class="input-text ">
-                                    <input style="width: 28%" type="submit" id="emailBtn" data-value="Place order" value="发送验证码"  class="button alt">
-                                </p>
-
-                                <p id="new_password2_field" class="form-row form-row-first validate-required">
-                                    <label class="" for="checkNumber">验证码</label>
-                                    <input type="text" id="checkNumber" class="input-text ">
-                                </p>
-                                <input type="submit" data-value="Place order" value="确认修改" id="modifyEmailBtn"  class="button alt">
-
+                                <div style="position: relative;">
+                                    <table class="shop_table">
+                                        <tbody>
+                                            <tr>
+                                                <th>全场满 500 减 20</th>
+                                                <td>消耗100积分</td>
+                                                <td><input type="submit" value="兑换" id="getCoupon1" class="button alt"></td>
+                                            </tr>
+                                            <tr>
+                                                <th>全场满 300 减 20</th>
+                                                <td>消耗300积分</td>
+                                                <td><input type="submit" value="兑换" id="getCoupon2" class="button alt"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -69,7 +75,6 @@
             </div>
         </div>
     </div>
-
 
     <%@include file="tail.jsp" %>
 
@@ -79,76 +84,24 @@
     <script src="../js/jquery.sticky.js"></script>
     <script src="../js/jquery.easing.1.3.min.js"></script>
     <script src="../js/main.js"></script>
-<script>
-    $(document).ready(function(){
-        $("#menu_user").addClass("active");
-    });
-</script>
+    <script>
+      $(document).ready(function(){
+          $("#menu_user").addClass("active");
+      });
+    </script>
 
 <script>
     $(document).ready(function () {
-        $("#emailBtn").click(function() {
-            let emailAddress = $("#emailAddress").val();
-            console.log(emailAddress);
-
-
-            sendEmail(emailAddress, function (message) {
-                console.log(message);
-                if (message == "SUCCESS") {
-                    $("#emailBtn").val("重新发送");
-                }
-                if (message == "FAIL_SENDING_EMAIL") {
-                    swal({
-                        title: "邮件发送失败",
-                        type: "error",
-                        confirmButtonText: "返回"
-                    })
-                }
-            });
-
-        });
-    });
-
-    function sendEmail(emailAddress, callback) {
-        $.ajax({
-            type: 'POST',
-            url: '/sendEmail',
-            data: {
-                emailAddress: emailAddress,
-            },
-            success: function (result) {
-                if (callback) {
-                    callback(result);
-                }
-            },
-            error: function (XMLHttpRequest, testStatus, errorThrown) {
-                console.log(XMLHttpRequest.staus);
-                console.log(testStatus);
-            }
-        });
-    }
-</script>
-
-
-<script>
-    $(document).ready(function () {
-        $("#modifyEmailBtn").click(function() {
+        $("#getCoupon1").click(function() {
             let userName = "<%=session.getAttribute("userName")%>";
-            let passWord = $("#passWord").val();
-            let emailAddress = $("#emailAddress").val();
-            let checkNumber = $("#checkNumber").val();
-
             console.log(userName);
-            console.log(passWord);
-            console.log(emailAddress);
-            console.log(checkNumber);
 
 
-            modifyEmail(userName, passWord, emailAddress, checkNumber, function (message) {
+            getCoupon(userName, 1, function (message) {
                 console.log(message);
                 if (message == "SUCCESS") {
                     swal({
-                            title: "修改成功!",
+                            title: "兑换成功!",
                             type: "success",
                             confirmButtonText: "返回Tickets",
                             closeOnConfirm: false
@@ -158,17 +111,37 @@
                                 window.location.href = '/userInfo';
                             }
                         })
-                }
-                if (message == "NO_USER") {
+                } else {
                     swal({
-                        title: "不存在此用户",
+                        title: "兑换失败!",
                         type: "error",
                         confirmButtonText: "返回"
                     })
                 }
-                if (message == "WRONG_PASSWORD") {
+            });
+        });
+        $("#getCoupon2").click(function() {
+            let userName = "<%=session.getAttribute("userName")%>";
+            console.log(userName);
+
+
+            getCoupon(userName, 2, function (message) {
+                console.log(message);
+                if (message == "SUCCESS") {
                     swal({
-                        title: "密码错误",
+                            title: "兑换成功!",
+                            type: "success",
+                            confirmButtonText: "返回Tickets",
+                            closeOnConfirm: false
+                        },
+                        function (isConfirm) {
+                            if (isConfirm) {
+                                window.location.href = '/userInfo';
+                            }
+                        })
+                } else {
+                    swal({
+                        title: "兑换失败!",
                         type: "error",
                         confirmButtonText: "返回"
                     })
@@ -178,15 +151,13 @@
         });
     });
 
-    function modifyEmail(userName, passWord, emailAddress, checkNumber, callback) {
+    function getCoupon(userName, couponId,  callback) {
         $.ajax({
             type: 'POST',
-            url: '/modifyEmail',
+            url: '/getCoupon',
             data: {
                 userName: userName,
-                passWord: passWord,
-                emailAddress: emailAddress,
-                checkNumber: checkNumber
+                couponId: couponId
             },
             success: function (result) {
                 if (callback) {

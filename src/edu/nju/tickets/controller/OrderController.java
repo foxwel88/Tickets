@@ -1,9 +1,11 @@
 package edu.nju.tickets.controller;
 
 import edu.nju.tickets.OrderVO;
+import edu.nju.tickets.model.Coupon;
 import edu.nju.tickets.model.Order;
 import edu.nju.tickets.model.User;
 import edu.nju.tickets.model.util.ResultMessage;
+import edu.nju.tickets.service.CouponService;
 import edu.nju.tickets.service.OrderService;
 import edu.nju.tickets.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class OrderController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    CouponService couponService;
+
     @RequestMapping(value = "/orderUnPaied", method = RequestMethod.GET)
     public String getOrderUnPaied(HttpServletRequest request){
         HttpSession session = request.getSession(false);
@@ -40,6 +45,9 @@ public class OrderController {
 
         User user = userService.getUser((String) session.getAttribute("userName"));
         request.setAttribute("user", user);
+
+        List<Coupon> couponList = couponService.getByUserName((String) session.getAttribute("userName"));
+        request.setAttribute("couponList", couponList);
 
         return "order_unPaied";
     }

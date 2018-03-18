@@ -68,7 +68,7 @@
                 <ul class="nav navbar-nav">
                     <li id="menu_managerCheck"><a href="/managerCheck">&nbsp;场馆审核&nbsp;</a></li>
                     <li id="menu_managerCalc"><a href="/managerCalc">&nbsp;结算&nbsp;</a></li>
-                    <li id="menu_managerInfo"><a href="/managerInfo">&nbsp;Tickets信息&nbsp;</a></li>
+                    <li id="menu_managerInfo"><a href="/managerInfoPlace">&nbsp;Tickets信息&nbsp;</a></li>
                 </ul>
             </div>
         </div>

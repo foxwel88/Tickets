@@ -20,9 +20,20 @@
             <div class="col-md-8">
                 <div class="user-menu">
                     <ul>
-                        <li><a href="/logOutUser"><i class="fa fa-user"></i>登出</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#placeModal"><i class="fa fa-user"></i>管理人员</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i>登陆</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#placeModal"><i class="fa fa-user"></i>场馆管理人员</a></li>
+                        <%
+                            if ((session == null) || (session.getAttribute("userName")==null)) {
+
+                        %>
+                                <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-user"></i>用户登陆</a></li>
+                                <li><a href="/signUp" ><i class="fa fa-user"></i>用户注册</a></li>
+                        <%
+                            } else {
+                        %>
+                                <li><a href="/logOutUser"><i class="fa fa-user"></i>登出</a></li>
+                        <%
+                            }
+                        %>
                     </ul>
                 </div>
             </div>
@@ -31,21 +42,14 @@
                 <div class="header-right">
                     <ul class="list-unstyled list-inline">
                         <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">currency :</span><span class="value">USD </span><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">USD</a></li>
-                                <li><a href="#">INR</a></li>
-                                <li><a href="#">GBP</a></li>
-                            </ul>
-                        </li>
+                            <%
+                                if ((session != null) && (session.getAttribute("userName")!=null)) {
 
-                        <li class="dropdown dropdown-small">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#"><span class="key">language :</span><span class="value">English </span><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">French</a></li>
-                                <li><a href="#">German</a></li>
-                            </ul>
+                            %>
+                                    <a><span class="key">欢迎你，<%=session.getAttribute("userName")%></span></a>
+                            <%
+                                }
+                            %>
                         </li>
                     </ul>
                 </div>
@@ -64,9 +68,11 @@
             </div>
 
             <div class="col-sm-6">
+            <!--
                 <div class="shopping-item">
                     <a href="cart.html">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
                 </div>
+                -->
             </div>
         </div>
     </div>
@@ -85,13 +91,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li id="menu_index"><a href="/index">&nbsp;Tickets&nbsp;主页&nbsp;</a></li>
                     <li id="menu_show"><a href="/showSquare">&nbsp;演出广场&nbsp;</a></li>
                     <li id="menu_order"><a href="/orderUnPaied">&nbsp;我的订单&nbsp;</a></li>
                     <li id="menu_user"><a href="/userInfo">&nbsp;个人中心&nbsp;</a></li>
                 </ul>
-                <a style="float:right;  margin: 10px 10px 10px 10px"><input type="submit" value="搜索"></a>
-                <a style="float:right; margin: 10px 10px 10px 10px"><input type="text" placeholder="您感兴趣的演出"></a>
+                <a style="float:right;  margin: 10px 10px 5px 10px"><input type="submit" value="搜索"></a>
+                <a style="float:right; margin: 10px 10px 5px 10px"><input type="text" placeholder="您感兴趣的演出"></a>
             </div>
         </div>
 
@@ -113,7 +118,7 @@
             <div class="modal-body tcck">
                 <div class="input-group input-group-lg parentCls">
                     <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                    <input type="text" class="form-control inputElem" placeholder="请输入登录邮箱"  id="login_userName" style="width: 466px;">
+                    <input type="text" class="form-control inputElem" placeholder="请输入用户名"  id="login_userName" style="width: 466px;">
                 </div>
                 <div class="input-group input-group-lg " style="margin-top:20px">
                     <span class="input-group-addon"><i class="fa fa-unlock-alt" style="width:18px"></i></span>
@@ -125,9 +130,7 @@
             </div>
 
             <div class="modal-footer2">
-                <div style="float:left">
-                    <a href="http://www.jq22.com/pwd.aspx">忘记密码?</a></div>
-                <div style="float:right"><a href="http://www.jq22.com/register.aspx">注册新用户</a></div>
+                <div style="float:right"><a href="/signUp">注册新用户</a></div>
                 <div style="clear:right"></div>
             </div>
 
@@ -162,9 +165,7 @@
             </div>
 
             <div class="modal-footer2">
-                <div style="float:left">
-                    <a href="http://www.jq22.com/pwd.aspx">忘记密码?</a></div>
-                <div style="float:right"><a href="http://www.jq22.com/register.aspx">注册新用户</a></div>
+                <div style="float:right"><a href="/placeSignUp">注册新场馆</a></div>
                 <div style="clear:right"></div>
             </div>
 

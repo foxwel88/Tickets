@@ -46,6 +46,13 @@ $(document).ready(function () {
                         confirmButtonText: "返回"
                     })
                 }
+                if (message == "USER_DELETED") {
+                    swal({
+                        title: "用户已注销",
+                        type: "error",
+                        confirmButtonText: "返回"
+                    })
+                }
             }
         );
 

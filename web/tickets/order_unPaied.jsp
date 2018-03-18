@@ -5,6 +5,7 @@
 <%@ page import="edu.nju.tickets.model.User" %>
 <%@ page import="java.util.logging.Level" %>
 <%@ page import="edu.nju.tickets.util.LevelUtil" %>
+<%@ page import="edu.nju.tickets.model.Coupon" %>
 <!DOCTYPE html>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -26,6 +27,7 @@
 <body>
 
 <%
+    List<Coupon> couponList = (List<Coupon>)request.getAttribute("couponList");
     List<OrderVO> orderVOList = (List<OrderVO>)request.getAttribute("orderList");
 
 
@@ -33,7 +35,7 @@
     double count = LevelUtil.getCount(user.getLevel());
     String countStr = "";
 
-    if ((count - 1) < 0.000001) {
+    if ((1 - count) < 0.000001) {
         countStr = "无折扣";
     } else {
         countStr = ((int)(count * 100)) + "折";
@@ -142,10 +144,15 @@
                                 <td class="actions" colspan="8">
                                     <div class="coupon" style="width:30%">
                                         <label style="width:20%; float: left;" >优惠券:</label>
-                                        <select rel="calc_shipping_state" style="width:75%" class="country_to_state">
+                                        <select rel="calc_shipping_state" onchange="setCoupon()" style="width:75%" class="country_to_state">
                                             <option value="">请选择...</option>
-                                            <option value="AX">TicketsPay</option>
-                                            <option value="AF">网银</option>
+                                                <%
+                                                    for (Coupon coupon: couponList) {
+                                                %>
+                                                        <option value="xx" >全场<%=coupon.getName()%></option>
+                                                <%
+                                                    }
+                                                %>
                                         </select>
                                     </div>
                                     <div class="coupon" style="width:60%; float:right">
@@ -172,12 +179,12 @@
                                     <th>会员等级折扣</th>
                                     <td><%=countStr%></td>
                                     <th>优惠券优惠</td>
-                                    <td>无</td>
+                                    <td id="couponTd">无</td>
                                 </tr>
 
                                 <tr class="order-total">
                                     <th>支付金额</th>
-                                    <td colspan="3"><strong>¥<%=payPrice%></strong></td>
+                                    <td colspan="3">¥<strong id="priceStrong"><%=payPrice%></strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -328,6 +335,13 @@
                                         console.log(testStatus);
                                     }
                                 });
+                            }
+
+                            function setCoupon() {
+                                console.log("hahah");
+                                document.getElementById("couponTd").innerHTML= "20";
+                                let newPrice = (<%=payPrice%> - 20).toFixed(2);
+                                document.getElementById("priceStrong").innerHTML = newPrice;
                             }
                         </script>
                     </div>

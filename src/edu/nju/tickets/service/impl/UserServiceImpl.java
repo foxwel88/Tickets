@@ -6,6 +6,7 @@ import edu.nju.tickets.model.User;
 import edu.nju.tickets.service.MailService;
 import edu.nju.tickets.service.UserService;
 import edu.nju.tickets.util.EmailUtil;
+import edu.nju.tickets.util.LevelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -137,6 +138,7 @@ public class UserServiceImpl implements UserService {
     public ResultMessage addIntegral(String userName, int integral) {
         User user = getUser(userName);
         user.setIntegral(user.getIntegral() + integral);
+        user.setLevel(LevelUtil.getLevel(user.getIntegral()));
         userDao.update(user);
         return ResultMessage.SUCCESS;
     }
@@ -147,6 +149,17 @@ public class UserServiceImpl implements UserService {
         user.setIntegral(user.getIntegral() - integral);
         userDao.update(user);
         return ResultMessage.SUCCESS;
+    }
+
+    @Override
+    public ResultMessage cancel(String userName, String passWord) {
+        ResultMessage resultMessage = login(userName, passWord);
+        if (resultMessage != ResultMessage.SUCCESS) {
+            return resultMessage;
+        }
+        User user = getUser(userName);
+        user.setState("false");
+        return modify(user);
     }
 
 

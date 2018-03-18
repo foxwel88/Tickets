@@ -30,10 +30,12 @@ public class IndexController {
     @Autowired
     PlaceService placeService;
 
+    @Autowired
+    ShowController showController;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getIndex(HttpServletRequest request) {
-        return "user_info";
+        return showController.getShowSquare(request);
     }
 
     @ResponseBody

@@ -1,8 +1,10 @@
 package edu.nju.tickets.controller;
 
 
+import edu.nju.tickets.model.Coupon;
 import edu.nju.tickets.model.User;
 import edu.nju.tickets.model.util.ResultMessage;
+import edu.nju.tickets.service.CouponService;
 import edu.nju.tickets.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +17,17 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.List;
 
 
 @Controller
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    CouponService couponService;
 
 	private static final long serialVersionUID = 1L;
 
@@ -36,6 +43,9 @@ public class UserController {
             if (userName != null) {
                 User user = userService.getUser(userName);
                 request.setAttribute("user", user);
+
+                List<Coupon> couponList = couponService.getByUserName(userName);
+                request.setAttribute("couponList", couponList);
                 return "user_info";
             } else {
                 return "user_null";
@@ -92,6 +102,22 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "/userGetCoupon", method = RequestMethod.GET)
+    public String getUserGetCoupon(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            String userName = (String)session.getAttribute("userName");
+            if (userName != null) {
+                User user = userService.getUser(userName);
+                request.setAttribute("user", user);
+                return "user_getCoupon";
+            } else {
+                return "user_null";
+            }
+        } else {
+            return "user_null";
+        }
+    }
 
     @ResponseBody
     @RequestMapping(value = "/modifyPassWord", method = RequestMethod.POST)
@@ -123,6 +149,33 @@ public class UserController {
         ResultMessage resultMessage = userService.modify(user);
         return resultMessage.toString();
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/cancelUser", method = RequestMethod.POST)
+    protected String cancelUser(@RequestParam(value = "userName",required=false) String userName,
+                                    @RequestParam(value = "passWord", required = false) String passWord) {
+
+        ResultMessage resultMessage = userService.cancel(userName, passWord);
+        return resultMessage.toString();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getCoupon", method = RequestMethod.POST)
+    protected String getCoupon(@RequestParam(value = "userName",required=false) String userName,
+                                @RequestParam(value = "couponId", required = false) int couponId) {
+
+        if (couponId == 1) {
+            Coupon coupon = new Coupon(userName, 500, 20, new Date("2018/10/10"));
+            couponService.add(coupon);
+            userService.addIntegral(userName, -100);
+        } else {
+            Coupon coupon = new Coupon(userName, 300, 20, new Date("2018/10/10"));
+            couponService.add(coupon);
+            userService.addIntegral(userName, -300);
+        }
+        return "SUCCESS";
+    }
+
 
 
 }

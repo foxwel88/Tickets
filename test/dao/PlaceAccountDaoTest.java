@@ -22,6 +22,8 @@ public class PlaceAccountDaoTest {
     @Test
     public void test() {
         managerDao.getPlaceCalc();
+        managerDao.getUserCalc();
+        managerDao.getTicketsCalc();
     }
 
 }

@@ -2,7 +2,9 @@ package edu.nju.tickets.controller;
 
 
 import edu.nju.tickets.model.Place;
+import edu.nju.tickets.model.PlaceAccount;
 import edu.nju.tickets.model.Show;
+import edu.nju.tickets.service.ManagerService;
 import edu.nju.tickets.service.PlaceService;
 import edu.nju.tickets.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class PlaceController {
     @Autowired
     PlaceService placeService;
 
+    @Autowired
+    ManagerService managerService;
 
     @RequestMapping(value = "/placeInfo", method = RequestMethod.GET)
     public String getPlaceInfo(HttpServletRequest request) {
@@ -107,6 +111,19 @@ public class PlaceController {
         return "place_createShow";
     }
 
+
+    @RequestMapping(value = "/placeCalc", method = RequestMethod.GET)
+    public String placeCalc(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("placeId") == null)) {
+            return "user_null";
+        }
+
+        PlaceAccount placeAccount = managerService.getPlaceCalcById((int)session.getAttribute("placeId"));
+        request.setAttribute("placeAccount", placeAccount);
+
+        return "place_calc";
+    }
 
     @ResponseBody
     @RequestMapping(value = "/changePlaceInfo", method = RequestMethod.POST)

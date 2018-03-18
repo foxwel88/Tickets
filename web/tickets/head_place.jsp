@@ -68,6 +68,7 @@
                 <ul class="nav navbar-nav">
                     <li id="menu_placeManage"><a href="/placeInfo">&nbsp;场馆管理&nbsp;</a></li>
                     <li id="menu_showManage"><a href="/placeShow">&nbsp;演出管理&nbsp;</a></li>
+                    <li id="menu_placeCalc"><a href="/placeCalc">&nbsp;场馆财务&nbsp;</a></li>
                 </ul>
             </div>
         </div>

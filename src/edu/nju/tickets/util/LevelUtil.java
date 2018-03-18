@@ -14,4 +14,9 @@ public class LevelUtil {
         if (level >=4) return 0.9;
         else return 1;
     }
+
+    public static int getLevel(int price) {
+        if (price > 5000) return 2;
+        return 1;
+    }
 }

@@ -56,6 +56,7 @@ public class OrderVO {
             this.type = "未选座订单<br>[配票时间:" + TimeUtil.getDayString(order.getCheckTime()) + "]";
             this.seat = place.getSeatInfo().getDistrictName(order.getDistrictId());
         } else {
+            this.type = "选座订单";
             seat = "";
             ticketList = orderService.getTicketList(id);
             for (Ticket ticket: ticketList) {

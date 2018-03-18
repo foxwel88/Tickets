@@ -30,6 +30,7 @@ public class ShowController {
     OrderService orderService;
 
 
+
     @RequestMapping(value = "/showSingle", method = RequestMethod.GET)
     public String getShowSingle(@RequestParam(value = "showId",required=false) String showId,
                                 HttpServletRequest request) {
@@ -42,6 +43,8 @@ public class ShowController {
         if (showId == null) {
             return getShowSquare(request);
         }
+        List<Show> showList = placeService.getShowList();
+        request.setAttribute("showList", showList);
         Show show = placeService.getShow(Integer.valueOf(showId));
         Place place = placeService.getPlace(show.getPlaceId());
         request.setAttribute("show", show);
@@ -51,12 +54,12 @@ public class ShowController {
 
     @RequestMapping(value = "/showSquare", method = RequestMethod.GET)
     public String getShowSquare(HttpServletRequest request) {
-
+        /*
         HttpSession session = request.getSession(false);
         if ((session == null) || (session.getAttribute("userName") == null)) {
             return "user_null";
         }
-
+*/
         List<Show> showList = placeService.getShowList();
 
         request.setAttribute("showList", showList);
@@ -67,6 +70,10 @@ public class ShowController {
     public String showSelectSeat(@RequestParam(value = "showId",required=false) int showId,
                                  @RequestParam(value = "districtId",required=false) int districtId,
                                  HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("userName") == null)) {
+            return "user_null";
+        }
 
         Show show = placeService.getShow(showId);
         Place place = placeService.getPlace(show.getPlaceId());
@@ -76,6 +83,19 @@ public class ShowController {
         request.setAttribute("districtId", districtId);
         return "show_selectSeat";
     }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/createNotOrderByUserName", method = RequestMethod.POST)
+    public String createNotOrderByUserName(@RequestParam(value = "userName",required=false) String userName,
+                                           @RequestParam(value = "showId",required=false) int showId,
+                                 @RequestParam(value = "districtId",required=false) int districtId,
+                                 @RequestParam(value = "ticketNum",required=false) int ticektNum,
+                                 HttpServletRequest request) {
+        ResultMessage resultMessage = orderService.createNotSelectOrder(userName, showId, districtId, ticektNum);
+        return resultMessage.toString();
+    }
+
 
     @ResponseBody
     @RequestMapping(value = "/createNotOrder", method = RequestMethod.POST)

@@ -1,10 +1,10 @@
 package edu.nju.tickets.controller;
 
 
-import edu.nju.tickets.model.Place;
-import edu.nju.tickets.model.PrePlace;
-import edu.nju.tickets.model.Show;
+import edu.nju.tickets.dao.ManagerDao;
+import edu.nju.tickets.model.*;
 import edu.nju.tickets.model.util.ResultMessage;
+import edu.nju.tickets.service.ManagerService;
 import edu.nju.tickets.service.PlaceService;
 import edu.nju.tickets.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +24,9 @@ import java.util.List;
 public class ManagerController {
     @Autowired
     PlaceService placeService;
+
+    @Autowired
+    ManagerService managerService;
 
 
     @RequestMapping(value = "/managerCheck", method = RequestMethod.GET)
@@ -60,17 +63,49 @@ public class ManagerController {
             return "user_null";
         }
 
+        List<PlaceAccount> placeAccountList = managerService.getPlaceCalc();
+        request.setAttribute("placeAccountList", placeAccountList);
         return "manager_calc";
     }
 
-    @RequestMapping(value = "/managerInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/managerInfoPlace", method = RequestMethod.GET)
     public String managerInfo(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
             return "user_null";
         }
 
-        return "manager_info";
+        List<PlaceAccount> placeAccountList = managerService.getPlaceCalc();
+        request.setAttribute("placeAccountList", placeAccountList);
+
+        return "manager_info_place";
+    }
+
+    @RequestMapping(value = "/managerInfoUser", method = RequestMethod.GET)
+    public String managerUser(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
+            return "user_null";
+        }
+
+        List<UserAccount> userAccountList = managerService.getUserCalc();
+        request.setAttribute("userAccountList", userAccountList);
+
+        return "manager_info_user";
+    }
+
+    @RequestMapping(value = "/managerInfoTickets", method = RequestMethod.GET)
+    public String managerTickets(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
+            return "user_null";
+        }
+
+
+        TicketsAccount ticketsAccount = managerService.getTicketsCalc();
+        request.setAttribute("ticketsAccount", ticketsAccount);
+
+        return "manager_info_tickets";
     }
 
     @ResponseBody

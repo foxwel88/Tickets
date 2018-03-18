@@ -60,13 +60,28 @@
                     <div id="seat-map">
                         <div class="front"><%=seatInfo.getDistrictName(districtId)%></div>
                     </div>
-                    <div class="booking-details">
-                        <p>座位：</p>
-                        <ul id="selected-seats"></ul>
-                        <p>票数：<span id="counter">0</span></p>
-                        <p>总计：<b>￥<span id="total">0</span></b></p>
-                        <button id="createSelectOrderBtn" class="checkout-button">下单</button>
-                        <div id="legend"></div>
+                    <table class="shop_table" style="width: 50%">
+                        <tbody>
+                        <tr>
+                            <th>票数</th>
+                            <td colspan="3"><span id="counter">0</span></td>
+                        </tr>
+
+                        <tr >
+                            <th>总价</th>
+                            <td colspan="3"><b>￥<span id="total">0</span></b></td>
+                        </tr>
+
+                        <tr>
+                            <th>座位</th>
+                            <td colspan="3"><ul id="selected-seats"></ul></td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+                    <div>
+                        <input type="submit" value="下单" id="createSelectOrderBtn" class="button alt">
                     </div>
                     <div style="clear:both"></div>
                 </div>
@@ -117,13 +132,6 @@
                 getLabel : function (character, row, column) {
                     return column;
                 }
-            },
-            legend : { //定义图例
-                node : $('#legend'),
-                items : [
-                    [ 'a', 'available',   '可选座' ],
-                    [ 'a', 'unavailable', '已售出']
-                ]
             },
             click: function () {
                 if (this.status() === 'available') {

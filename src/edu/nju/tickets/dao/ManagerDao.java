@@ -2,6 +2,8 @@ package edu.nju.tickets.dao;
 
 import edu.nju.tickets.model.Order;
 import edu.nju.tickets.model.PlaceAccount;
+import edu.nju.tickets.model.TicketsAccount;
+import edu.nju.tickets.model.UserAccount;
 
 import java.util.List;
 
@@ -10,4 +12,10 @@ import java.util.List;
  */
 public interface ManagerDao {
     List<PlaceAccount> getPlaceCalc();
+
+    List<UserAccount> getUserCalc();
+
+    TicketsAccount getTicketsCalc();
+
+    PlaceAccount getPlaceCalcById(int placeId);
 }

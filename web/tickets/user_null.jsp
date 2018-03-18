@@ -36,10 +36,6 @@
     <script src="../js/jquery.sticky.js"></script>
     <script src="../js/jquery.easing.1.3.min.js"></script>
     <script src="../js/main.js"></script>
-    <script>
-      $(document).ready(function(){
-          $("#menu_user").addClass("active");
-      });
-    </script>
+ 
 </body>
 </html>

@@ -73,7 +73,9 @@ public class OrderServiceImpl implements OrderService {
 
 		double totalPrice = price * ticektNum;
 		Date orderDate = new Date();
-		Date checkDate = TimeUtil.calcCheckDate(orderDate);
+
+
+		Date checkDate = TimeUtil.calcCheckDate(show.getTime());
 
 
 		Order order = new Order(userName, showId, "notselect", ticektNum, orderDate, checkDate, totalPrice, "unPaied", districtId);

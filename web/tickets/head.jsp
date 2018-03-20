@@ -95,8 +95,14 @@
                     <li id="menu_order"><a href="/orderUnPaied">&nbsp;我的订单&nbsp;</a></li>
                     <li id="menu_user"><a href="/userInfo">&nbsp;个人中心&nbsp;</a></li>
                 </ul>
-                <a style="float:right;  margin: 10px 10px 5px 10px"><input type="submit" value="搜索"></a>
-                <a style="float:right; margin: 10px 10px 5px 10px"><input type="text" placeholder="您感兴趣的演出"></a>
+                <a style="float:right;  margin: 10px 10px 5px 10px"><input type="submit" value="搜索" onclick="searchShow()"></a>
+                <a style="float:right; margin: 10px 10px 5px 10px"><input type="text" id="searchStr" placeholder="您感兴趣的演出"></a>
+                <script>
+                    function searchShow() {
+                        let searchStr = $("#searchStr").val();
+                        window.location.href = "/showSquareSearch?searchStr=" + searchStr;
+                    }
+                </script>
             </div>
         </div>
 

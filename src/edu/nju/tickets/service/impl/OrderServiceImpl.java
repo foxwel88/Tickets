@@ -174,12 +174,14 @@ public class OrderServiceImpl implements OrderService {
 	public ResultMessage cancelOrder(int orderId, String payAccountId) {
 		Order order = orderDao.getById(orderId);
 		payService.returnMoney(payAccountId, order.getPrice());
-		return orderDao.delete(order);
+		order.setState("old");
+		return orderDao.update(order);
 	}
 
 	@Override
 	public ResultMessage cancelOrder(int orderId) {
 		Order order = orderDao.getById(orderId);
-		return orderDao.delete(order);
+		order.setState("old");
+		return orderDao.update(order);
 	}
 }

@@ -97,8 +97,17 @@
                                             </td>
 
                                             <td>
-                                                <input type="submit" style="" value="结算" class="button">
+                                                <input type="submit" style="" value="结算" onclick="comeout()" class="button">
                                             </td>
+                                            <script>
+                                                function comeout() {
+                                                    swal({
+                                                        title: "已提交结算请求!",
+                                                        type: "success",
+                                                        confirmButtonText: "返回Tickets"
+                                                    });
+                                                }
+                                            </script>
                                         </tr>
                                 <%
                                     }

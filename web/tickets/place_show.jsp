@@ -115,10 +115,16 @@
                                         <div class="coupon" style="width:60%; ">
                                             <label style="width:20%; float:left; margin-right: 5px; margin-top: 10px">在线检票:</label>
                                             <input type="text" style="width:45%; float:left" placeholder="请扫入票 ID" value="" id="coupon_code" class="input-text" name="coupon_code">
-                                            <input type="submit" style="width:30%; float:right" value="确认" name="apply_coupon" class="button">
-                                        </div>
-                                        <div class="coupon" style="width:30%; margin-top: 10px; float:right">
-                                            <label style=" float: left;" >已入场: 10人</label>
+                                            <input type="submit" style="width:30%; float:right" value="确认" name="apply_coupon" onclick="comeIn()" class="button">
+                                            <script>
+                                                function comeIn() {
+                                                    swal({
+                                                        title: "暂未到开始日期!",
+                                                        type: "error",
+                                                        confirmButtonText: "返回Tickets"
+                                                    });
+                                                }
+                                            </script>
                                         </div>
                                     </td>
                                 </tr>

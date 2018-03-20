@@ -6,6 +6,7 @@
 <%@ page import="java.util.logging.Level" %>
 <%@ page import="edu.nju.tickets.util.LevelUtil" %>
 <%@ page import="edu.nju.tickets.model.Coupon" %>
+<%@ page import="java.sql.Time" %>
 <!DOCTYPE html>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -99,6 +100,7 @@
                             for (int i = 0; i < 1; ++i) {
                                 OrderVO orderVO = orderVOList.get(i);
                                 price = price + orderVO.getPrice();
+
                         %>
                             <tr class="cart_item">
                                 <td>

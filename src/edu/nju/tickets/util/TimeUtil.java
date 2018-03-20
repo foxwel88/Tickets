@@ -29,6 +29,18 @@ public class TimeUtil {
         return calendar.getTime();
     }
 
+    public static boolean calcCancelDate(Date date) {
+        Date nowDate = new Date();
+
+        Date date1 = new Date(date.getTime());
+        date1.setTime(date1.getTime() + 15*60*1000);
+        System.out.println(date1);
+        if (date1.after(nowDate)) {
+            return true;
+        }
+        return false;
+    }
+
     public static String getDayString(Date date) {
         return simpleDateFormat1.format(date);
     }

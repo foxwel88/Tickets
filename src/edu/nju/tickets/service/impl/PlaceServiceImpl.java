@@ -178,4 +178,9 @@ public class PlaceServiceImpl implements PlaceService {
     public List<Show> getShowList() {
         return showDao.getList();
     }
+
+    @Override
+    public List<Show> getBySearch(String searchString) {
+        return showDao.getBySearch(searchString);
+    }
 }

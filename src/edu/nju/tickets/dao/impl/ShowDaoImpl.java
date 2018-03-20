@@ -53,6 +53,19 @@ public class ShowDaoImpl implements ShowDao {
         return res;
     }
 
+    @Override
+    public List<Show> getBySearch(String searchString) {
+        Session session = daoHelper.getSession();
+        session.beginTransaction();
+
+        String hql = "from Show s where s.name like '%" + searchString + "%'";
+
+        Query query = session.createQuery(hql);
+
+        List<Show> res = query.list();
+        session.close();
+        return res;
+    }
 
     @Override
     public List<Show> getList() {

@@ -66,6 +66,22 @@ public class ShowController {
         return "show_square";
     }
 
+    @RequestMapping(value = "/showSquareSearch", method = RequestMethod.GET)
+    public String getShowSquare(@RequestParam(value = "searchStr",required=false) String searchStr,
+                                    HttpServletRequest request) {
+        /*
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("userName") == null)) {
+            return "user_null";
+        }
+*/
+        if (searchStr == null) searchStr = "";
+        List<Show> showList = placeService.getBySearch(searchStr);
+
+        request.setAttribute("showList", showList);
+        return "show_squareSearch";
+    }
+
     @RequestMapping(value = "/showSelectSeat", method = RequestMethod.GET)
     public String showSelectSeat(@RequestParam(value = "showId",required=false) int showId,
                                  @RequestParam(value = "districtId",required=false) int districtId,

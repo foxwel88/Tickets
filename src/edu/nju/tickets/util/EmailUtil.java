@@ -29,6 +29,6 @@ public class EmailUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(getEmailCheckNumber("cttony@126.com"));
+        System.out.println(getEmailCheckNumber("cttony1997@126.com"));
     }
 }

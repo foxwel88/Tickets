@@ -122,7 +122,7 @@
                                                                         <td>¥ <%=seatState.getPriceList().get(i)%></td>
                                                                         <td>
                                                                             <div class="quantity">
-                                                                                <input type="number" id="ticketNum<%=i%>" size="4" class="input-text qty text" title="Qty" value="0" name="quantity" min="0" step="1">
+                                                                                <input type="number" id="ticketNum<%=i%>" size="4" class="input-text qty text" title="Qty" value="0" name="quantity" min="0" max="20" step="1">
                                                                             </div>
 
                                                                         </td>

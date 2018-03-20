@@ -20,4 +20,6 @@ public interface ShowDao {
     List<Show> getList();
 
     ResultMessage update(Show show);
+
+    List<Show> getBySearch(String searchString);
 }

@@ -25,7 +25,7 @@
             <div class="col-md-2">
                 <div class="single-sidebar">
                     <ul>
-                        <<li><a href="/userInfo">个人信息</a></li>
+                        <li><a href="/userInfo">个人信息</a></li>
                         <li><a href="/userChangePassWord">修改密码</a></li>
                         <li><a href="/userChangeEmail">修改邮箱</a></li>
                         <li><a href="/userChangeInfo">修改信息</a></li>

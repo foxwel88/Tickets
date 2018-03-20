@@ -9,6 +9,7 @@ import edu.nju.tickets.service.PlaceService;
 import edu.nju.tickets.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +36,8 @@ public class OrderVO {
 
     private String seat;
 
+    private Date datedate;
+
     private double price;
 
     private List<Ticket> ticketList;
@@ -51,6 +54,7 @@ public class OrderVO {
         this.type = order.getType();
         this.num = order.getTicketNum();
         this.price = order.getPrice();
+        this.datedate = order.getTime();
 
         if (this.type.equals("notselect")) {
             this.type = "未选座订单<br>[配票时间:" + TimeUtil.getDayString(order.getCheckTime()) + "]";
@@ -151,5 +155,13 @@ public class OrderVO {
 
     public void setTicketList(List<Ticket> ticketList) {
         this.ticketList = ticketList;
+    }
+
+    public Date getDatedate() {
+        return datedate;
+    }
+
+    public void setDatedate(Date datedate) {
+        this.datedate = datedate;
     }
 }

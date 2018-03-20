@@ -49,4 +49,6 @@ public interface PlaceService {
     ResultMessage unCheckPlaceModifyRequestByPrePlaceId(int prePlaceId);
 
     List<Show> getShowList();
+
+    List<Show> getBySearch(String searchString);
 }

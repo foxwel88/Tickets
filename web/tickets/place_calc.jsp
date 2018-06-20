@@ -33,6 +33,10 @@
                 <div class="single-sidebar">
                     <ul>
                         <li><a href="/placeCalc">场馆财务</a></li>
+                        <li><a href="/placeDataUser">客户分析</a></li>
+                        <li><a href="/placeDataSeatPercent">出票与上座率分析</a></li>
+                        <li><a href="/placeDataIncome">收入分析</a></li>
+                        <li><a href="/placeDataIntegral">积分兑换分析</a></li>
                     </ul>
                 </div>
             </div>

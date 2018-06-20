@@ -2,6 +2,7 @@ package edu.nju.tickets.controller;
 
 
 import edu.nju.tickets.dao.ManagerDao;
+import edu.nju.tickets.dao.ManagerDataDao;
 import edu.nju.tickets.model.*;
 import edu.nju.tickets.model.util.ResultMessage;
 import edu.nju.tickets.service.ManagerService;
@@ -27,6 +28,9 @@ public class ManagerController {
 
     @Autowired
     ManagerService managerService;
+
+    @Autowired
+    ManagerDataDao managerDataDao;
 
 
     @RequestMapping(value = "/managerCheck", method = RequestMethod.GET)
@@ -134,5 +138,75 @@ public class ManagerController {
     protected String unCheckSignUp(@RequestParam(value = "placeId",required=false) int placeId) {
         ResultMessage resultMessage = placeService.unCheckPlaceSignUpRequest(placeId);
         return resultMessage.toString();
+    }
+
+    @RequestMapping(value = "/managerDataProvince", method = RequestMethod.GET)
+    public String managerDataProvince(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
+            return "user_null";
+        }
+
+        List<Object[]> list = managerDataDao.getProvinceIncome();
+        request.setAttribute("provinceList", list);
+
+        return "manager_data_province";
+    }
+
+    @RequestMapping(value = "/managerDataUser", method = RequestMethod.GET)
+    public String managerDataUser(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
+            return "user_null";
+        }
+
+        List<Object[]> list = managerDataDao.getMonthUserNum();
+        List<Integer> list1 = managerDataDao.getUserNum();
+        request.setAttribute("userList", list);
+        request.setAttribute("userList1", list1);
+
+        return "manager_data_user";
+    }
+
+
+    @RequestMapping(value = "/managerDataPlaceIncome", method = RequestMethod.GET)
+    public String managerDataPlaceIncome(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
+            return "user_null";
+        }
+
+        List<Object[]> list = managerDataDao.getHighPlaceIncome();
+        List<Object[]> list1 = managerDataDao.getLowPlaceIncome();
+        request.setAttribute("highIncomeList", list);
+        request.setAttribute("lowIncomeList", list1);
+
+        return "manager_data_placeincome";
+    }
+
+    @RequestMapping(value = "/managerDataMonthIncome", method = RequestMethod.GET)
+    public String managerDataMonthIncome(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
+            return "user_null";
+        }
+
+        List<Object[]> list = managerDataDao.getMonthIncome();
+        request.setAttribute("incomeList", list);
+
+        return "manager_data_monthincome";
+    }
+
+    @RequestMapping(value = "/managerDataIntegral", method = RequestMethod.GET)
+    public String managerDataIntegral(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("manager") == null) || (!session.getAttribute("manager").equals("root"))) {
+            return "user_null";
+        }
+
+        List<Object[]> list = managerDataDao.getMonthIntegral();
+        request.setAttribute("integralList", list);
+
+        return "manager_data_integral";
     }
 }

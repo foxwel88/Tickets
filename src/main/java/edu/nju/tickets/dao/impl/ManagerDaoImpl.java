@@ -60,7 +60,7 @@ public class ManagerDaoImpl implements ManagerDao {
         Session session = daoHelper.getSession();
         session.beginTransaction();
 
-        String hql = "select sum(o.price), count(distinct s.id), sum(o.ticketNum) from Order o, Show  s where o.showId = s.id and s.placeId =:placeId and o.state = 'paied' ";
+        String hql = "select sum(o.price), count(distinct s.id), sum(o.ticketNum) from Order o, Show  s where o.showId = s.id and s.placeId =:placeId";
 
         Query query = session.createQuery(hql);
         query.setParameter("placeId", placeId);

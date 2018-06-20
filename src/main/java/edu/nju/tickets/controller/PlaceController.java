@@ -1,6 +1,7 @@
 package edu.nju.tickets.controller;
 
 
+import edu.nju.tickets.dao.PlaceDataDao;
 import edu.nju.tickets.model.Place;
 import edu.nju.tickets.model.PlaceAccount;
 import edu.nju.tickets.model.Show;
@@ -27,6 +28,9 @@ public class PlaceController {
 
     @Autowired
     ManagerService managerService;
+
+    @Autowired
+    PlaceDataDao newDao;
 
     @RequestMapping(value = "/placeInfo", method = RequestMethod.GET)
     public String getPlaceInfo(HttpServletRequest request) {
@@ -125,6 +129,8 @@ public class PlaceController {
         return "place_calc";
     }
 
+
+
     @ResponseBody
     @RequestMapping(value = "/changePlaceInfo", method = RequestMethod.POST)
     protected int changePlaceInfo(@RequestParam(value = "placeId",required=false) int placeId,
@@ -156,4 +162,59 @@ public class PlaceController {
         return showId;
     }
 
+
+    @RequestMapping(value = "/placeDataUser", method = RequestMethod.GET)
+    public String placeManagerUser(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("placeId") == null)) {
+            return "user_null";
+        }
+
+        List<Object[]> list = newDao.getPlaceMonthUserNum((int)request.getSession().getAttribute("placeId"));
+        List<Integer> list1 = newDao.getPlaceUserNum((int)request.getSession().getAttribute("placeId"));
+        request.setAttribute("userList", list);
+        request.setAttribute("userList1", list1);
+
+        return "place_manager_user";
+    }
+
+    @RequestMapping(value = "/placeDataSeatPercent", method = RequestMethod.GET)
+    public String placeManagerSeatPercent(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("placeId") == null)) {
+            return "user_null";
+        }
+
+        List<Object[]> list = newDao.getPlaceShowSeatPercent((int)request.getSession().getAttribute("placeId"));
+        System.out.println(list.size());
+        request.setAttribute("seatPercentList", list);
+
+        return "place_manager_seatpercent";
+    }
+
+    @RequestMapping(value = "/placeDataIncome", method = RequestMethod.GET)
+    public String placeManagerIncome(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("placeId") == null)) {
+            return "user_null";
+        }
+
+        List<Object[]> list = newDao.getPlaceIncome((int)request.getSession().getAttribute("placeId"));
+        request.setAttribute("incomeList", list);
+
+        return "place_manager_income";
+    }
+
+    @RequestMapping(value = "/placeDataIntegral", method = RequestMethod.GET)
+    public String placeDataIntegral(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if ((session == null) || (session.getAttribute("placeId") == null)) {
+            return "user_null";
+        }
+
+        List<Object[]> list = newDao.getPlaceMonthIntegral((int)request.getSession().getAttribute("placeId"));
+        request.setAttribute("integralList", list);
+
+        return "place_manager_integral";
+    }
 }

@@ -94,6 +94,7 @@
                     <li id="menu_show"><a href="/showSquare">&nbsp;演出广场&nbsp;</a></li>
                     <li id="menu_order"><a href="/orderUnPaied">&nbsp;我的订单&nbsp;</a></li>
                     <li id="menu_user"><a href="/userInfo">&nbsp;个人中心&nbsp;</a></li>
+                    <li id="menu_data"><a href="/userDataIncome">&nbsp;个人数据&nbsp;</a></li>
                 </ul>
                 <a style="float:right;  margin: 10px 10px 5px 10px"><input type="submit" value="搜索" onclick="searchShow()"></a>
                 <a style="float:right; margin: 10px 10px 5px 10px"><input type="text" id="searchStr" placeholder="您感兴趣的演出"></a>

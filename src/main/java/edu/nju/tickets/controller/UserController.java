@@ -1,6 +1,7 @@
 package edu.nju.tickets.controller;
 
 
+import edu.nju.tickets.dao.UserDataDao;
 import edu.nju.tickets.model.Coupon;
 import edu.nju.tickets.model.User;
 import edu.nju.tickets.model.util.ResultMessage;
@@ -28,6 +29,9 @@ public class UserController {
 
     @Autowired
     CouponService couponService;
+
+    @Autowired
+    UserDataDao userDataDao;
 
 	private static final long serialVersionUID = 1L;
 
@@ -177,5 +181,39 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "/userDataIncome", method = RequestMethod.GET)
+    public String userDataIncome(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            String userName = (String)session.getAttribute("userName");
+            if (userName != null) {
+                List<Object[]> list = userDataDao.getPlaceIncome(userName);
+                request.setAttribute("incomeList", list);
+                return "user_data_income";
+            } else {
+                return "user_null";
+            }
+        } else {
+            return "user_null";
+        }
+
+    }
+
+    @RequestMapping(value = "/userDataIntegral", method = RequestMethod.GET)
+    public String userDataIntegral(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            String userName = (String)session.getAttribute("userName");
+            if (userName != null) {
+                List<Object[]> list = userDataDao.getPlaceMonthIntegral(userName);
+                request.setAttribute("integralList", list);
+                return "user_data_integral";
+            } else {
+                return "user_null";
+            }
+        } else {
+            return "user_null";
+        }
+    }
 
 }

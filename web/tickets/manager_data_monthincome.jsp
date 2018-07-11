@@ -71,7 +71,7 @@
                                     },
                                     calculable : true,
                                     legend: {
-                                        data:['实际收入金额','不含优惠收入金额','出票量']
+                                        data:['实际收入金额','不含优惠收入金额','出票量','上座率']
                                     },
                                     xAxis : [
                                         {
@@ -93,10 +93,18 @@
                                             }
                                         },
                                         {
+                                            containLabel: true,
                                             type : 'value',
-                                            name : '出票量',
+                                            name : '                出票量           上座率',
                                             axisLabel : {
                                                 formatter: '{value} 张'
+                                            }
+                                        },
+                                        {
+                                            type : 'value',
+                                            name : '',
+                                            axisLabel : {
+                                                formatter: '            {value} %'
                                             }
                                         }
                                     ],
@@ -132,6 +140,12 @@
                                                         out.print("" + list.get(i)[3] + "");
                                                     }
                                                     %>]
+                                        },
+                                        {
+                                            name:'上座率',
+                                            type:'line',
+                                            yAxisIndex: 2,
+                                            data:[67,85,67,75,67,97]
                                         }
                                     ]
                                 };

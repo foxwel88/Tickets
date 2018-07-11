@@ -215,5 +215,20 @@ public class UserController {
             return "user_null";
         }
     }
+    @RequestMapping(value = "/userDataPlacetype", method = RequestMethod.GET)
+    public String userDataPlacetype(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            String userName = (String) session.getAttribute("userName");
+            if (userName != null) {
+                return "user_data_placetype";
+            } else {
+                return "user_null";
+            }
+        } else {
+            return "user_null";
+        }
+    }
+
 
 }

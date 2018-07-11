@@ -127,7 +127,7 @@
                                     var myChart1 = echarts.init(document.getElementById('main1'));
                                     option1 = {
                                         title : {
-                                            text: '场馆用户比例',
+                                            text: '场馆客户比例',
                                         },
                                         tooltip : {
                                             trigger: 'item',
@@ -161,8 +161,10 @@
                                                 radius : '55%',
                                                 center: ['50%', '60%'],
                                                 data:[
-                                                    {value:<%out.print(list1.get(0));%>, name:'新用户'},
-                                                    {value:<%out.print(list1.get(1));%>, name:'忠诚用户'}
+                                                    {value:<%out.print(list1.get(0));%>, name:'普通客户'},
+                                                    {value:5,name:'单次购买客户'},
+                                                    {value:<%out.print(list1.get(1));%>, name:'忠诚客户'},
+                                                    {value:3,name:'流失忠诚客户'}
                                                 ]
                                             }
                                         ]

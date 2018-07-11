@@ -26,6 +26,7 @@
 
 <%
     List<Object[]> list = (List<Object[]>) request.getAttribute("integralList");
+    List<Object[]> list1 = (List<Object[]>) request.getAttribute("incomeList");
 %>
     <%@include file="head_place.jsp" %>
 
@@ -54,13 +55,13 @@
 
                                     option = {
                                         title: {
-                                            text: '集团积分兑换率分析'
+                                            text: '集团积分兑换率与优惠分析'
                                         },
                                         tooltip : {
                                             trigger: 'axis'
                                         },
                                         legend: {
-                                            data:['积分兑换率']
+                                            data:['积分兑换率','优惠量']
                                         },
                                         toolbox: {
                                             show : true,
@@ -94,6 +95,10 @@
                                                 axisLabel : {
                                                     formatter: '{value}%'
                                                 }
+                                            },
+                                            {
+                                                type : 'value',
+                                                name : '优惠量'
                                             }
                                         ],
                                         series : [
@@ -105,6 +110,19 @@
                                                     for (int i = 0; i < list.size(); ++i) {
                                                         if (i != 0) out.print(",");
                                                         out.print("" + ((BigDecimal)list.get(i)[1]).doubleValue()*100 + "");
+                                                    }
+                                                    %>
+                                                ]
+                                            },
+                                            {
+                                                name:'优惠量',
+                                                type:'line',
+                                                yAxisIndex: 1,
+                                                data:[
+                                                    <%
+                                                    for (int i = 0; i < list.size(); ++i) {
+                                                        if (i != 0) out.print(",");
+                                                        out.print("" + ((double)list1.get(i)[1] - ((double)list1.get(i)[2])) + "");
                                                     }
                                                     %>
                                                 ]

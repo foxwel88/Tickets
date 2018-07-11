@@ -3,6 +3,7 @@
 <%@ page import="edu.nju.tickets.model.Place" %>
 <%@ page import="edu.nju.tickets.model.util.SeatInfo" %>
 <%@ page import="edu.nju.tickets.model.PlaceAccount" %>
+<%@ page import="java.math.BigDecimal" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html lang="en">
@@ -48,6 +49,9 @@
                             <div class="woocommerce-billing-fields">
                                 <div id="main" style="width: 600px;height:400px;"></div>
                                 <script type="text/javascript">
+                                    function fixed(num){
+                                        return num.toFixed(2);
+                                    }
 
                                     var myChart = echarts.init(document.getElementById('main'));
                                     option = {
@@ -60,14 +64,15 @@
                                                 type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                                             },
                                             formatter: function (params){
+                                                let a = (parseFloat(params[1].value) + parseFloat(params[0].value));
                                                 return params[0].name + '<br/>'
                                                     + params[0].seriesName + ' : ' + params[0].value + '<br/>'
-                                                    + params[1].seriesName + ' : ' + (params[1].value + params[0].value);
+                                                    + '出票率' + ' : ' + a;
                                             }
                                         },
                                         legend: {
                                             selectedMode:false,
-                                            data:['上座率', '出票率']
+                                            data:['上座率', '出票未上坐率']
                                         },
                                         toolbox: {
                                             show : true,
@@ -84,7 +89,7 @@
                                                 type : 'category',
                                                 axisLabel: {
                                                     interval:0,
-                                                    rotate:40
+                                                    rotate:20
                                                 },
                                                 data : [
                                                     <%
@@ -99,8 +104,13 @@
                                         yAxis : [
                                             {
                                                 type : 'value',
-                                                boundaryGap: [0, 0.1]
+                                                name : '上座率／出票率',
+                                                axisLabel : {
+                                                    formatter: '{value} %'
+                                                }
                                             }
+
+
                                         ],
                                         series : [
                                             {
@@ -123,13 +133,13 @@
                                                     <%
                                                     for (int i = 0; i < list.size(); ++i) {
                                                         if (i != 0) out.print(",");
-                                                        out.print("\"" + list.get(i)[1] + "\"");
+                                                        out.print("fixed(" + ((double)list.get(i)[1]) * 100 + ")");
                                                     }
                                                     %>
                                                 ]
                                             },
                                             {
-                                                name:'出票率',
+                                                name:'出票未上坐率',
                                                 type:'bar',
                                                 stack: 'sum',
                                                 itemStyle: {
@@ -147,14 +157,7 @@
                                                         }
                                                     }
                                                 },
-                                                data:[
-                                                    <%
-                                                    for (int i = 0; i < list.size(); ++i) {
-                                                        if (i != 0) out.print(",");
-                                                        out.print("\"" +  (0.1) + "\"");
-                                                    }
-                                                    %>
-                                                ]
+                                                data:[6.75,7.35,4.57,8.1]
                                             }
                                         ]
                                     };

@@ -214,7 +214,8 @@ public class PlaceController {
 
         List<Object[]> list = newDao.getPlaceMonthIntegral((int)request.getSession().getAttribute("placeId"));
         request.setAttribute("integralList", list);
-
+        List<Object[]> list1 = newDao.getPlaceIncome((int)request.getSession().getAttribute("placeId"));
+        request.setAttribute("incomeList", list1);
         return "place_manager_integral";
     }
 }

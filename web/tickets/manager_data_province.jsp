@@ -83,7 +83,7 @@
                         },
                         series : [
                             {
-                                name: '2011全国GDP分布',
+                                name: '各省份收入',
                                 type: 'map',
                                 mapType: 'china',
                                 mapLocation: {

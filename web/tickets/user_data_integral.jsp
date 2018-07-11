@@ -33,6 +33,7 @@
                     <ul>
                         <li><a href="/userDataIncome">个人购票分析</a></li>
                         <li><a href="/userDataIntegral">积分使用分析</a></li>
+                        <li><a href="/userDataPlacetype">购票场馆分析</a></li>
                     </ul>
                 </div>
             </div>

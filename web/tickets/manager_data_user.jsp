@@ -54,6 +54,7 @@
                         <div class="woocommerce-billing-fields">
                             <div id="main" style="width: 600px;height:400px;"></div>
                             <div id="main1" style="width: 600px;height:400px;"></div>
+                            <div id="main2" style="width: 600px;height:400px;"></div>
                             <script type="text/javascript">
 
                                 var myChart = echarts.init(document.getElementById('main'));
@@ -132,7 +133,7 @@
                                 var myChart1 = echarts.init(document.getElementById('main1'));
                                 option1 = {
                                     title : {
-                                        text: '场馆用户比例',
+                                        text: '场馆散客比例',
                                     },
                                     tooltip : {
                                         trigger: 'item',
@@ -161,12 +162,13 @@
                                     calculable : true,
                                     series : [
                                         {
-                                            name:'访问来源',
+                                            name:'客户比例',
                                             type:'pie',
                                             radius : '55%',
                                             center: ['50%', '60%'],
                                             data:[
-                                                {value:<%out.print(list1.get(0));%>, name:'新用户'},
+                                                {value:<%out.print(list1.get(0));%>, name:'普通客户'},
+                                                {value:20,name:'单次购买客户'},
                                                 {value:<%out.print(list1.get(1));%>, name:'忠诚用户'}
                                             ]
                                         }
@@ -175,6 +177,53 @@
                                 myChart1.setOption(option1);
                             </script>
 
+                            <script type="text/javascript">
+                                var myChart2 = echarts.init(document.getElementById('main2'));
+                                option2 = {
+                                    title : {
+                                        text: '集团客户比例',
+                                    },
+                                    tooltip : {
+                                        trigger: 'item',
+                                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                    },
+                                    toolbox: {
+                                        show : true,
+                                        feature : {
+                                            mark : {show: true},
+                                            dataView : {show: true, readOnly: false},
+                                            magicType : {
+                                                show: true,
+                                                type: ['pie', 'funnel'],
+                                                option: {
+                                                    funnel: {
+                                                        x: '25%',
+                                                        width: '50%',
+                                                        funnelAlign: 'left',
+                                                        max: 1548
+                                                    }
+                                                }
+                                            },
+                                            saveAsImage : {show: true}
+                                        }
+                                    },
+                                    calculable : true,
+                                    series : [
+                                        {
+                                            name:'集团客户',
+                                            type:'pie',
+                                            radius : '55%',
+                                            center: ['50%', '60%'],
+                                            data:[
+                                                {value:20,name:'单次购买集团客户'},
+                                                {value:15,name:'非签约忠诚集团客户'},
+                                                {value:45,name:'已签约集团客户'}
+                                            ]
+                                        }
+                                    ]
+                                };
+                                myChart2.setOption(option2);
+                            </script>
                         </div>
                     </div>
                 </div>

@@ -22,7 +22,7 @@
 <body>
 
 <%
-    List<Object[]> list = (List<Object[]>) request.getAttribute("incomeList");
+    List<Object[]> list = (List<Object[]>) request.getAttribute("integralList");
 %>
     <%@include file="head.jsp" %>
 
@@ -46,70 +46,46 @@
                             <script type="text/javascript">
 
                                 var myChart = echarts.init(document.getElementById('main'));
-
                                 option = {
-                                    title: {
-                                        text: '购票金额分析'
+                                    title : {
+                                        text: '购票场馆分析',
                                     },
                                     tooltip : {
-                                        trigger: 'axis'
-                                    },
-                                    legend: {
-                                        data:['实际购票金额','不含优惠购票金额']
+                                        trigger: 'item',
+                                        formatter: "{a} <br/>{b} : {c} ({d}%)"
                                     },
                                     toolbox: {
                                         show : true,
                                         feature : {
                                             mark : {show: true},
                                             dataView : {show: true, readOnly: false},
-                                            magicType : {show: true, type: ['line', 'bar']},
-                                            restore : {show: true},
+                                            magicType : {
+                                                show: true,
+                                                type: ['pie', 'funnel'],
+                                                option: {
+                                                    funnel: {
+                                                        x: '25%',
+                                                        width: '50%',
+                                                        funnelAlign: 'left',
+                                                        max: 1548
+                                                    }
+                                                }
+                                            },
                                             saveAsImage : {show: true}
                                         }
                                     },
                                     calculable : true,
-                                    xAxis : [
-                                        {
-                                            type : 'category',
-                                            boundaryGap : false,
-                                            data : [
-                                                <%
-                                                for (int i = 0; i < list.size(); ++i) {
-                                                    if (i != 0) out.print(",");
-                                                    out.print("\"" + list.get(i)[0] + "\"");
-                                                }
-                                                %>
-                                            ]
-                                        }
-                                    ],
-                                    yAxis : [
-                                        {
-                                            type : 'value'
-                                        }
-                                    ],
                                     series : [
                                         {
-                                            name:'实际购票金额',
-                                            type:'line',
+                                            name:'访问来源',
+                                            type:'pie',
+                                            radius : '55%',
+                                            center: ['50%', '60%'],
                                             data:[
-                                                <%
-                                                for (int i = 0; i < list.size(); ++i) {
-                                                    if (i != 0) out.print(",");
-                                                    out.print(list.get(i)[1]);
-                                                }
-                                                %>
-                                            ]
-                                        },
-                                        {
-                                            name:'不含优惠购票金额',
-                                            type:'line',
-                                            data:[
-                                                <%
-                                                for (int i = 0; i < list.size(); ++i) {
-                                                    if (i != 0) out.print(",");
-                                                    out.print(list.get(i)[2]);
-                                                }
-                                                %>
+                                                {name:'南京奥体中心体育馆',value:3},
+                                                {name:'欧拉艺术空间',value:1},
+                                                {name:'南京保利大剧院',value:1},
+                                                {name:'南京青奥体育公园体育馆',value:2}
                                             ]
                                         }
                                     ]
